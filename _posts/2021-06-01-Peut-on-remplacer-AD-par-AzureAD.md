@@ -17,10 +17,10 @@ L'avènement des services Cloud, en particulier avec le positionnement central d
 
 La nomenclature des annuaires pouvant pouvant préter à confusion, une précision sur le vocabulaire est nécessaire
 
-* Active Directory :
-* Active Directory Cloud ou Acive Directory Azure : 
-* Azure Active Directory :
-* Azyre Active Directory Domain Services :
+* **Active Directory** :
+* **Active Directory Cloud** ou **Acive Directory Azure** : 
+* **Azure Active Directory** :
+* **Azure Active Directory Domain Services** :
 
 
 
