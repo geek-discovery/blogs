@@ -25,7 +25,7 @@ La nomenclature des annuaires pouvant pouvant préter à confusion, une précisi
 
 Historiquement la gouvernance des services ITs au sein des entreprise se décline de manière verticale induisant une autonomie de chaque services les uns par rapport aux autres avec en transverse l'annuaire d'authentification. 
 
-A
+Az
 
 # Comment répondre à cette problématique ?
 
