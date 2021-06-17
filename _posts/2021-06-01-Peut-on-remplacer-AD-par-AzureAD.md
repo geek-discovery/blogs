@@ -2,8 +2,7 @@
 title: Peut on remplacer Active Directory par Azure Active Directory ?
 layout: post
 post-image: "https://raw.githubusercontent.com/thedevslot/WhatATheme/master/assets/images/SamplePost.png?token=AHMQUEPC4IFADOF5VG4QVN26Z64GG"
-description: A sample post to show how the content will look and how will different
-  headlines, quotes and codes will be represented.
+description: Mes convictions sur les pistes de transformation pour s'affranchir de l'Active Directory.
 tags:
 - Active Directory
 - Azure Active Directory
@@ -24,7 +23,13 @@ La nomenclature des annuaires pouvant pouvant préter à confusion, une précisi
 
 # Pourquoi cette question devrait se poser ?
 
+Historiquement la gouvernance des services ITs au sein des entreprise se décline de manière verticale induisant une autonomie de chaque services les uns par rapport aux autres avec en transverse l'annuaire d'authentification. 
+
 # Comment répondre à cette problématique ?
+
+# Conclusion
+
+
 
 
 
