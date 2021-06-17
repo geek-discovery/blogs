@@ -15,11 +15,11 @@ L'avènement des services Cloud, en particulier avec le positionnement central d
 
 # Préambule
 
-La nomenclature des annuaires pouvant pouvant préter à confusion, une précision sur le vocabulaire est nécessaire
+La nomenclature des annuaires pouvant pouvant préter à confusion, une précision sur le vocabulaire est nécessaire pour clarifier la portée des transformations possibles.
 
-* **Active Directory** :
-* **Active Directory Cloud** ou **Acive Directory Azure** : 
-* **Azure Active Directory** :
+* **Active Directory** : Il s'agit de l'annuaire historique de Microsoft disponible depuis le debut des années 2000. Traditionnellement il est hébergé de manière OnPremise sous la forme de machines physiques ou virtualles.
+* **Active Directory Cloud** ou **Acive Directory Azure** : Il s'agit d'un terme utilisé pour modéliser l'hébergement de l'Active Directory au sein de fournisseurs de Cloud Public (tels que Azure ou AWS). Ce terme ne fait pas référence à une technologie mais à une situation d'hébergement.
+* **Azure Active Directory** : Il s'agit de l'annuaire Microsoft apparu avec les services Office 365 et les services IaaS, PaaS, SaaS fourni par Microsoft Azure.
 * **Azure Active Directory Domain Services** :
 
 
