@@ -1,5 +1,5 @@
 ---
-title: Peut on remplacer Active Directory par Azure Active Directory
+title: Peut on remplacer Active Directory par Azure Active Directory ?
 layout: post
 post-image: "https://raw.githubusercontent.com/thedevslot/WhatATheme/master/assets/images/SamplePost.png?token=AHMQUEPC4IFADOF5VG4QVN26Z64GG"
 description: A sample post to show how the content will look and how will different
@@ -11,7 +11,8 @@ tags:
 - AAD
 - Microsoft
 ---
-# Peut on remplacer Active Directory par Azure Active Directory ?
+L'avènement des services Cloud, en particulier avec le positionnement central d'Office 365 au sein des entreprises, pose la question de l'usage et du positionnement de l'Active Directory au sein des entereprises.
+
 
 
 
