@@ -22,7 +22,13 @@ La nomenclature des annuaires pouvant pouvant préter à confusion, une précisi
 * **Azure Active Directory** : annuaire Microsoft apparu avec les services Office 365 et les services IaaS, PaaS, SaaS fourni par Microsoft Azure. Cet annuaire est souvent assimilé à tord comme la transformation sous la forme d'un service PaaS de l'annuaire Active Directory.
 * **Azure Active Directory Domain Services** : annuaire Active Directory fourni sous la forme d'un service PaaS par Microsoft. Les comptes utilisateurs sont provisionnés depuis Azure Active Directory.
 
+# Pourquoi cette question devrait se poser ?
 
+# Comment répondre à cette problématique ?
+
+
+
+## **Question 1** : Comment mes utilisateurs peuvent ils s'authentifier sur le 
 
 # This is the h1 text
 ## This is the h2 text
