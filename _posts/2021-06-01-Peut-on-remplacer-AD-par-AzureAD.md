@@ -11,8 +11,16 @@ tags:
 - AAD
 - Microsoft
 ---
-L'avènement des services Cloud, en particulier avec le positionnement central d'Office 365 au sein des entreprises, pose la question de l'usage et du positionnement de l'Active Directory au sein des entereprises.
+L'avènement des services Cloud, en particulier avec le positionnement central d'Office 365 au sein des entreprises, pose la question de l'usage et du positionnement de l'Active Directory au sein des entereprises. Du fait de la multiplicité des fonctions portées par l'Active Directory, une approche globale et stratégie est nécessaire. Une approche technique se confrontera aux limitations d'Azure Active Direcotry qui ne reprend pas l'ensemble des fonctionalités de Active Directory
 
+# Préambule
+
+La nomenclature des annuaires pouvant pouvant préter à confusion, une précision sur le vocabulaire est nécessaire
+
+* Active Directory :
+* Active Directory Cloud ou Acive Directory Azure : 
+* Azure Active Directory :
+* Azyre Active Directory Domain Services :
 
 
 
