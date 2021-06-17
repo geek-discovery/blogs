@@ -27,7 +27,7 @@ Historiquement la gouvernance des services ITs au sein des entreprise se déclin
 
 # Comment répondre à cette problématique ?
 
-# Conclusion
+
 
 
 
@@ -35,9 +35,5 @@ Historiquement la gouvernance des services ITs au sein des entreprise se déclin
 
 ## **Question 1** : Comment mes utilisateurs peuvent ils s'authentifier sur le 
 
-# This is the h1 text
-## This is the h2 text
-### This is the h3 text
-#### This is the h4 text
-##### This is the h5 text
-###### This is the h6 text
+
+# Conclusion
