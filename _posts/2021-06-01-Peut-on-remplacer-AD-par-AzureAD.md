@@ -41,7 +41,7 @@ Au final, la volonté de basculer vers des services Cloud pour répondre aux enj
 
 La 
 Modèle de déléguation
-
+Décloisonnement
 
 ## **Question 2** : Quels sont les fonctionnalités à adresser ?
 
