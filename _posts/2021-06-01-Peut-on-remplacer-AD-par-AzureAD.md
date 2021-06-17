@@ -53,7 +53,7 @@ La gestion de la configuration sur les postes de travail
 La gestion de la configuration sur les serveurs
 Le service DNS
 
-## **Question 3**
+## **Question 3** : Quel circuit de provisionning des comptes utilisateurs ?
 
 
 
