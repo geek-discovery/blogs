@@ -1,7 +1,7 @@
 ---
 title: Peut on remplacer Active Directory par Azure Active Directory ?
 layout: post
-post-image: "https://www.geek-discovery.com/assets/images/ActiveDirectory.jpg"
+post-image: ![image](/assets/images/ActiveDirectory.jpg)
 description: Mes convictions sur les pistes de transformation pour s'affranchir de l'Active Directory.
 tags:
 - Active Directory
