@@ -54,15 +54,17 @@ Décloisonnement
 
 
 
-## **Question 3** : Quel circuit de provisionning des comptes utilisateurs ?
+## **Question 3** : Quel circuit de provisionning des objets ?
 
 La définition du cycle de vie des utilisateurs embarque les questions suivantes :
-** Quel est le cycle de vie des utilisateurs internes de l'entreprise ?
-** Quel est le cycle de vie de utilisateurs sous contrats (les prestataires, les freelances, ...) ?
-** Quel est le cycle de vie des utilisateurs *Guests* sur le tenant Office 365 ?
-** Quel est le cycle de vie des objets hébergés sur Active Directory (Pur Active Directory, Synchronisés sur Azure AD) et/ou sur Azure AD (Objets uniquement cloud) ? 
+* Quel est le cycle de vie des utilisateurs internes de l'entreprise ?
+* Quel est le cycle de vie de utilisateurs sous contrats (les prestataires, les freelances, ...) ?
+* Quel est le cycle de vie des utilisateurs *Guests* sur le tenant Office 365 ?
+* Quel est le cycle de vie des objets hébergés sur Active Directory (Pur Active Directory, Synchronisés sur Azure AD) et/ou sur Azure AD (Objets uniquement cloud) ? 
 
 De manière usuelle, chacune des populations disposent de son propre cycle de vie. Induisant une complexité au niveau des outils (1 outil par population) voire même une gestion manuelle dont le cas le plus représentatif est la gestion des utilisateurs *Guests* sur le tenant Office 365.
+
+
 
 Pour le cas spécifique des comptes utilisateurs *Guests*, la possibilité d'appliquer une date d'expiration sur ce type de comptes est apparue début 2021.
 
