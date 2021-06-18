@@ -35,7 +35,15 @@ Au final, la volonté de basculer vers des services Cloud pour répondre aux enj
 
 # Comment répondre à cette problématique ?
 
+Les interdépendances entre les différentes strates & services des systèmes d'informations font qu'il est voué 
+
+A titre d'exemple, ci dessous une modélisation d'un système d'information. Les constats sont qu'il y a des interdépendances sur l'ensemble des foundations. Quelles soient techniques, sécurité et applicatives.
+![Spaghetti Pasta](/assets/images/2021-06-01-MapEcosystème.png)
+
+
+
 ## **Question 1** : Quels organisation mettre en place pour apporter une vision globale et transverse ?
+
 
 
 
@@ -43,19 +51,8 @@ La
 Modèle de déléguation
 Décloisonnement
 
-## **Question 2** : Quels sont les fonctionnalités à adresser ?
-
-Les systèmes d'informations des entreprises bien que variés reposent sur 
 
 
-![Spaghetti Pasta](/assets/images/2021-06-01-MapEcosystème.png)
-Provisionning
-L'authentification des utilisateurs sur leur poste de travail
-L'authentification des utilisateurs sur les applications
-L'authentification des administrateurs sur les serveurs ?
-La gestion de la configuration sur les postes de travail
-La gestion de la configuration sur les serveurs
-Le service DNS
 
 ## **Question 3** : Quel circuit de provisionning des comptes utilisateurs ?
 
@@ -63,6 +60,9 @@ Le service DNS
 
 ## **Question 1** : Comment mes utilisateurs peuvent ils s'authentifier sur le 
 
+## **Question X** : Comment protéger mon système d'informations ?
+
+L'évolution des menaces Zero Trust EDR ...
 
 # Conclusion
 
@@ -70,3 +70,4 @@ Par conséquent, Son abandon par les entreprises ne peut être réalisable sans 
 Les moyens techniques sont disponibles et permettent d'atteindre cet objectif.
 Neanmoins selon les transformations à apporter les durées nécessaires peuvent être plus ou moins longues
 La fin de l'Active Directory n'est pas pour tout de suite néanmoins il est nécessaire de définir une sortie sur plusieurs années
+Souveraineté / indépendance -> difficulté de se passer des Services Microsoft sans recréer en cloud une nouvelle complexité
