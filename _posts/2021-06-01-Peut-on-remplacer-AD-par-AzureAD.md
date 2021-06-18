@@ -48,7 +48,7 @@ Décloisonnement
 Les systèmes d'informations des entreprises bien que variés reposent sur 
 
 
-post-image: /assets/images/2021-06-01-MapEcosystème.png
+![Spaghetti Pasta](/assets/images/2021-06-01-MapEcosystème.png)
 Provisionning
 L'authentification des utilisateurs sur leur poste de travail
 L'authentification des utilisateurs sur les applications
