@@ -45,6 +45,8 @@ Décloisonnement
 
 ## **Question 2** : Quels sont les fonctionnalités à adresser ?
 
+Les systèmes d'informations des entreprises bien que variés reposent sur 
+
 Provisionning
 L'authentification des utilisateurs sur leur poste de travail
 L'authentification des utilisateurs sur les applications
