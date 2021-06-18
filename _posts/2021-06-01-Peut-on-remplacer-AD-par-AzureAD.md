@@ -35,11 +35,11 @@ Au final, la volonté de basculer vers des services Cloud pour répondre aux enj
 
 # Comment répondre à cette problématique ?
 
-Les interdépendances entre les différentes strates & services des systèmes d'informations font qu'il est voué 
-
 A titre d'exemple, ci dessous une modélisation d'un système d'information. Les constats sont qu'il y a des interdépendances sur l'ensemble des foundations. Quelles soient techniques, sécurité et applicatives.
+
 ![Spaghetti Pasta](/assets/images/2021-06-01-MapEcosystème.png)
 
+Les chapites suivant ont pour objectif de proposer des recommandations sur les solutions de transformation envisageables et les eceuils à éviter.
 
 
 ## **Question 1** : Quels organisation mettre en place pour apporter une vision globale et transverse ?
@@ -56,13 +56,26 @@ Décloisonnement
 
 ## **Question 3** : Quel circuit de provisionning des comptes utilisateurs ?
 
+La définition du cycle de vie des utilisateurs embarque les questions suivantes :
+** Quel est le cycle de vie des utilisateurs internes de l'entreprise ?
+** Quel est le cycle de vie de utilisateurs sous contrats (les prestataires, les freelances, ...) ?
+** Quel est le cycle de vie des utilisateurs *Guests* sur le tenant Office 365 ?
+** Quel est le cycle de vie des objets hébergés sur Active Directory (Pur Active Directory, Synchronisés sur Azure AD) et/ou sur Azure AD (Objets uniquement cloud) ? 
 
+De manière usuelle, chacune des populations disposent de son propre cycle de vie. Induisant une complexité au niveau des outils (1 outil par population) voire même une gestion manuelle dont le cas le plus représentatif est la gestion des utilisateurs *Guests* sur le tenant Office 365.
+
+Pour le cas spécifique des comptes utilisateurs *Guests*, la possibilité d'appliquer une date d'expiration sur ce type de comptes est apparue début 2021.
+
+## **Question 2** : Comment gérer les habilitations des utilisateurs ?
+
+Découper habilitation du retrait de l'habilitation
+Access Package
 
 ## **Question 1** : Comment mes utilisateurs peuvent ils s'authentifier sur le 
 
 ## **Question X** : Comment protéger mon système d'informations ?
 
-L'évolution des menaces Zero Trust EDR ...
+> L'évolution des menaces Zero Trust EDR ...
 
 # Conclusion
 
