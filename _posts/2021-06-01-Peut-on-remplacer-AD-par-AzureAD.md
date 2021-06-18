@@ -37,9 +37,9 @@ Au final, la volonté de basculer vers des services Cloud pour répondre aux enj
 
 A titre d'exemple, ci dessous une modélisation d'un système d'information. Les constats sont qu'il y a des interdépendances sur l'ensemble des foundations. Quelles soient techniques, sécurité et applicatives.
 
-![Spaghetti Pasta](/assets/images/2021-06-01-MapEcosystème.png)
-
 Les chapites suivant ont pour objectif de proposer des recommandations sur les solutions de transformation envisageables et les eceuils à éviter.
+
+![Spaghetti Pasta](/assets/images/2021-06-01-MapEcosystème.png)
 
 
 ## **Question 1** : Quels organisation mettre en place pour apporter une vision globale et transverse ?
