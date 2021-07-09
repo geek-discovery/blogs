@@ -50,34 +50,92 @@ La mise en place d'une cellule de **Design Authority** est à même de répondre
 
 Quelques examples de sujets devant être 
 
-**Difficulté  :** moyenne
-**Charges     :** moyenne
+* **Difficulté  :** moyenne
+* **Charges     :** moyenne
 
 
-## **Question 3** : Quel circuit de provisionning des objets ?
+## **Question 2** : Quel circuit de provisionning des objets ?
 
-La définition du cycle de vie des utilisateurs embarque les questions suivantes :
+### La définition du cycle de vie des objets embarque les questions suivantes :
 * Quel est le cycle de vie des utilisateurs internes de l'entreprise ?
 * Quel est le cycle de vie de utilisateurs sous contrats (les prestataires, les freelances, ...) ?
 * Quel est le cycle de vie des utilisateurs *Guests* sur le tenant Office 365 ?
-* Quel est le cycle de vie des objets hébergés sur Active Directory (Pur Active Directory, Synchronisés sur Azure AD) et/ou sur Azure AD (Objets uniquement cloud) ? 
+* Quel est le cycle de vie des objets non utilisateurs hébergés sur Active Directory (Pur Active Directory, Synchronisés sur Azure AD) et/ou sur Azure AD (Objets uniquement cloud) ? 
 
-De manière usuelle, chacune des populations disposent de son propre cycle de vie. Induisant une complexité au niveau des outils (1 outil par population) voire même une gestion manuelle dont le cas le plus représentatif est la gestion des utilisateurs *Guests* sur le tenant Office 365.
+De manière usuelle, chacune des populations d'utilisateurs disposent de son propre cycle de vie, induisant une complexité au niveau des outils (1 outil par population) voire même une gestion manuelle. Le cas le plus représentatif étant la gestion des utilisateurs *Guests* sur le tenant Office 365.
+
+![Q2a](/assets/images/AD_Q1a.png)
+
+Les objets non utilisateurs (tel que les groupes de sécurité, les listes de distribution ...) sont quand à eux historiquement proviionnés dans l'Active Directory puis synchronisés dans l'Azure AD. L'arrivé d'Office 365 soulève plusieurs problématiques structurantes pour apporter une gestion de ces objets. En effet :
+* Certains objets comme les comptes de ressources ou les boites aux lettres partagées doivent subir une adaptation post-provisionning depuis l'Active Directory
+* Certains objets comme les listes de distributions, les boites aux lettres partagées, les comptes de ressources ne doivent pas être provisionnés depuis l'Active Directory afin de proposer des capacités de gestion aux titulaires de ces objets (eg. en tant que propriétaires d'une liste de distribution, je veux pouvoir modifier les membres depuis mon client Outlook)
+* Certains objets comme les comptes *Guests* ou les *Groups O365* n'ont pas d'existances sur Active Directory
+
+Outre l'aspect annuaire Active Directory & Azure AD, le traitement de cette question implique de concevoir le cycle de vie de bout en bout en prennant en compte les outils amonts aux annuaires d'identité (eg. référentiel RH), les outils de gestion des demandes et d'automatisation des modifications (ITSM), la structure de gouvernance de l'entreprise qui conditionne le modèle de déléguation (eg. combien d'équipes doivent manager les objets, combien de périmètres de responsabilité ...). Dans le cas d'une transition complète vers Azure AD, la transformation de cet écosystème est à prendre en compte.
+
+### Plusieurs scénarios permettent toutefois de traiter cette question
+
+#### **Usage d'un outil inhouse dédié**
+
+Cette solution permet de proposer via un moteur de traitement dédié, mis à disposition par les équipes en charge de la gestion des identités, de connecteurs Powershell et/ou Graph vers Active Directory et l'Azure AD afin de soumettre des traitement via des fichiers standardisés. Bien que cet outil puisse être percu comme un nouvel outil dans l'entreprise (et de faits des côuts complémentaires de dévellopement, évolution, maintien en condition opérationnelle) il apporte les bénéfices suivants :
+* facilité d'évolution pour la prise en charge de nouvelles fonctionnalités du fait de la maitrise de l'ensemble des briques par les équipes identités
+* possibilité de disposer d'un modèle de déléguation granulaire adapté au modèle de gouvernance des entreprises via la déclinaison du modèle de déléguation au niveau de l'outil
+* réduit les besoins d'accès aux consoles de management Azure AD / Office 365
+* gestion exhaustive de tous types de d'objets
+* permet de provisionner les objets au sein de l'annuaire le plus pertinent
+* possibilité de traitement en masse
+* possibilité d'interfacage via fichier à plat avec un ITSM
+
+**Indicateur d'effort de transformation**
+* **Difficulté  :** moyenne
+* **Charges     :** moyenne
+
+#### **Usage d'un référentiel technique (type IAM)**
+
+Dans le cas où l'entreprise dispose d'une outil de gestion des identités et d'habilitations, l'intéret de le faire évoluer afin d'atteindre les objectifs en terme de gestion exhaustive des objets permet de s'affrachir de la mise en place d'un outil dédié. 
+Outre les béné
 
 
 
-Pour le cas spécifique des comptes utilisateurs *Guests*, la possibilité d'appliquer une date d'expiration sur ce type de comptes est apparue début 2021.
+#### **Fusion du référentiel RH et du référentiel technique**
 
-## **Question 2** : Comment gérer les habilitations des utilisateurs ?
+
+
+
+* **Usage d'un référentiel technique (type IAM)**
+
+> 
+
+
+
+
+A noter que le cas spécifique des comptes utilisateurs *Guests*, la possibilité d'appliquer une date d'expiration sur ce type de comptes est apparue début 2021.
+
+**Indicateur d'effort de transformation**
+* **Difficulté  :** moyenne
+* **Charges     :** importante
+
+
+## **Question 3** : Comment gérer les habilitations des utilisateurs ?
 
 Découper habilitation du retrait de l'habilitation
 Access Package
 
-## **Question 1** : Comment mes utilisateurs peuvent ils s'authentifier sur le 
+## **Question 4** : Quel impact pour la gestion des terminaux ?
+
+## **Question 5** : Quel impact sur les services techniques ?
+
+## **Question 6** : Quel impact sur les applicatifs ?
+
+## **Question 5** : Est ce une opportunité pour simplifier la vie des utilisateurs ?
+
+
+
 
 ## **Question X** : Comment protéger mon système d'informations ?
 
-> L'évolution des menaces Zero Trust EDR ...
+> L'évolution des menaces Zero Trust EDR ..
+> Le Byod
 
 # Conclusion
 
