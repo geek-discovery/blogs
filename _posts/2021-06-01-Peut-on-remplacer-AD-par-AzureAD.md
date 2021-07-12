@@ -44,7 +44,7 @@ Les chapites suivant ont pour objectif de proposer des recommandations sur les s
 
 ## **Question 1** : Quels organisation mettre en place pour apporter une vision globale et transverse ?
 
-L'organisation à mettre en place pour accompagner de telles transformations doit avoir pour objectifs principaux de garantir la cohérence de l'architecture et les adhérences entre les différentes foundations. Un ecueil que j'ai courrament rencontré et que les propositions de design de chaque chantier étaient validés au sein de chaque chantier. Cet approche peut générer une complexité inutile aux niveaux des interfaces voire même des incompatibilités.
+L'organisation à mettre en place pour accompagner de telles transformations doit avoir pour objectifs principaux de garantir la cohérence de l'architecture et le traitement des adhérences entre les différentes foundations. Un ecueil courrament vécu dans les entreprises et que les propositions de design de chaque chantier sont validés au sein de chaque chantier sans tenir compte d'une vision transverse et allant au delà du périmètre du chantier. La résultante de cette approche est qu'une complexité inutile apparait aux niveaux des interfaces voire même des incompatibilités.
 
 La mise en place d'une cellule de **Design Authority** est à même de répondre à ces enjeux
 
@@ -56,7 +56,7 @@ Quelques examples de sujets devant être
 
 ## **Question 2** : Quel circuit de provisionning des objets ?
 
-### La définition du cycle de vie des objets embarque les questions suivantes :
+La définition du cycle de vie des objets embarque les questions suivantes :
 * Quel est le cycle de vie des utilisateurs internes de l'entreprise ?
 * Quel est le cycle de vie de utilisateurs sous contrats (les prestataires, les freelances, ...) ?
 * Quel est le cycle de vie des utilisateurs *Guests* sur le tenant Office 365 ?
@@ -118,6 +118,8 @@ Les coûts engendrés étant non négligeables ce scénario est peut rencontré.
 
 
 ## **Question 3** : Comment gérer les habilitations des utilisateurs ?
+
+
 
 Découper habilitation du retrait de l'habilitation
 Access Package
