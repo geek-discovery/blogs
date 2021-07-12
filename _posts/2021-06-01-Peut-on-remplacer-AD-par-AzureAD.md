@@ -92,28 +92,29 @@ Cette solution permet de proposer via un moteur de traitement dédié, mis à di
 
 #### **Usage d'un référentiel technique (type IAM)**
 
-Dans le cas où l'entreprise dispose d'une outil de gestion des identités et d'habilitations, l'intéret de le faire évoluer afin d'atteindre les objectifs en terme de gestion exhaustive des objets permet de s'affrachir de la mise en place d'un outil dédié. 
-Outre les béné
+Dans le cas où l'entreprise dispose d'une outil de gestion des identités et d'habilitations, l'intéret de le faire évoluer afin d'atteindre les objectifs en terme de gestion exhaustive des objets permet de s'affranchir de la mise en place d'un outil dédié. Neanmoins l'effort d'évolutions n'est généralement pas neutre, du fait qu'il faut mettre en place un connecteur PowerShell / GraphAPI enntre cet outil et l'Azure AD, ce type de connecteur reposant sur des protocoles de communications différents de ceux utilisés avec Active Directory.
 
+En termes de bénéfices, la plupart de ceux apportés par la mise en place d'un outil dédié sont repris et des nouveaux peuvent aussi être apportés :
+* comme la capacité de mise en place de workflow
+* la mise à disposition d'interfaces accessibles et compréhensibles pour toute la population (IT et non IT)
+
+Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entreprise, la prise en compte de nouveaux besoins est moins évidente du fait des instances de validation généralement plus lourde que pour un outil autonome.
+
+**Indicateur d'effort de transformation**
+* **Difficulté  :** importante
+* **Charges     :** moyenne
 
 
 #### **Fusion du référentiel RH et du référentiel technique**
 
-
-
-
-* **Usage d'un référentiel technique (type IAM)**
-
-> 
-
-
-
-
-A noter que le cas spécifique des comptes utilisateurs *Guests*, la possibilité d'appliquer une date d'expiration sur ce type de comptes est apparue début 2021.
+Ce scénario repose sur la fusion de l'outil en charge de la gestion du référentiel RH et du référentiel technique. Bien qu'il permette la rationalisation des outils, il requiter une maturité forte sur la gestion du cycle de vie des objets et le décloisonement des équipes en charge des outils.
+Les coûts engendrés étant non négligeables ce scénario est peut rencontré.
 
 **Indicateur d'effort de transformation**
-* **Difficulté  :** moyenne
+* **Difficulté  :** importante
 * **Charges     :** importante
+
+**A noter** que le cas spécifique des comptes utilisateurs *Guests*, la possibilité d'appliquer une date d'expiration sur ce type de comptes est apparue début 2021.
 
 
 ## **Question 3** : Comment gérer les habilitations des utilisateurs ?
