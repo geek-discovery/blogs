@@ -46,11 +46,18 @@ Les chapites suivant ont pour objectif de proposer des recommandations sur les s
 
 L'organisation à mettre en place pour accompagner de telles transformations doit avoir pour objectifs principaux de garantir la cohérence de l'architecture et le traitement des adhérences entre les différentes foundations. Un ecueil courrament vécu dans les entreprises et que les propositions de design de chaque chantier sont validés au sein de chaque chantier sans tenir compte d'une vision transverse et allant au delà du périmètre du chantier. La résultante de cette approche est qu'une complexité inutile apparait aux niveaux des interfaces voire même des incompatibilités.
 
-La mise en place d'une cellule de **Design Authority** est à même de répondre à ces enjeux
+Concrètement, le découpage des chantiers dans le cadre du transformation Active Directory vers Azure Active Directory doit se découper par besoins transverses et non plus par ligne managériale/produits. Le tout régie par une celulle de type **Design Authority** pour garantir une cohérence de l'ensemble des besoins. Bien que bénéfique pour *le time to market*, la simplicité, la normalisation des interfaces, ce type d'approche nécessite un fort sponsorship managérial du fait de la remise en cause plus ou moins profondre de la hierarchie établie dans l'entreprise ainsi que des processus d'approbations des évolutions.
 
-Quelques examples de sujets devant être 
+Quelques examples de découpage transverse des sujets :
+* Stream Identité, Authentification & Habilitation : afin de couvrir l'ensemble des objets au sein de l'Active Directory et/ou l'Azure AD, des traitements appliqués sur ces objets, des protocoles d'authentification, des méthodes d'habilitations et des cycles de vie de bout en bout.
+* Stream Collaboratif : afin de couvrir l'ensemble des services collaboratifs ayant une adhérence avec l'Active Directory et/ou l'Azure AD.
+* Stream Gestion des terminaux : afin de couvrir les solutions de gestion des devices et leur cycle de vie. Sur ce chantier un des enjeux important dans le cadre de ce stream est d'uniformiser l'outil de gestion de l'ensemble des terminaux (PC, Smartphones, tablettes ...), la bascule vers Azure AD apportant de nouvelles fonctionnalités (Gestion Intune, Conditional Access ...)
 
-* **Difficulté  :** moyenne
+Outre le découpage selon différents Streams, il est nécessaire que ce découpage soit correctement mis en place lors des projets avec une comitologie globale au niveau du Stream et éviter les projets dans les projets du fait du cloisonnement des équipes entre elles ou la présence de plusieurs solutions/technologies dans l'écosystème. Ce découpage devrait être régie par une approche agile (avec un découpage par sprint) sans cloisonnement entre les équipes qui doivent fournir les ressources pour contribuer sur les sprints et devrait perdurer au delà des programmes de transformation afin de proposer les réponses pertinentes aux métiers et un *time to market* réduit.
+La celulle **Design Authority** quand à elle sera garante que les choix d'architecture fait au sein de chaque Stream soient cohérents entre eux et conforme au schéma directeur IT.
+
+**Indicateur d'effort de transformation**
+* **Difficulté  :** Importante
 * **Charges     :** moyenne
 
 
@@ -125,9 +132,17 @@ Access Package
 
 ## **Question 4** : Quel impact pour la gestion des terminaux ?
 
+La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD. La mouvance du modern management 
+
+
 ## **Question 5** : Quel impact sur les services techniques ?
 
+
+
 ## **Question 6** : Quel impact sur les applicatifs ?
+
+
+
 
 ## **Question 5** : Est ce une opportunité pour simplifier la vie des utilisateurs ?
 
