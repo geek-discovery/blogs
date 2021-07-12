@@ -90,7 +90,6 @@ Cette solution permet de proposer via un moteur de traitement dédié, mis à di
 * **Difficulté  :** moyenne
 * **Charges     :** moyenne
 
-
 #### **Usage d'un référentiel technique (type IAM)**
 
 Dans le cas où l'entreprise dispose d'une outil de gestion des identités et d'habilitations, l'intéret de le faire évoluer afin d'atteindre les objectifs en terme de gestion exhaustive des objets permet de s'affranchir de la mise en place d'un outil dédié. Neanmoins l'effort d'évolutions n'est généralement pas neutre, du fait qu'il faut mettre en place un connecteur PowerShell / GraphAPI enntre cet outil et l'Azure AD, ce type de connecteur reposant sur des protocoles de communications différents de ceux utilisés avec Active Directory.
@@ -105,7 +104,6 @@ Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entrepr
 * **Difficulté  :** importante
 * **Charges     :** moyenne
 
-
 #### **Fusion du référentiel RH et du référentiel technique**
 
 Ce scénario repose sur la fusion de l'outil en charge de la gestion du référentiel RH et du référentiel technique. Bien qu'il permette la rationalisation des outils, il requiter une maturité forte sur la gestion du cycle de vie des objets et le décloisonement des équipes en charge des outils.
@@ -114,7 +112,6 @@ Les coûts engendrés étant non négligeables ce scénario est peut rencontré.
 **Indicateur d'effort de transformation**
 * **Difficulté  :** importante
 * **Charges     :** importante
-
 
 **A noter** que le cas spécifique des comptes utilisateurs *Guests*, la possibilité d'appliquer une date d'expiration sur ce type de comptes est apparue début 2021.
 
