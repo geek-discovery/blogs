@@ -101,8 +101,8 @@ Cette solution permet de proposer via un moteur de traitement dédié, mis à di
 
 Dans le cas où l'entreprise dispose d'une outil de gestion des identités et d'habilitations, l'intéret de le faire évoluer afin d'atteindre les objectifs en terme de gestion exhaustive des objets permet de s'affranchir de la mise en place d'un outil dédié. Neanmoins l'effort d'évolutions n'est généralement pas neutre, du fait qu'il faut mettre en place un connecteur PowerShell / GraphAPI enntre cet outil et l'Azure AD, ce type de connecteur reposant sur des protocoles de communications différents de ceux utilisés avec Active Directory.
 
-En termes de bénéfices, la plupart de ceux apportés par la mise en place d'un outil dédié sont repris et des nouveaux peuvent aussi être apportés :
-* comme la capacité de mise en place de workflows
+En termes de bénéfices, la plupart de ceux apportés par la mise en place d'un outil dédié sont repris et des nouveaux peuvent aussi être apportés comme :
+* la capacité de mise en place de workflows
 * la mise à disposition d'interfaces accessibles et compréhensibles pour toute la population (IT et non IT)
 
 Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entreprise, la prise en compte de nouveaux besoins est moins évidente du fait des instances de validation généralement plus lourde que pour un outil autonome.
@@ -164,12 +164,24 @@ Le dernier enjeux est de garantir la cohérence entre les habilitations fournies
 
 ## **Question 4** : Quel impact pour la gestion des terminaux ?
 
-La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD. L
+La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD mais ouvre la porte à des simplifications et des nouveaux modèles de delivery des terminaux concrétisés par le Modern Management. Concrètement il s'agit d'adresser des chantiers pour l'ensemble des terminaux (PCs, MacOS, iOS, Android) afin d'uniformiser la gestion de leur cycle de vie.
+
+### Chantier à adresser pour les PCs :
+
+* **Transition de l'usine de préparation des PCs vers Windows Autopilot :** permettant de préparer les PCs 
+* **Gestion de la configuration des 
+* **Intégration des applications dans le centre logiciel de la  
+
+* Transition de la configuration des terminaux Windows via GPO au travers de profils de configuration MDM
+
+### Chantier à adresser pour les MacOS, iOS, Android :
+
+
 
 
 ## **Question 5** : Quel impact sur les services techniques ?
 
-
+VPN
 
 ## **Question 6** : Quel impact sur les applicatifs ?
 
@@ -189,6 +201,7 @@ La transition vers l'Azure AD pose un challenge important pour la gestion des te
 # Conclusion
 
 Par conséquent, Son abandon par les entreprises ne peut être réalisable sans la définition d'un plan stratégique et l'ajustement de la gouvernance du système d'informations et la revue 
+La traitement de toutes les questions précédentes permet d'envisager le passage vers Azure AD et de s'affranchir de l'AD. Neanmoins le non traitement d'une des questions impliquent la conservation de l'AD
 Les moyens techniques sont disponibles et permettent d'atteindre cet objectif.
 Neanmoins selon les transformations à apporter les durées nécessaires peuvent être plus ou moins longues
 La fin de l'Active Directory n'est pas pour tout de suite néanmoins il est nécessaire de définir une sortie sur plusieurs années
