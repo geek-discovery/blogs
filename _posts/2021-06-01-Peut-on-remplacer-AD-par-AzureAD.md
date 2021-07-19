@@ -154,7 +154,7 @@ Outre les fonctions natives présentées préalablement, d'autres mécanismes na
 * durée de vie des comptes *Guests* au bout duquel le compte (et les habilitations associées) est automatiquement supprimée
 * *Access Package* pour limiter dans le temps l'accès aux ressources lorsque les habilitations sont fournies au travers de groupes de sécurité
 
-Le dernier enjeux est de garantir la cohérence entre les habilitations fournies et leur validité. En particulier lors des mobilités internes ou de départ de l'entreprise.
+Le dernier enjeu est de garantir la cohérence entre les habilitations fournies et leur validité. En particulier lors des mobilités internes ou de départ de l'entreprise.
 * Azure AD propose la fonctionnalité d'*Access Review* qui permet de simplifier (sans passer par l'analyse fastidieuse des logs) la revue des utilisateurs ayant accédés à des données. Bien qu'actuellement limitée à des Teams, des groups, ou des applications intégrées à Azure AD (Azure AD se positionnant comme le référentiel d'authentification), cette fonctionnalitée permet de limiter la durée nécessaire des phases d'audits.   
 * En complément de cette précédente fonction, l'usage d'un script pour auditer les services non couverts (tel que les habilitations sur les boites aux lettres partagées) permet d'obtenir une vue 360 degrée. Dans une optique d'automatisation, ce script peut être intégré sous la forme d'une *Azure Function*.
 
@@ -162,21 +162,28 @@ Le dernier enjeux est de garantir la cohérence entre les habilitations fournies
 * **Difficulté  :** faible
 * **Charges     :** faible
 
+
 ## **Question 4** : Quel impact pour la gestion des terminaux ?
 
-La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD mais ouvre la porte à des simplifications et des nouveaux modèles de delivery des terminaux concrétisés par le Modern Management. Concrètement il s'agit d'adresser des chantiers pour l'ensemble des terminaux (PCs, MacOS, iOS, Android) afin d'uniformiser la gestion de leur cycle de vie.
+La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD mais ouvre la porte à des simplifications et des nouveaux modèles de delivery des terminaux concrétisés par le Modern Management. Concrètement il s'agit d'adresser des chantiers pour l'ensemble des terminaux (PCs, MacOS, iOS, Android) afin d'uniformiser la gestion de leur cycle de vie. Bien que cette cible soit atteignable, la séparation historique de la gestion des PCs et des autres terminaux peut soulèver des questions organisationnelles.
 
-### Chantier à adresser pour les PCs :
+### Chantiers à adresser pour l'ensemble des terminaux :
 
-* **Transition de l'usine de préparation des PCs vers Windows Autopilot :** permettant de préparer les PCs 
-* **Gestion de la configuration des 
-* **Intégration des applications dans le centre logiciel de la  
+* **Intégration des applications dans le centre logiciel de la solution de MDM** afin de disposer d'un catalogue exhaustif d'applications accessible par les utilisateurs. Ces applications peuvent être installées de manière obligatoire ou être laissées à la discrétion des utilisateurs, groupées par profil métiers ...
+* **Gestion des mises à jour (security updates, features updates, quality updates)**
+* **Gestion de la conformité** pour garantir que le PCs est conforme aux exigences de l'entreprise tel que le respect des mesures de sécurité, le niveau de version du système d'exploitation ... A noter qu'un indicateur de conformité est ainsi calculé pour chaque terminal et peut être ensuite consommé par le Conditional Access pour autoriser/bloquer les accès aux services
 
-* Transition de la configuration des terminaux Windows via GPO au travers de profils de configuration MDM
+### Chantiers complémentaires à adresser pour les PCs :
 
-### Chantier à adresser pour les MacOS, iOS, Android :
+* **Transition de l'usine de préparation des PCs vers Windows Autopilot** permettant ainsi de préparer les PCs (inscription sécurisée dans l'Azure AD, enrollement dans l'outil de gestion, descente des profils de configuration, descente des applications obligatoires) directement depuis des services cloud.   
+* **Gestion de la configuration des PCs** au travers de profils de configurations (en lieu et place des GPOs) poussés par la solution MDM : Microsoft Endpoint Management (ex-Intune) ou toute autre solution MDM supportée.
 
+Le couplage de l'Azure AD avec une solution de MDM permet ainsi de couper les adhérences entre les terminaux et l'Active Directory 
+A noter que la gestion Cloud des terminaux permet de s'affranchir des adhérences avec le réseau d'Entreprise. Les terminaux sont ainsi manageables où qu'ils se trouvent et sans avoir à utiliser de VPN.
 
+**Indicateur d'effort de transformation**
+* **Difficulté  :** moyenne
+* **Charges     :** moyenne
 
 
 ## **Question 5** : Quel impact sur les services techniques ?
