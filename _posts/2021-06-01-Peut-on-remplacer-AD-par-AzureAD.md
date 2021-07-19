@@ -102,7 +102,7 @@ Cette solution permet de proposer via un moteur de traitement dédié, mis à di
 Dans le cas où l'entreprise dispose d'une outil de gestion des identités et d'habilitations, l'intéret de le faire évoluer afin d'atteindre les objectifs en terme de gestion exhaustive des objets permet de s'affranchir de la mise en place d'un outil dédié. Neanmoins l'effort d'évolutions n'est généralement pas neutre, du fait qu'il faut mettre en place un connecteur PowerShell / GraphAPI enntre cet outil et l'Azure AD, ce type de connecteur reposant sur des protocoles de communications différents de ceux utilisés avec Active Directory.
 
 En termes de bénéfices, la plupart de ceux apportés par la mise en place d'un outil dédié sont repris et des nouveaux peuvent aussi être apportés :
-* comme la capacité de mise en place de workflow
+* comme la capacité de mise en place de workflows
 * la mise à disposition d'interfaces accessibles et compréhensibles pour toute la population (IT et non IT)
 
 Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entreprise, la prise en compte de nouveaux besoins est moins évidente du fait des instances de validation généralement plus lourde que pour un outil autonome.
@@ -113,8 +113,7 @@ Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entrepr
 
 #### **Fusion du référentiel RH et du référentiel technique**
 
-Ce scénario repose sur la fusion de l'outil en charge de la gestion du référentiel RH et du référentiel technique. Bien qu'il permette la rationalisation des outils, il requiter une maturité forte sur la gestion du cycle de vie des objets et le décloisonement des équipes en charge des outils.
-Les coûts engendrés étant non négligeables ce scénario est peut rencontré.
+Ce scénario repose sur la fusion de l'outil en charge de la gestion du référentiel RH et du référentiel technique. Bien qu'il permette la rationalisation des outils, il requiert une maturité forte sur la gestion du cycle de vie des employées et des objets ainqi que le décloisonement des équipes en charge des outils. Les coûts engendrés ainsi que les impacts organisationels étant non négligeables ce scénario est rarement rencontré.
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** importante
@@ -125,14 +124,43 @@ Les coûts engendrés étant non négligeables ce scénario est peut rencontré.
 
 ## **Question 3** : Comment gérer les habilitations des utilisateurs ?
 
+La gestion uniformisée et automatisée des habilitations est un corollaire à la question précédente.
+Bien que les mécanimes de fourniture de permissions sur l'Active Directory & l'Azure AD soit similaires - ajout d'un utilisateur dans un groupe - le passage à l'Azure AD est l'occasion de réaliser une mise à niveau des processus d'habilitations afin d'être aligné avec les standards - comme le respect des différentes reglèmentations requierant de la tracabilité.
+
+### Quels sont les enjeux à traiter ?
+
+La maitrise des habilitations et de l'accès aux données sous-jacentes requiert le traitement des enjeux suivants:
+* Comment provisionner et déprovisionner les habilitations selon les profils et/ou pour des utilisateurs *Guests* ?
+* Comment connaitre les données accédées par les utilisateurs et/ou les données dont sont propriétaires les utilisateurs ?
+* Comment m'assurer que des données ne sont pas perdues lors du départ d'un collaborateur ?
+
+### Comment décliner ces besoins sur Azure AD ?
+
+Le point de départ est de profiler les différents utilisateurs selon des critères objectifs. Ce profil permettra ensuite de déclencher les automatismes de fourniture des habilitations selon les profils:
+* Identification des différents profils métiers (IT, RH, Finance, Magasins ...) et sous profils métiers (IT Workplace, IT Networks, Magasins Vendeurs, Magasins Directeurs ...)
+* Référencement dans l'outil RH de ces différents profils sous la forme de valeurs standardisées avec une table de correspance. Par exemple 01-001 pour IT (01) Workplace (001)
+* Provisionning de ces valeurs dans les attributs *custom* dans lesquels les valeurs sont à la discrétion de l'entreprise (par exemple extensionAttribute01 ou via des attributs customs spécifiquements créés)
+* Identification des ressources éligible à chaque profil et sous profil métiers (applications, liste de distribution, ....)
+* Création d'un groupe dynamique pour l'habilitation aux ressources concernées par le profil
 
 
+
+La maturité sur ce sujet est obtenu lorsque des automatisations sont mises en place pour gérer
+A de nombreuses reprises ce sujet est reduit à 
+
+Azure AD donne certains capacités, néanmoins des process adhoc ...
+Base unique
 Découper habilitation du retrait de l'habilitation
 Access Package
+Retrait automatisé
+Leavers
+Revue régulière & recertification
+Changement de fonctions
+Groupe dynamique
 
 ## **Question 4** : Quel impact pour la gestion des terminaux ?
 
-La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD. La mouvance du modern management 
+La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD. L
 
 
 ## **Question 5** : Quel impact sur les services techniques ?
