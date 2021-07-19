@@ -138,25 +138,29 @@ La maitrise des habilitations et de l'accès aux données sous-jacentes requiert
 
 Le point de départ est de profiler les différents utilisateurs selon des critères objectifs. Ce profil permettra ensuite de déclencher les automatismes de fourniture des habilitations selon les profils:
 * Identification des différents profils métiers (IT, RH, Finance, Magasins ...) et sous profils métiers (IT Workplace, IT Networks, Magasins Vendeurs, Magasins Directeurs ...)
-* Référencement dans l'outil RH de ces différents profils sous la forme de valeurs standardisées avec une table de correspance. Par exemple 01-001 pour IT (01) Workplace (001)
+* Référencement dans l'outil RH de ces différents profils sous la forme de valeurs standardisées avec une table de correspondance. Par exemple 01-001 pour IT (01) Workplace (001)
 * Provisionning de ces valeurs dans les attributs *custom* dans lesquels les valeurs sont à la discrétion de l'entreprise (par exemple extensionAttribute01 ou via des attributs customs spécifiquements créés)
 * Identification des ressources éligible à chaque profil et sous profil métiers (applications, liste de distribution, ....)
-* Création d'un groupe dynamique pour l'habilitation aux ressources concernées par le profil
+* Création d'un groupe dynamique avec une règle de remplissage automatique basée sur les profils pour l'habilitation aux ressources concernées
+* Déploiement des habilitations au travers groupes dynamiques sur les applications concernées. Ces dernières peuvent être de tout types (services O365, applications intégrées à Azure AD, fourniture des licenses ...)
 
+La mise en place de ces groupes dynamiques est à revoir lorsque des évolutions de profils métiers sont constatés.
+Les bénéfices de cette approche sont:
+* que lorsqu'une personne quitte l'entreprise ou lorsqu'une personne fait une mobilité interne les habilitations liées aux profils sont automatiquement rectifiées
+* que les fonctions natives d'Azure AD sont utilisés
+Neanmoins les permissions spécifiques doivent quand à elle être traitées via le cycle des différents objets (et par conséquent au travers de la solution définie) afin de minimiser les actions directement sur les objets via IHM / PowersShell et par conséquent la réduction de la charge des équipes support ainsi que les erreurs humaines.
 
+Outre les fonctions natives présentées préalablement, d'autres mécanismes natifs à Azure AD, en particulier pour les comptes *Guests* qui reposent sur un circuit de gestion spécifique, permettent d'automatiser le déprovisionning automatique des habilitations :
+* durée de vie des comptes *Guests* au bout duquel le compte (et les habilitations associées) est automatiquement supprimée
+* *Access Package* pour limiter dans le temps l'accès aux ressources lorsque les habilitations sont fournies au travers de groupes de sécurité
 
-La maturité sur ce sujet est obtenu lorsque des automatisations sont mises en place pour gérer
-A de nombreuses reprises ce sujet est reduit à 
+Le dernier enjeux est de garantir la cohérence entre les habilitations fournies et leur validité. En particulier lors des mobilités internes ou de départ de l'entreprise.
+* Azure AD propose la fonctionnalité d'*Access Review* qui permet de simplifier (sans passer par l'analyse fastidieuse des logs) la revue des utilisateurs ayant accédés à des données. Bien qu'actuellement limitée à des Teams, des groups, ou des applications intégrées à Azure AD (Azure AD se positionnant comme le référentiel d'authentification), cette fonctionnalitée permet de limiter la durée nécessaire des phases d'audits.   
+* En complément de cette précédente fonction, l'usage d'un script pour auditer les services non couverts (tel que les habilitations sur les boites aux lettres partagées) permet d'obtenir une vue 360 degrée. Dans une optique d'automatisation, ce script peut être intégré sous la forme d'une *Azure Function*.
 
-Azure AD donne certains capacités, néanmoins des process adhoc ...
-Base unique
-Découper habilitation du retrait de l'habilitation
-Access Package
-Retrait automatisé
-Leavers
-Revue régulière & recertification
-Changement de fonctions
-Groupe dynamique
+**Indicateur d'effort de transformation**
+* **Difficulté  :** faible
+* **Charges     :** faible
 
 ## **Question 4** : Quel impact pour la gestion des terminaux ?
 
