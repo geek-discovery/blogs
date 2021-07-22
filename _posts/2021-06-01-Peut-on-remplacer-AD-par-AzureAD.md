@@ -84,7 +84,7 @@ Outre l'aspect annuaire Active Directory & Azure AD, le traitement de cette ques
 
 #### **Usage d'un outil inhouse dédié**
 
-Cette solution permet de proposer via un moteur de traitement dédié, mis à disposition par les équipes en charge de la gestion des identités, de connecteurs Powershell et/ou Graph vers Active Directory et l'Azure AD afin de soumettre des traitement via des fichiers standardisés. Bien que cet outil puisse être percu comme un nouvel outil dans l'entreprise (et de faits des côuts complémentaires de dévellopement, évolution, maintien en condition opérationnelle) il apporte les bénéfices suivants :
+Cette solution permet de proposer via un **moteur de traitement** dédié, mis à disposition par les équipes en charge de la gestion des identités, de connecteurs Powershell et/ou Graph vers Active Directory et l'Azure AD afin de soumettre des traitement via des fichiers standardisés. Bien que cet outil puisse être percu comme un nouvel outil dans l'entreprise (et de faits des côuts complémentaires de dévellopement, évolution, maintien en condition opérationnelle) il apporte les bénéfices suivants :
 * facilité d'évolution pour la prise en charge de nouvelles fonctionnalités du fait de la maitrise de l'ensemble des briques par les équipes identités
 * possibilité de disposer d'un modèle de déléguation granulaire adapté au modèle de gouvernance des entreprises via la déclinaison du modèle de déléguation au niveau de l'outil
 * réduit les besoins d'accès aux consoles de management Azure AD / Office 365
@@ -109,6 +109,8 @@ En termes de bénéfices, la plupart de ceux apportés par la mise en place d'un
 
 Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entreprise, la prise en compte de nouveaux besoins est moins évidente du fait des instances de validation généralement plus lourde que pour un outil autonome.
 
+![Q2d](/assets/images/AD_Q1d.png)
+
 **Indicateur d'effort de transformation**
 * **Difficulté  :** importante
 * **Charges     :** moyenne
@@ -116,6 +118,8 @@ Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entrepr
 #### **Fusion du référentiel RH et du référentiel technique**
 
 Ce scénario repose sur la fusion de l'outil en charge de la gestion du référentiel RH et du référentiel technique. Bien qu'il permette la rationalisation des outils, il requiert une maturité forte sur la gestion du cycle de vie des employées et des objets ainqi que le décloisonement des équipes en charge des outils. Les coûts engendrés ainsi que les impacts organisationels étant non négligeables ce scénario est rarement rencontré.
+
+![Q2e](/assets/images/AD_Q1e.png)
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** importante
