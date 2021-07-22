@@ -192,6 +192,16 @@ A noter que la gestion Cloud des terminaux permet de s'affranchir des adhérence
 * **Charges     :** moyenne
 
 
+## **Question 5** : Quel impact sur les services techniques ?
+
+
+
+Domain Join SRV
+DNS
+VPN
+
+
+
 ## **Question 5** : Quel impact sur les applicatifs & services techniques ?
 
 Selon 
