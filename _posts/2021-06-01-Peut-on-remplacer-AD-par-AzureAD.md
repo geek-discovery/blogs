@@ -93,6 +93,8 @@ Cette solution permet de proposer via un moteur de traitement dédié, mis à di
 * possibilité de traitement en masse
 * possibilité d'interfacage via fichier à plat avec un ITSM
 
+![Q2c](/assets/images/AD_Q1c.png)
+
 **Indicateur d'effort de transformation**
 * **Difficulté  :** moyenne
 * **Charges     :** moyenne
@@ -178,7 +180,7 @@ La transition vers l'Azure AD pose un challenge important pour la gestion des te
 * **Transition de l'usine de préparation des PCs vers Windows Autopilot** permettant ainsi de préparer les PCs (inscription sécurisée dans l'Azure AD, enrollement dans l'outil de gestion, descente des profils de configuration, descente des applications obligatoires) directement depuis des services cloud.   
 * **Gestion de la configuration des PCs** au travers de profils de configurations (en lieu et place des GPOs) poussés par la solution MDM : Microsoft Endpoint Management (ex-Intune) ou toute autre solution MDM supportée.
 
-Le couplage de l'Azure AD avec une solution de MDM permet ainsi de couper les adhérences entre les terminaux et l'Active Directory 
+Le couplage de l'Azure AD avec une solution de MDM permet ainsi de couper les adhérences entre les terminaux et l'Active Directory, du fait que la présence de leur identité n'est plus nécessaire.
 A noter que la gestion Cloud des terminaux permet de s'affranchir des adhérences avec le réseau d'Entreprise. Les terminaux sont ainsi manageables où qu'ils se trouvent et sans avoir à utiliser de VPN.
 
 **Indicateur d'effort de transformation**
@@ -186,17 +188,14 @@ A noter que la gestion Cloud des terminaux permet de s'affranchir des adhérence
 * **Charges     :** moyenne
 
 
-## **Question 5** : Quel impact sur les services techniques ?
+## **Question 5** : Quel impact sur les applicatifs & services techniques ?
 
-VPN
-
-## **Question 6** : Quel impact sur les applicatifs ?
-
-
+Selon 
 
 
 ## **Question 5** : Est ce une opportunité pour simplifier la vie des utilisateurs ?
 
+OUI
 
 
 
