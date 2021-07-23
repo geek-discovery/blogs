@@ -71,6 +71,7 @@ Dans un environnement de plus en complexe du fait de l'aggrégation de nombreux 
 * Quel est le cycle de vie de **utilisateurs sous contrats** (les prestataires, les freelances, ...) ?
 * Quel est le cycle de vie des **utilisateurs *Guests*** sur le tenant Office 365 ?
 * Quel est le cycle de vie des objets **non utilisateurs** hébergés sur Active Directory (Pur Active Directory, Synchronisés sur Azure AD) et/ou sur Azure AD (Objets uniquement cloud) ? 
+* Quel est le cycle de vie des **administrateurs** ?
 
 De manière usuelle, chacune des populations d'utilisateurs disposent de son propre cycle de vie, induisant une complexité au niveau des outils (1 outil par population) voire même une gestion manuelle. Le cas le plus représentatif étant la gestion des utilisateurs *Guests* sur le tenant Office 365.
 
@@ -81,7 +82,7 @@ Les objets non utilisateurs (tel que les groupes de sécurité, les listes de di
 * Certains objets comme les **listes de distributions**, **les boites aux lettres partagées**, les **comptes de ressources** ne doivent pas être provisionnés depuis l'Active Directory afin de proposer des capacités de gestion aux titulaires de ces objets (eg. en tant que propriétaires d'une liste de distribution, je veux pouvoir modifier les membres depuis mon client Outlook)
 * Certains objets comme les comptes ***Guests*** ou les ***Groups O365*** n'ont pas d'existances sur Active Directory
 
-Outre l'aspect annuaire Active Directory & Azure AD, le traitement de cette question implique de concevoir le cycle de vie de bout en bout en prennant en compte les outils amonts aux annuaires d'identité (eg. référentiel RH), les outils de gestion des demandes et d'automatisation des modifications (ITSM), la structure de gouvernance de l'entreprise qui conditionne le modèle de déléguation (eg. combien d'équipes doivent manager les objets, combien de périmètres de responsabilité ...). Dans le cas d'une transition complète vers Azure AD, la transformation de cet écosystème est à prendre en compte.
+Outre l'aspect annuaires Active Directory & Azure AD, le traitement de cette question implique de concevoir le cycle de vie de bout en bout en prennant en compte les outils amonts aux annuaires d'identité (eg. référentiel RH), les outils de gestion des demandes et d'automatisation des modifications (ITSM), la structure de gouvernance de l'entreprise qui conditionne le modèle de déléguation (eg. combien d'équipes doivent manager les objets, combien de périmètres de responsabilité ...). Dans le cas d'une transition complète vers Azure AD, la transformation de cet écosystème est à prendre en compte.
 
 ### Plusieurs scénarios permettent toutefois de traiter cette question
 
@@ -123,6 +124,11 @@ Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entrepr
 Ce scénario repose sur la fusion de l'outil en charge de la gestion du référentiel RH et du référentiel technique. Bien qu'il permette la rationalisation des outils, il requiert une maturité forte sur la gestion du cycle de vie des employées et des objets ainqi que le décloisonement des équipes en charge des outils. Les coûts engendrés ainsi que les impacts organisationels étant non négligeables ce scénario est rarement rencontré.
 
 ![Q2e](/assets/images/AD_Q1e.png)
+
+### Et les admins comment doivent ils être gérés ?
+
+**xxxxxxxxxxxx**
+
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** importante
