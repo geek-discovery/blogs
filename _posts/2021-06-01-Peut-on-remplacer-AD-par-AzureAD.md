@@ -171,11 +171,16 @@ Le dernier enjeu est de garantir la cohérence entre les habilitations fournies 
 
 ## **Question 4** : Quel impact pour la gestion des terminaux ?
 
-La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD mais ouvre la porte à des simplifications et des nouveaux modèles de delivery des terminaux concrétisés par le Modern Management. Concrètement il s'agit d'adresser des chantiers pour l'ensemble des terminaux (PCs, MacOS, iOS, Android) afin d'uniformiser la gestion de leur cycle de vie. Bien que cette cible soit atteignable, la séparation historique de la gestion des PCs et des autres terminaux peut soulèver des questions organisationnelles.
+La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD mais ouvre la porte à des simplifications et des nouveaux modèles de delivery des terminaux concrétisés par le **Modern Management**. Concrètement il s'agit d'adresser des chantiers pour l'ensemble des terminaux (PCs, MacOS, iOS, Android) afin d'uniformiser la gestion de leur cycle de vie et de basculer vers une solution de gestion Cloud interopérable avec Azure AD. Bien que cette cible soit atteignable, la séparation historique de la gestion des PCs et des autres terminaux peut soulèver des questions organisationnelles.
+
+### Chantiers à adresser au niveau de l'organisation :
+
+La transition de le gestion des terminaux vers une solution Cloud, présente des challenges techniques mais aussi organisationel. En effet
+
 
 ### Chantiers à adresser pour l'ensemble des terminaux :
 
-* **Intégration des applications dans le centre logiciel de la solution de MDM** afin de disposer d'un catalogue exhaustif d'applications accessible par les utilisateurs. Ces applications peuvent être installées de manière obligatoire ou être laissées à la discrétion des utilisateurs, groupées par profil métiers ...
+* **Intégration des applications dans le centre logiciel de la solution de MDM** afin de disposer d'un catalogue exhaustif d'applications accessible par les utilisateurs et d'atteindre les prérequis du *Zero Master* pour les PCs (capacité de fabriquer de manière automatisée des machines à partir d'une image brute de Windows). Ces applications peuvent être installées de manière obligatoire ou être laissées à la discrétion des utilisateurs, groupées par profil métiers ...
 * **Gestion des mises à jour (security updates, features updates, quality updates)**
 * **Gestion de la conformité** pour garantir que le PCs est conforme aux exigences de l'entreprise tel que le respect des mesures de sécurité, le niveau de version du système d'exploitation ... A noter qu'un indicateur de conformité est ainsi calculé pour chaque terminal et peut être ensuite consommé par le Conditional Access pour autoriser/bloquer les accès aux services
 
@@ -199,6 +204,7 @@ A noter que la gestion Cloud des terminaux permet de s'affranchir des adhérence
 Domain Join SRV
 DNS
 VPN
+GPO
 
 
 
