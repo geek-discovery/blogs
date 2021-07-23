@@ -10,8 +10,7 @@ tags:
 - AAD
 - Microsoft
 ---
-L'avènement des services Cloud, en particulier avec le positionnement central d'Office 365 au sein des entreprises, pose la question de l'usage et du positionnement de l'Active Directory au sein des entereprises.
-J'ai souvent eu la question suivante "Est ce que je peux migrer mon Active Directory sur Azure Active Directory ?". La réponse n'est pas triviale du fait de la multiplicité des fonctions portées par l'Active Directory, de la philosophie d'Azure Active Directory qui ne reprend pas l'ensemble des fonctionalités de Active Directory tout en proposant des nouvelles et de la gouvernance de l'entreprise.
+La part prépondérante de l'Active Directory, l'arrivée d'Office 365, l'avènement des services Cloud, ouvre la voie de la transformation du service d'annuaire de Microsoft. J'ai souvent eu la question suivante "Est ce que je peux migrer mon Active Directory sur Azure Active Directory ?". La réponse n'est pas triviale du fait de la multiplicité des fonctions portées par l'Active Directory, de la philosophie d'Azure Active Directory qui ne reprend pas l'ensemble des fonctionalités de Active Directory tout en proposant des nouvelles et de la gouvernance de l'entreprise.
 
 # Préambule
 
@@ -22,24 +21,28 @@ La nomenclature des annuaires pouvant pouvant préter à confusion, une précisi
 * **Azure Active Directory** : annuaire Microsoft apparu avec les services Office 365 et les services *IaaS*, *PaaS*, *SaaS* fourni par Microsoft Azure. Cet annuaire est souvent assimilé à tord comme la transformation sous la forme d'un service *PaaS* de l'annuaire Active Directory.
 * **Azure Active Directory Domain Services** : annuaire Active Directory fourni sous la forme d'un service *PaaS* par Microsoft. Les comptes utilisateurs sont provisionnés depuis Azure Active Directory.
 
-# Pourquoi cette question devrait se poser ?
+# Le poids de l'histoire
 
-Historiquement la gouvernance des services ITs au sein des entreprise se décline de manière verticale induisant une autonomie de chaque services les uns par rapport aux autres avec en transverse l'annuaire d'authentification. Au fil des années cette approche cloisonnée a pu générer une complexité (et par conséquents des coûts) non négiligeable en particulier pour les interfaces entre les silos et/ou garantir la rétrocompatibilité. 
+A l'échelle des systèmes d'information, l'Active Directory (apparu en 2000) est un dinosaure. Au fil des années, il a prit un part prépondérante au sein des entreprises. Et de fait porte le poids de l'histoire avec des ajustements plus ou moins heureux en termes d'architecture, une gouvernance devenue au fil du temps inadaptée et peut consituter un frein aux transformations tout en faisant augmenter les coûts d'exploitation.
 
 **A titre d'exemple:**
 * l'affaiblissement des regles de protection de l'Active Directory pour supporter des applications historiques est couramment rencontré et va à l'encontre des bonnes pratiques de sécurité
-* la gestion dissociée de l'Active Directory par la celulle identités et l'Azure Active Directory par la cellule Office 365 rendant complexe la limite des roles & responsabilités : qui doit gérer l'Azure AD Connect, l'ADFS, l'usage de l'Azure AD comme IDP ... 
 * la difficulté de réduire les systèmes d'authentification et le nombre de login / mot de passe utilisés quotidiennement
+* gouvernance verticale des services ITs au sein des entreprises induisant une autonomie de chaque département les uns par rapport aux autres avec en transverse l'annuaire d'authentification. Le cas typique couramment rencontré est la gestion dissociée de l'Active Directory par la celulle identités et de l'Azure Active Directory par la cellule Office 365 rendant complexe la limite des roles & responsabilités : qui doit gérer l'Azure AD Connect, l'ADFS, l'usage de l'Azure AD comme IDP ... 
 
 Au final, la volonté de basculer vers des services Cloud pour répondre aux enjeux de réducations de coûts, de simplification, d'amélioration de l'expérience utilisateur doit passer par une analyse fine de fonctionnalités portées par les fondations techniques dont l'Active Directory fait parti intégrante.
 
 # Comment répondre à cette problématique ?
 
-A titre d'exemple, ci dessous une modélisation d'un système d'information. Les constats sont qu'il y a des interdépendances sur l'ensemble des foundations. Quelles soient techniques, sécurité et applicatives.
+Le point de départ est de disposer d'une cartographie exhaustive des adhérences avec l'Active Directory afin de pouvoir traiter l'ensemble des sujets, qu'ils soient techniques, sécuritaires ou applicatifs. On constate ainsi l'intérêt de traiter cette question de manière globale. Un traitement partiel pouvant aboutir à un échec (le besoin de conservation d'un Active Directory pour traiter des adhérences est un échec en soit).
 
-Les chapitres suivant ont pour objectif de proposer des recommandations sur les solutions de transformation envisageables et les eceuils à éviter.
+A titre d'exemple, ci dessous une modélisation d'un système d'information. 
 
 ![Spaghetti Pasta](/assets/images/2021-06-01-MapEcosystème.png)
+
+La complexité du sujet fait qu'il n'existe pas de chemin de transition unique (ce serait trop facile et cet article perdrait son intérêt). Ce chemin doit être adapté au contexte de chaque entreprise en particulier du fait qu'il n'est pas possible de réaliser un transition 1 pour 1 des fonctionalités.
+
+Dans le but de mieux apréhender les sujets, les chapitres suivant ont pour objectif de proposer des recommandations et de mettre en évidence les eceuils à éviter.
 
 
 ## **Question 1** : Quels organisation mettre en place pour apporter une vision globale et transverse ?
