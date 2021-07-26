@@ -264,6 +264,7 @@ OUI
 
 > L'évolution des menaces Zero Trust EDR ..
 > Le Byod
+> Entitlment Management
 
 # Conclusion
 
