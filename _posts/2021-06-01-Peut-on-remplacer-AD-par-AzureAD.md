@@ -139,9 +139,10 @@ Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles
 
 #### Concrètement deux cas sont possibles selon le niveau d'avancement du plan de transformation vers le cloud de l'entreprise :
 
-* Présence d'Active Directory et Azure AD :
+* Identités hébergées sur Active Directory et Azure AD :
     * ddd
-* 
+
+* Identités hébergées sur Azure AD uniquement :
 
 
 
