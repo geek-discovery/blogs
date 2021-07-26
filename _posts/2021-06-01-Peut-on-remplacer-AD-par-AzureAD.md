@@ -40,9 +40,9 @@ A titre d'exemple, ci dessous une modélisation d'un système d'information.
 
 ![Spaghetti Pasta](/assets/images/2021-06-01-MapEcosystème.png)
 
-La complexité du sujet fait qu'il n'existe pas de chemin de transition unique (ce serait trop facile et cet article perdrait son intérêt). Ce chemin doit être adapté au contexte de chaque entreprise en particulier du fait qu'il n'est pas possible de réaliser un transition 1 pour 1 des fonctionalités.
+La complexité du sujet fait qu'il n'existe pas de chemin de transition unique (ce serait trop facile et cet article perdrait son intérêt). Ce chemin doit être adapté au contexte de chaque entreprise en particulier du fait qu'il n'est pas possible de réaliser un transition 1 pour 1 des différentes fonctionalités.
 
-Dans le but de mieux apréhender les sujets, les chapitres suivant ont pour objectif de proposer des recommandations et de mettre en évidence les eceuils à éviter.
+Dans le but de mieux apréhender les sujets, les chapitres suivant ont pour objectif de proposer des recommandations et de mettre en évidence les eceuils à éviter au travers des questions principales à se poser.
 
 
 ## **Question 1** : Quels organisation mettre en place pour apporter une vision globale et transverse ?
@@ -125,9 +125,26 @@ Ce scénario repose sur la fusion de l'outil en charge de la gestion du référe
 
 ![Q2e](/assets/images/AD_Q1e.png)
 
-### Et les admins comment doivent ils être gérés ?
+### Et les admins quel doit être leur cycle de provisioning / déprovisioning ?
 
-**xxxxxxxxxxxx**
+#### Les clés du royaume
+
+La pierre angulaire de la sécurité du système d'information (et des données hébergées) reposent sur les comptes administrateurs. Bien que ce risque puisse être assimilé à une banalité, il mérite toutefois une attention particulière du fait que la volonté des cyber-attaquants est d'obtenir les permissions fournies à ces comptes par propagation latérale.
+
+Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles suivantes :
+* **Dissociation du circuit de création d'un compte administrateur de la fourniture des habilitations**. Le bénéfice est qu'en cas de compromission de l'outil d'alimentation des annuaires, le modèle d'habilitations ne sera pas corrompu. 
+* **Découpage des comptes administrateurs par périmètre**. Ainsi en cas de compromission des comptes administrateurs sur un périmètre (eg. un administrateur identité possède un compte sur Active Directory et 1 compte sur l'Azure AD), la propagation latérale sur un autre périmètre ne pourra s'effectuer. Pour le cas spécifique de l'Azure AD, il n'y a pas de contre-indications à provisionner le compte depuis l'Active Directory à partir du moment où l'ensemble des regles sont respectées.
+* **Mise en place d'alertes spécifiques pour la réinitialisation des mots de passe**. Ce type d'alerte permet de détecter les tentatives d'usurpation d'identité. Les outils de création de comptes ayant des capacités de réinitialisation de passe pour couvrir les cas de pertes / oublis de mot de passe, cette fonctionnalité peut être détournée par des personnes malveillantes pour prendre la possession de comptes administrateurs et de-facto des permissions attribuées. La mise en place d'une alerte automatique de reinitialisation de mot de passe (le changement de mot de passe initié par le titulaire du compte administrateur ne doit toutefois pas faire l'objet d'une alerte) est alors nécessaire. A noter que des détections supplémentaires de comportements suspicieux peuvent être faites au travers d'un SIEM.
+* **Analyse des habilitations fournies au préalabale de la suppression des comptes**. L'objectif de cette analyse est de mitiger le risque de pertes de privilèges (les privilèges dont dispose le compte à supprimer doivent être fournis, à minima, à un autre administrateur) au niveau global en particulier pour les entreprises ayant un fort *turn-over* sur les équipes admins.
+
+#### Concrètement deux cas sont possibles selon le niveau d'avancement du plan de transformation vers le cloud de l'entreprise :
+
+* Présence d'Active Directory et Azure AD :
+    * ddd
+* 
+
+
+
 
 
 **Indicateur d'effort de transformation**
@@ -172,6 +189,14 @@ Outre les fonctions natives présentées préalablement, d'autres mécanismes na
 Le dernier enjeu est de garantir la cohérence entre les habilitations fournies et leur validité. En particulier lors des mobilités internes ou de départ de l'entreprise.
 * Azure AD propose la fonctionnalité d'*Access Review* qui permet de simplifier (sans passer par l'analyse fastidieuse des logs) la revue des utilisateurs ayant accédés à des données. Bien qu'actuellement limitée à des Teams, des groups, ou des applications intégrées à Azure AD (Azure AD se positionnant comme le référentiel d'authentification), cette fonctionnalitée permet de limiter la durée nécessaire des phases d'audits.   
 * En complément de cette précédente fonction, l'usage d'un script pour auditer les services non couverts (tel que les habilitations sur les boites aux lettres partagées) permet d'obtenir une vue 360 degrée. Dans une optique d'automatisation, ce script peut être intégré sous la forme d'une *Azure Function*.
+
+### Et les admins comment doivent ils être gérés ?
+
+Le sujet des comptes administrateurs est souvent un sujet épineux qui nécessite de correctement apréhender les enjeux. Pour rappel il y a plusieurs familles de comptes administrateurs :
+
+* **Les comptes en lecture seule** qui permettent d'avoir une vue sur une ou l'ensemble des services. Bien qu'ils ne permettent pas 
+
+
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** faible
