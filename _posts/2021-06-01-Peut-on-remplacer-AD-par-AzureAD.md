@@ -140,14 +140,15 @@ Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles
 #### Concrètement deux cas sont possibles selon le niveau d'avancement du plan de transformation vers le cloud de l'entreprise :
 
 ##### 1) Identités hébergées sur Active Directory et Azure AD :
-* L'outil de 
-
+* Les comptes administrateurs sur le périmètre Active Directory sont provisionnés dans cet annuaire par l'outil de gestion des comptes utilisateurs standards
+* Les comptes administrateurs sur le périmètre Azure AD sont provisionnés depuis Active Directory vers Azure AD au travers de Azure AD Connect de manière similaire aux comptes utilisateurs standards
+* Habilitations fournies aux comptes au travers d'un mécanisme adhoc
+* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (Azure Fonction sur la périmètre Azure AD) qui détecte des evenements spécifiques sur Active Directory et l'Azure AD.
 
 ##### 2) Identités hébergées sur Azure AD uniquement :
-
-
-
-
+* Les comptes administrateurs sur le périmètre Azure AD sont provisionnés sur Azure AD de manière similaire aux comptes utilisateurs standards
+* Habilitations fournies aux comptes au travers d'un mécanisme adhoc
+* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (Azure Fonction) qui détecte des evenements spécifiques sur l'Azure AD.
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** importante
