@@ -143,12 +143,14 @@ Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles
 * Les comptes administrateurs sur le périmètre Active Directory sont provisionnés dans cet annuaire par l'outil de gestion des comptes utilisateurs standards
 * Les comptes administrateurs sur le périmètre Azure AD sont provisionnés depuis Active Directory vers Azure AD au travers de Azure AD Connect de manière similaire aux comptes utilisateurs standards
 * Habilitations fournies aux comptes au travers d'un mécanisme adhoc
-* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (Azure Fonction sur la périmètre Azure AD) qui détecte des evenements spécifiques sur Active Directory et l'Azure AD.
+* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (*Azure Function* sur la périmètre Azure AD) qui détecte des evenements spécifiques sur Active Directory et l'Azure AD
+* Mise en place d'un processus d'audit standardisé permettant l'extraction de l'ensemble des permissions fournies à un administrateur que cela soit sur l'Active Directory et l'Azure AD
 
 ##### 2) Identités hébergées sur Azure AD uniquement :
 * Les comptes administrateurs sur le périmètre Azure AD sont provisionnés sur Azure AD de manière similaire aux comptes utilisateurs standards
 * Habilitations fournies aux comptes au travers d'un mécanisme adhoc
-* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (Azure Fonction) qui détecte des evenements spécifiques sur l'Azure AD.
+* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (*Azure Function*) qui détecte des evenements spécifiques sur l'Azure AD
+* Mise en place d'un processus d'audit standardisé permettant l'extraction de l'ensemble des permissions fournies à un administrateur sur l'Azure AD
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** importante
@@ -195,11 +197,13 @@ Le dernier enjeu est de garantir la cohérence entre les habilitations fournies 
 
 ### Et les admins comment doivent ils être gérés ?
 
-Le sujet des comptes administrateurs est souvent un sujet épineux qui nécessite de correctement apréhender les enjeux. Pour rappel il y a plusieurs familles de comptes administrateurs :
+La gestion des habilitations (à fournir et/ou obtenues) est souvent un sujet épineux qui nécessite de correctement apréhender les enjeux en particulier pour les entreprises ayant un fort *turnover* sur les populations et/ou faisant appel à un volume important de prestataires. Pour rappel il y a plusieurs familles de comptes administrateurs :
 
 * **Les comptes en lecture seule** qui permettent d'avoir une vue sur une ou l'ensemble des services. Bien qu'ils ne permettent pas 
+* **Les comptes disposant de privilèges sur un périmètre restreint** (d'attributs, d'objets, de services ...)
+* **Les comptes à privilèges globaux** (tel que *Global Adminstrators*)
 
-
+Recertification
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** faible
