@@ -139,10 +139,11 @@ Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles
 
 #### Concrètement deux cas sont possibles selon le niveau d'avancement du plan de transformation vers le cloud de l'entreprise :
 
-##### Identités hébergées sur Active Directory et Azure AD :
-* toto
+##### 1) Identités hébergées sur Active Directory et Azure AD :
+* L'outil de 
 
-* Identités hébergées sur Azure AD uniquement :
+
+##### 2) Identités hébergées sur Azure AD uniquement :
 
 
 
