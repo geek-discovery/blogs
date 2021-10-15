@@ -203,11 +203,22 @@ La gestion des habilitations (à fournir et/ou obtenues) est souvent un sujet é
 * **Les comptes disposant de privilèges sur un périmètre restreint** (d'attributs, d'objets, de services ...)
 * **Les comptes à privilèges globaux** (tel que *Global Adminstrators*)
 
-Recertification
+Tout d'abord la déléguation de privilèges doit faire l'objet de la définition d'une matrice RACI afin de definir de manière objective la relation entre l'équipe qui disposent de privilèges, les privilèges fournis et les périmtères à déléguer au sein de l'annuaire permettant ainsi de s'inscrire dans un modèle de Tiering. Le traitement du sujet nécessite par conséquent de faire convgerger le modèle opérationnel de l'entreprise avec les exigences sécurité. Sur cette base, il est ensuite possible de mettre en place le modèle RBAC (déclinaison technique de la matrice RACI sur l'annuaire).
+
+![Q3a](/assets/images/AD_Q3a.png)
+
+Bien que le sujet soit complexe, au travers de mon expérience, j'ai pu identifier quelques accélarateurs à cette réflexion :
+* Une bonne connaissance des roles et responsabilités des equipes **ET** des inforgérants est nécessaire
+* Automatiser autant que possible les workflows d'habilitations pour les besoins de tracabilité et de circuits d'approbation stricts
+* L'équipe Tiers 0 doit être globale et être assujettie à une chaine de commandement unique. Néanmoins elle peut être consitutée sous la forme de virtual team
+* Les ressources Tiers 0 ne doivent pas se limiter aux annuaires d'identité mais à l'ensemble des ressources interagissant avec eux (eg: les fermes de virtualisation, les solutions de patches management ...)
+* Respecter les politiques de moindre privilèges 
+
+A noter qu'un des problèmes couramment rencontrés est la transformation de la matrice RACI définie pour l'Active Directory sur l'Azure AD. En effet sur l'Active Directory une extrème granularité est possible permettant typiquement d'autonomiser des filialles. L'Azure AD est quand à lui *by design* concu pour une administration centralisé, et par conséquent peut induire des limites assez structurantes vis à vis du modèle organisationel des entreprises.  Des évolutions vont toutefois dans le sens de la granularisation des privilèges (eg: les *Administrative Units*) mais un écart persiste.
 
 **Indicateur d'effort de transformation**
-* **Difficulté  :** faible
-* **Charges     :** faible
+* **Difficulté  :** moyenne
+* **Charges     :** moyenne
 
 
 ## **Question 4** : Quel impact pour la gestion des terminaux ?
