@@ -216,6 +216,12 @@ Bien que le sujet soit complexe, au travers de mon expérience, j'ai pu identifi
 
 A noter qu'un des problèmes couramment rencontrés est la transformation de la matrice RACI définie pour l'Active Directory sur l'Azure AD. En effet sur l'Active Directory une extrème granularité est possible permettant typiquement d'autonomiser des filialles. L'Azure AD est quand à lui *by design* concu pour une administration centralisé, et par conséquent peut induire des limites assez structurantes vis à vis du modèle organisationel des entreprises.  Des évolutions vont toutefois dans le sens de la granularisation des privilèges (eg: les *Administrative Units*) mais un écart persiste.
 
+Un dernier enjeu est de garantir la pérénité du modèle dans la durée. Les principales pistes de reflexion sont :
+* Effectuer de manière régulière une revue des permissions accordées au travers d'un processus de recertification pour répondre à la question : Est ce que telle ou telle administrateurs doit toujours disposer de privilèges sur ce périmètre ?
+* Effectuer de manière régulière une revue de la matrice RACI afin de s'assurer de son alignement avec le modèle organisation de l'entreprise et de la non porosité entre les périmètres gérés
+* Tracer l'ensemble des activités effectuées pour détecter les non conformités
+* User & abuser de *Azure Privileges Identity Management* pour les administrateurs ayant des privilèges sur Azure AD et les ressources associées.
+
 **Indicateur d'effort de transformation**
 * **Difficulté  :** moyenne
 * **Charges     :** moyenne
@@ -271,7 +277,7 @@ OUI
 
 
 
-## **Question X** : Comment protéger mon système d'informations ?
+## **Question X** : Et au final, si l'entreprise bascule sur l'Azure AD, est ce que je peux garantir la sécurité de mon SI ?
 
 > L'évolution des menaces Zero Trust EDR ..
 > Le Byod
