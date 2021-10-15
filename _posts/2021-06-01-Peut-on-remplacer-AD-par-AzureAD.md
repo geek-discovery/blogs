@@ -17,8 +17,8 @@ La part prépondérante de l'Active Directory, l'arrivée d'Office 365, l'avène
 La nomenclature des annuaires pouvant pouvant préter à confusion, une précision sur le vocabulaire est nécessaire pour clarifier la portée des transformations possibles.
 
 * **Active Directory** : annuaire historique de Microsoft disponible depuis le debut des années 2000. Traditionnellement il est hébergé de manière OnPremise sous la forme de machines physiques ou virtualles.
-* **Active Directory Cloud** ou **Acive Directory Azure** : terme utilisé pour modéliser l'hébergement de l'Active Directory au sein de fournisseurs de Cloud Public (tels que Azure ou AWS). Ce terme ne fait pas référence à une technologie mais à une situation d'hébergement.
-* **Azure Active Directory** : annuaire Microsoft apparu avec les services Office 365 et les services *IaaS*, *PaaS*, *SaaS* fourni par Microsoft Azure. Cet annuaire est souvent assimilé à tord comme la transformation sous la forme d'un service *PaaS* de l'annuaire Active Directory.
+* **Active Directory Cloud** ou **Active Directory Azure** : terme utilisé pour modéliser l'hébergement de l'Active Directory au sein de fournisseurs de Cloud Public (tels que Azure ou AWS). Ce terme ne fait pas référence à une technologie mais à une situation d'hébergement.
+* **Azure Active Directory** : annuaire Microsoft apparu avec les services Office 365 et les services *IaaS*, *PaaS*, *SaaS* fournis par Microsoft Azure. Cet annuaire est souvent assimilé à tord comme la transformation sous la forme d'un service *PaaS* de l'annuaire Active Directory.
 * **Azure Active Directory Domain Services** : annuaire Active Directory fourni sous la forme d'un service *PaaS* par Microsoft. Les comptes utilisateurs sont provisionnés depuis Azure Active Directory.
 
 # Le poids de l'histoire
@@ -148,7 +148,7 @@ Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles
 
 ##### 2) Identités hébergées sur Azure AD uniquement :
 * Les comptes administrateurs sur le périmètre Azure AD sont provisionnés sur Azure AD de manière similaire aux comptes utilisateurs standards
-* Habilitations fournies aux comptes au travers d'un mécanisme adhoc
+* Habilitations fournies aux comptes au travers d'un mécanisme adhoc et à la demande (*Azure Privileged Identity Management*)
 * Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (*Azure Function*) qui détecte des evenements spécifiques sur l'Azure AD
 * Mise en place d'un processus d'audit standardisé permettant l'extraction de l'ensemble des permissions fournies à un administrateur sur l'Azure AD
 
@@ -195,7 +195,7 @@ Le dernier enjeu est de garantir la cohérence entre les habilitations fournies 
 * Azure AD propose la fonctionnalité d'*Access Review* qui permet de simplifier (sans passer par l'analyse fastidieuse des logs) la revue des utilisateurs ayant accédés à des données. Bien qu'actuellement limitée à des Teams, des groups, ou des applications intégrées à Azure AD (Azure AD se positionnant comme le référentiel d'authentification), cette fonctionnalitée permet de limiter la durée nécessaire des phases d'audits.   
 * En complément de cette précédente fonction, l'usage d'un script pour auditer les services non couverts (tel que les habilitations sur les boites aux lettres partagées) permet d'obtenir une vue 360 degrée. Dans une optique d'automatisation, ce script peut être intégré sous la forme d'une *Azure Function*.
 
-### Et les admins comment doivent ils être gérés ?
+### Et les habililitations des admins dans tout ca ?
 
 La gestion des habilitations (à fournir et/ou obtenues) est souvent un sujet épineux qui nécessite de correctement apréhender les enjeux en particulier pour les entreprises ayant un fort *turnover* sur les populations et/ou faisant appel à un volume important de prestataires. Pour rappel il y a plusieurs familles de comptes administrateurs :
 
@@ -229,23 +229,31 @@ Un dernier enjeu est de garantir la pérénité du modèle dans la durée. Les p
 
 ## **Question 4** : Quel impact pour la gestion des terminaux ?
 
-La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD mais ouvre la porte à des simplifications et des nouveaux modèles de delivery des terminaux concrétisés par le **Modern Management**. Concrètement il s'agit d'adresser des chantiers pour l'ensemble des terminaux (PCs, MacOS, iOS, Android) afin d'uniformiser la gestion de leur cycle de vie et de basculer vers une solution de gestion Cloud interopérable avec Azure AD. Bien que cette cible soit atteignable, la séparation historique de la gestion des PCs et des autres terminaux peut soulèver des questions organisationnelles.
+La transition vers l'Azure AD pose un challenge important pour la gestion des terminaux du fait que les outils traditionnels (type SCCM, Ivanti ...) ne peuvent pas s'interfacer avec l'Azure AD de manière similaire à l'Active Directory mais ouvre la porte à des simplifications et des nouveaux modèles de delivery des terminaux concrétisés par le **Modern Management**. De manière pragmatique, il s'agit d'adresser des chantiers pour l'ensemble des terminaux (PCs, MacOS, iOS, Android) afin d'uniformiser la gestion de leur cycle de vie et de basculer vers une solution de gestion Cloud interopérable avec Azure AD. Bien que cette cible soit atteignable, la séparation historique de la gestion des PCs et des autres terminaux peut soulèver des questions organisationnelles et méthodologique (eg: processus d'évolution continue)
 
 ### Chantiers à adresser au niveau de l'organisation :
 
-La transition de le gestion des terminaux vers une solution Cloud, présente des challenges techniques mais aussi organisationel. En effet
+La transition de le gestion des terminaux vers une solution Cloud, présente des challenges techniques mais aussi organisationel. La partie la plus visible de cette transformation est qu'il est nécessaire de décloisonner les équipes et d'horizontaliser l'organisation. Les deux exemples les plus concrets que j'ai pu recontrer en terme d'organisation inadaptée sont :
+* La séparation de la fillière postes de travail avec la filière terminaux mobiles
+* La séparation de la gestion des annuaires d'identité entre les équipes *OnPremise* (Scope Active Directory) et *Cloud* (Scope Active Directory)
 
+Au fil de mes missions, je suis arrivé à la conclusion qu'une organisation type pourrait être :
+* **Equipe Identité & sécurité de l'identité** : En charge de la gestion de l'Active Directory, de l'Azure Active Directory, des services intermédiaires (tels que Azure AD Connect, solutions d'Identity Providers, GraphAPI).
+* **Equipe Digital Workplace** : En charge de l'ensemble des services collaboratifs et de gestion des terminaux (Cycle de vie, configurations, préparation ...) vie l'UEM (tel que Microsoft Endpoint Management ou tout autre UEM).
+* **Equipe Applicative** : En charge du portfolio applicatif de l'entreprise (tout type de terminaux) et de sa pérénité dans le temps. Ce dernier point est particulièrement important du fait que les cycles de mises à jour entre les terminaux mobiles et les PCs se sont rapprochés.
+
+Ensuite lors de l'abandon ultérieur de l'Active Directory, le modèle organisationel décrit préalabalement mis en place durant la phase de transition restera pérenne.
 
 ### Chantiers à adresser pour l'ensemble des terminaux :
 
-* **Intégration des applications dans le centre logiciel de la solution de MDM** afin de disposer d'un catalogue exhaustif d'applications accessible par les utilisateurs et d'atteindre les prérequis du *Zero Master* pour les PCs (capacité de fabriquer de manière automatisée des machines à partir d'une image brute de Windows). Ces applications peuvent être installées de manière obligatoire ou être laissées à la discrétion des utilisateurs, groupées par profil métiers ...
+* **Intégration des applications dans le centre logiciel de la solution UEM (Unified Endpoint Management)** afin de disposer d'un catalogue exhaustif d'applications accessible par les utilisateurs et d'atteindre les prérequis du *Zero Master* pour les PCs (capacité de fabriquer de manière automatisée des machines à partir d'une image brute de Windows). Ces applications peuvent être installées de manière obligatoire ou être laissées à la discrétion des utilisateurs, groupées par profil métiers ...
 * **Gestion des mises à jour (security updates, features updates, quality updates)**
-* **Gestion de la conformité** pour garantir que le PCs est conforme aux exigences de l'entreprise tel que le respect des mesures de sécurité, le niveau de version du système d'exploitation ... A noter qu'un indicateur de conformité est ainsi calculé pour chaque terminal et peut être ensuite consommé par le Conditional Access pour autoriser/bloquer les accès aux services
+* **Gestion de la conformité** pour garantir que le PCs est conforme aux exigences de l'entreprise tel que le respect des mesures de sécurité, le niveau de version du système d'exploitation ... A noter qu'un indicateur de conformité est ainsi calculé pour chaque terminal et peut être ensuite consommé par le *Azure AD Conditional Access* (colonne vertébrale du modèle Zero Trust proposé par Microsoft) pour autoriser/bloquer les accès aux services
 
 ### Chantiers complémentaires à adresser pour les PCs :
 
-* **Transition de l'usine de préparation des PCs vers Windows Autopilot** permettant ainsi de préparer les PCs (inscription sécurisée dans l'Azure AD, enrollement dans l'outil de gestion, descente des profils de configuration, descente des applications obligatoires) directement depuis des services cloud.   
-* **Gestion de la configuration des PCs** au travers de profils de configurations (en lieu et place des GPOs) poussés par la solution MDM : Microsoft Endpoint Management (ex-Intune) ou toute autre solution MDM supportée.
+* **Transition de l'usine de préparation des PCs vers Windows Autopilot** permettant ainsi de préparer les PCs (inscription sécurisée dans l'Azure Active Directory, enrollement dans l'outil de gestion, descente des profils de configuration, descente des applications obligatoires) directement depuis des services cloud.   
+* **Gestion de la configuration des PCs** au travers de profils de configurations (en lieu et place des GPOs) poussés par la solution UEM : Microsoft Endpoint Management (ex-Intune) ou toute autre solution UEM supportée.
 
 Le couplage de l'Azure AD avec une solution de MDM permet ainsi de couper les adhérences entre les terminaux et l'Active Directory, du fait que la présence de leur identité n'est plus nécessaire.
 A noter que la gestion Cloud des terminaux permet de s'affranchir des adhérences avec le réseau d'Entreprise. Les terminaux sont ainsi manageables où qu'ils se trouvent et sans avoir à utiliser de VPN.
