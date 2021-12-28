@@ -23,7 +23,7 @@ La nomenclature des annuaires pouvant pouvant préter à confusion, une précisi
 
 # Le poids de l'histoire
 
-A l'échelle des systèmes d'information, l'Active Directory (apparu en 2000) est un dinosaure. Au fil des années, il a prit un part prépondérante au sein des entreprises. Et de fait porte le poids de l'histoire avec des ajustements plus ou moins heureux en termes d'architecture, une gouvernance devenue au fil du temps inadaptée et peut consituter un frein aux transformations tout en faisant augmenter les coûts d'exploitation.
+A l'échelle des systèmes d'information, l'Active Directory (apparu en 2000) est un dinosaure. Au fil des années, il a prit un part prépondérante au sein des entreprises. Et de fait porte le poids de l'histoire avec des ajustements plus ou moins heureux en termes d'architecture, une gouvernance devenue au fil du temps inadaptée, des couts d'exploitation importants, et devient un frein aux transformations avec le paradigme *On ne change pas ce qui marche* (c) très souvent entendu chez mes clients.
 
 **A titre d'exemple:**
 * l'affaiblissement des regles de protection de l'Active Directory pour supporter des applications historiques est couramment rencontré et va à l'encontre des bonnes pratiques de sécurité
@@ -78,8 +78,8 @@ De manière usuelle, chacune des populations d'utilisateurs disposent de son pro
 ![Q2a](/assets/images/AD_Q1a.png)
 
 Les objets non utilisateurs (tel que les groupes de sécurité, les listes de distribution ...) sont quand à eux historiquement provisionnés dans l'Active Directory puis synchronisés dans l'Azure AD. L'arrivé d'Office 365 soulève plusieurs problématiques structurantes pour apporter une gestion efficace de ces objets. En effet :
-* Certains objets comme les **comptes de ressources** ou les **boites aux lettres partagées** doivent subir une adaptation post-provisionning depuis l'Active Directory
-* Certains objets comme les **listes de distributions**, **les boites aux lettres partagées**, les **comptes de ressources** ne doivent pas être provisionnés depuis l'Active Directory afin de proposer des capacités de gestion aux titulaires de ces objets (eg. en tant que propriétaires d'une liste de distribution, je veux pouvoir modifier les membres depuis mon client Outlook)
+* Certains objets comme les **comptes de ressources** ou les **boites aux lettres partagées** peuvent nécessiter une adaptation post-provisionning depuis l'Active Directory
+* Certains objets comme les **listes de distributions**, **les boites aux lettres partagées**, les **comptes de ressources** ne devraient pas être provisionnés depuis l'Active Directory afin de proposer des capacités de gestion aux titulaires de ces objets (eg. en tant que propriétaires d'une liste de distribution, je veux pouvoir modifier les membres depuis mon client Outlook)
 * Certains objets comme les comptes ***Guests*** ou les ***Groups O365*** n'ont pas d'existances sur Active Directory
 
 Outre l'aspect annuaires Active Directory & Azure AD, le traitement de cette question implique de concevoir le cycle de vie de bout en bout en prennant en compte les outils amonts aux annuaires d'identité (eg. référentiel RH), les outils de gestion des demandes et d'automatisation des modifications (ITSM), la structure de gouvernance de l'entreprise qui conditionne le modèle de déléguation (eg. combien d'équipes doivent manager les objets, combien de périmètres de responsabilité ...). Dans le cas d'une transition complète vers Azure AD, la transformation de cet écosystème est à prendre en compte.
