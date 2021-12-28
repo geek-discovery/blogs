@@ -205,16 +205,16 @@ La gestion des habilitations (à fournir et/ou obtenues) est souvent un sujet é
 
 Tout d'abord la déléguation de privilèges doit faire l'objet de la définition d'une matrice RACI afin de definir de manière objective la relation entre l'équipe qui disposent de privilèges, les privilèges fournis et les périmtères à déléguer au sein de l'annuaire permettant ainsi de s'inscrire dans un modèle de Tiering. Le traitement du sujet nécessite par conséquent de faire convgerger le modèle opérationnel de l'entreprise avec les exigences sécurité. Sur cette base, il est ensuite possible de mettre en place le modèle RBAC (déclinaison technique de la matrice RACI sur l'annuaire).
 
-![Q3a](/assets/images/AD_Q3a.png)
-
 Bien que le sujet soit complexe, au travers de mon expérience, j'ai pu identifier quelques accélarateurs à cette réflexion :
 * Une bonne connaissance des roles et responsabilités des equipes **ET** des inforgérants est nécessaire
 * Automatiser autant que possible les workflows d'habilitations pour les besoins de tracabilité et de circuits d'approbation stricts
 * L'équipe Tiers 0 doit être globale et être assujettie à une chaine de commandement unique. Néanmoins elle peut être consitutée sous la forme de virtual team
-* Les ressources Tiers 0 ne doivent pas se limiter aux annuaires d'identité mais à l'ensemble des ressources interagissant avec eux (eg: les fermes de virtualisation, les solutions de patches management ...)
-* Respecter les politiques de moindre privilèges 
+* Les ressources Tiers 0 ne doivent pas se limiter aux annuaires d'identité (tel que Active Directory et l'Azure AD) mais à l'ensemble des ressources interagissant avec eux (eg: les fermes de virtualisation, les solutions de patches management ...)
+* Respecter les politiques de moindre privilèges
 
-A noter qu'un des problèmes couramment rencontrés est la transformation de la matrice RACI définie pour l'Active Directory sur l'Azure AD. En effet sur l'Active Directory une extrème granularité est possible permettant typiquement d'autonomiser des filialles. L'Azure AD est quand à lui *by design* concu pour une administration centralisé, et par conséquent peut induire des limites assez structurantes vis à vis du modèle organisationel des entreprises.  Des évolutions vont toutefois dans le sens de la granularisation des privilèges (eg: les *Administrative Units*) mais un écart persiste.
+![Q3a](/assets/images/AD_Q3a.png)
+
+A noter qu'un des problèmes couramment rencontrés est la transformation de la matrice RACI définie pour l'Active Directory sur l'Azure AD (cf. l'exemple de matrice RACI au dessus). En effet sur l'Active Directory une extrème granularité est possible permettant typiquement d'autonomiser des filialles. L'Azure AD est quand à lui *by design* concu pour une administration centralisé, et par conséquent peut induire des limites assez structurantes vis à vis du modèle organisationel des entreprises.  Des évolutions vont toutefois dans le sens de la granularisation des privilèges (eg: les *Administrative Units*) mais un écart persiste. Dans ces travaux de transposition, il est donc nécessaire de tenir compte des possibilités concrètes de déléguation proposées par l'Azure AD, une reflexion purement théorique basée sur l'organisation actuelle de l'entreprise (surtout si les responsabilités sont fortement diluées) va au mieux créer des frustrations au sein des équipes opérationnelles ou au pire dégrader fortement le niveau de protection de l'Azure AD.
 
 Un dernier enjeu est de garantir la pérénité du modèle dans la durée. Les principales pistes de reflexion sont :
 * Effectuer de manière régulière une revue des permissions accordées au travers d'un processus de recertification pour répondre à la question : Est ce que telle ou telle administrateurs doit toujours disposer de privilèges sur ce périmètre ?
@@ -265,21 +265,51 @@ A noter que la gestion Cloud des terminaux permet de s'affranchir des adhérence
 
 ## **Question 5** : Quel impact sur les services techniques ?
 
+La bascule vers l'Azure AD implique de définir des stratégies de transformation pour certains services techniques bien souvent adhérents à l'Active Directory. La liste ci-dessous (non exhaustive) reprend les principaux :
+
+### Le DNS : Service de résolution des noms
+
+Dans le SI d'une entreprise, le DNS a deux principales vocations : localiser les ressources internes à l'entreprise et permettre de router les requêtes DNS pour la localisation de ressources sur Internet. L'active Directory reposant sur le service DNS pour localiser dynamiquement ses propres ressources (*Design for failure*), la topologie DNS repose de manière plus au moins profonde sur le service DNS hébergés par l'Active Directory. Il est donc nécessaire de définir une stratégie pour répondre aux deux besoins précédements listés.
+
+L'approche la plus réaliste que je recommande couramment est de mettre en place (ou de capitaliser) sur une infrastructure autonome DDI (DNS DHCP IPAM) permettant de réaliser une transition douce. Lorsque l'entreprise ne dispose plus de ressources localisables via des zones DNS privées (eg. les ressources sont alors accédées uniquement via des zones DNS publiques) il est alors possible de décomissioner cette infrastructure. L'usage d'une machine Windows autonome pour rendre le service DNS peut être envisagée, toutefois elle doit être envisagée en tant que solution alternative, le DDI (type Infoblox ou Efficient IP) restant préférable.
+
+### Le DHCP : Service d'allocation dynamique des adresses IPs
+
+Il s'agit du premier service utilisé principalement par l'ensemble des postes de travail. Les adhérences avec l'Active Directory sont relativement faibles et peuvent être principalement liés à la fourniture du service depuis une machine membre du domaine de l'Active Directory et approuvé par l'Active Directory (pour éviter les *Rogues DHCP*). A noter que cette implémentation du service DHCP n'est pas la norme que je rencontre au sein de mes clients.
+
+Toutefois, lorsque le cas existe, la stratégie que je recommande est de basculer sur une infrastructure autonome DDI (DNS DHCP IPAM). L'usage d'une machine Windows autonome pour rendre le service DHCP peut être envisagée, toutefois elle doit être envisagée en tant que solution alternative, le DDI (type Infoblox ou Efficient IP) restant préférable.
+
+### Le VPN : Accès sécurisé au SI
+
+Le mode de fonctionnement du VPN historiquement mis en place fonctionne dans un contexte utilisateur (c'est à dire qu'il est démarré à posteriori de l'authentification de l'utilisateur sur le poste de travail) et en *forced tunneling* (c'est à dire qu'au préalable du démarrage du VPN, tous les flux sont bloqués) doit être ajusté afin d'être en confirmatité avec les paradigmes du **Modern Management**. En effet l'accès à Internet pour accéder aux ressources cloud (en particulier de gestion des postes de travail) devient le vecteur de communication principal à contrario du réseau d'entreprise qui devient nécessaire uniquement pour accéder aux ressources et applications conservées en Interne.
+
+A noter que la crise du COVID19 avec la généralisation du télétravail a démontré les limites de l'approche traditionnelle du VPN.
+
+Bien que ce sujet soit assez éloigné de l'Active Directory, les transformations structurantes induites par le passage vers l'Azure AD et les services cloud (tel que la gestion MDM des postes de travail) implique de revoir la stratégie d'usage du VPN pour le limiter au strict nécessaire. En effet, au travers de solutions de gestion cloud (MDM) et de protections cloud (EDR) des postes, l'accès au réseau d'entrerise n'est plus nécessaire pour garantir sa sécurité.
+
+### Les GPOs : Normalisation des configurations
+
+Je constate couramment que le poids des GPOs peut constituer un énorme frein vis à vis de la transition vers l'Azure AD. En effet, il n'y a pas d'équivalent direct sur l'Azure AD. Il est nécessaire de reposer sur des politiques de configurations déployées par la solution MDM, de manière similaire à ce qui peut être réalisé sur des smartphones.
+Dans la stratégie de traitement des GPOs, deux périmètres sont à évaluer :
+
+* **Les postes de travail** : bien souvent un volume conséquent de GPOs existent sur ce périmètre. L'approche analytique est généralement préférée car considéré comme étant sure. La complexité de l'historique fait qu'une refonte de zéro est plus efficace (et permet d'éliminer des configurations obsolètes). De même que la standardisation et l'allègement des configurations devennant la norme (au grand dam de certaines équipes qui souhaitent pousser le cursus du configuration à son paroxysme), cette approche analytique deviendrait trop couteuse en charges de travail. Je recommande généralement une approche itérative lissée dans le temps pour transformer ces besoins de configurations vers les politiques MDM.
+
+* **Les serveurs** : l'usage des GPOs sur ce périmètre (en particulier pour la standardisation des politiques de sécurité) est intimement lié à la transformation des services et applications d'enterprise vers des services Cloud (PaaS / SaaS). Elles ne pourront être décommissionnées qu'à posteriori de l'arrêt des serveurs.
+
+**Indicateur d'effort de transformation**
+* **Difficulté  :** faible (sauf si l'approche analytique pour les GPOs est retenue)
+* **Charges     :** faible (sauf si l'approche analytique pour les GPOs est retenue)
 
 
-Domain Join SRV
-DNS
-VPN
-GPO
+## **Question 6** : Quel impact sur les applicatifs  ?
+
+Authentification
+Azure AD Proxy
+ADFS
+Kerberos / NTLM
 
 
-
-## **Question 5** : Quel impact sur les applicatifs & services techniques ?
-
-Selon 
-
-
-## **Question 5** : Est ce une opportunité pour simplifier la vie des utilisateurs ?
+## **Question 7** : Est ce une opportunité pour simplifier la vie des utilisateurs ?
 
 OUI
 
