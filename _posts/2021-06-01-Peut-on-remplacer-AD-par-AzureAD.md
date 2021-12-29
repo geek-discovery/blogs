@@ -303,10 +303,28 @@ Dans la stratégie de traitement des GPOs, deux périmètres sont à évaluer :
 
 ## **Question 6** : Quel impact sur les applicatifs  ?
 
-Authentification
-Azure AD Proxy
-ADFS
-Kerberos / NTLM
+Il s'agit du sujet le plus structurant - et souvent minimisé - pour le désengeagement de l'Active Directory. La règle que j'explique généralement est que **tant qu'une application reste intégrée à l'Active Directory ou hébergée sur une machine membre du domaine, l'Active Directory doit perdurer**. Bien que cette règle puisse créer une certaine appréhension, des scénarios plus ou moins complexes sont envisgeables selon les méthodes d'authentification :
+
+* Pour les applications utilisant le protocole Kerberos
+
+Ce type de protocole n'étant pas supporté nativement par Azure AD, une transformation des applications est 
+
+* Pour les applications utilisant les protocoles NTLM, LDAP(s)
+
+
+
+
+* Pour les applications utilisant les protocoles SAML, OAuth ...
+
+Il s'agit du périmètre le plus *simple* a traiter du fait que ces protocoles sont supportées nativement sur l'Azure AD. De ce fait le chemin de transformation peut être relativement court. 
+A noter qu'une identification de la supportatibilité de ces protocoles pour l'ensemble du portofolio applicatif peut être un accélarateur. Il est alors enviseagble de basculer une application reposant sur du LDAP(s), Kerberos ... sur une méthode d'authentification supportée par Azure AD.
+
+Une question que me pose souvent mes clients est l'intéret de la solution **Azure AD application Proxy**. Souvent une incompréhension existe vis à vis de cette solution. Cette solution permet de faciliter le SSO depuis un poste pure cloud (ie. Azure AD Join Only), mais ne permet pas pour une application supportée par Azure AD Application Proxy de s'affranchir de l'Active Directory.
+Pour plus de détail : [Référence Azure AD Application Proxy](https://docs.microsoft.com/en-us/azure/active-directory/app-proxy/application-proxy)
+
+**Indicateur d'effort de transformation**
+* **Difficulté  :** moyenne à forte dépendant du portfoilio applicatif
+* **Charges     :** moyenne à forte dépendant du portfoilio applicatif
 
 
 ## **Question 7** : Est ce une opportunité pour simplifier la vie des utilisateurs ?
