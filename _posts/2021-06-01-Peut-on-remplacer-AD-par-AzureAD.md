@@ -305,12 +305,10 @@ Dans la stratégie de traitement des GPOs, deux périmètres sont à évaluer :
 
 Il s'agit du sujet le plus structurant - et souvent minimisé - pour le désengeagement de l'Active Directory. La règle que j'explique généralement est que **tant qu'une application reste intégrée à l'Active Directory ou hébergée sur une machine membre du domaine, l'Active Directory doit perdurer**. Bien que cette règle puisse créer une certaine appréhension, des scénarios plus ou moins complexes sont envisgeables selon les méthodes d'authentification :
 
-* Pour les applications utilisant le protocole Kerberos
+* Pour les applications utilisant le protocole Kerberos, NTLM, LDAP(s)
 
-Ce type de protocole n'étant pas supporté nativement par Azure AD, une transformation des applications est 
-
-* Pour les applications utilisant les protocoles NTLM, LDAP(s)
-
+Ce type de protocole n'étant pas supporté nativement par Azure AD, une transformation des applications est nécessaire. Plusieurs chemins sont enviseagbles :
+  * eee
 
 
 
