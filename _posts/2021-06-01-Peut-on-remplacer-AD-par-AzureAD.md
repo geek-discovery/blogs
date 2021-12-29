@@ -308,9 +308,14 @@ Il s'agit du sujet le plus structurant - et souvent minimisé - pour le désenge
 ### Pour les applications utilisant le protocole Kerberos, NTLM, LDAP(s)
 
 Ce type de protocole n'étant pas supporté nativement par Azure AD, une transformation des applications est nécessaire. Plusieurs chemins sont enviseagbles :
-* 
+* Soit via un lift & shift de l'application vers du IaaS Azure et une intégration sur Azure Active Directory Domain services
+* Soit via une transformation de la méthode d'authentication vers des protocoles supportés nativement sur l'Azure AD
+* Soit via une migration de l'applicatif vers une solution SaaS utilisant un protocole supporté nativement sur l'Azure AD
+* Soit via une migration de l'applicatif vers un nouvel applicatif utilisant un protocole supporté nativement sur l'Azure AD
+* Soit via un redevellopement de l'applicatif répondant aux standards actuels et en privilégiant les services PaaS
+* Soit via une déconnexion de la source d'authentification (l'Active Directory) au profil d'une authentification locale
 
-
+Je recommande d'envisager la conservation de l'Active Directory pour couvrir les authentifications applicatives qu'en ultime recours.
 
 ### Pour les applications utilisant les protocoles SAML, OAuth ...
 
