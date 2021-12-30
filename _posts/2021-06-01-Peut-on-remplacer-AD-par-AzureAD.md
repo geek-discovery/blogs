@@ -326,27 +326,27 @@ Une question que me pose souvent mes clients est l'intéret de la solution **Azu
 Pour plus de détail : [Référence Azure AD Application Proxy](https://docs.microsoft.com/en-us/azure/active-directory/app-proxy/application-proxy)
 
 **Indicateur d'effort de transformation**
-* **Difficulté  :** moyenne à forte dépendant du portfoilio applicatif
-* **Charges     :** moyenne à forte dépendant du portfoilio applicatif
+* **Difficulté  :** moyenne à forte selon le portfoilio applicatif
+* **Charges     :** moyenne à forte selon le portfoilio applicatif
 
 
 ## **Question 7** : Est ce une opportunité pour simplifier la vie des utilisateurs ?
 
-OUI
+Du point de vue des utilisateurs, les gains peuvent être de plusieurs niveaux :
 
+* **Authentification** : L'Azure AD devenant la source d'authentification globale, l'unicité du Royaume SSO peut être atteinte, l'authentification entre les applications et services est alors réellement transparente.
+* **Accès aux services et applications** : L'Azure AD étant un fort drivers pour massifier l'usage des services Cloud, la sanctuarisation du **réseau d'entreprise** se réduit très fortment (et de fait l'usage du VPN). Les utilisateurs peuvent ainsi, où qu'ils soient, simplement accéder aux services et applications.
+* **Autonomie** : Le couplage des fonctionnalités d'enrollement automatique des postes de travail (autopilot) avec la solution de MDM, permet aux utilisateurs de (re)préparer leur postes de travail où qu'ils se trouvent sans nécessiter le passage dans les locaux de l'entreprise
+* **Autonomie** : Les fonctions nativement de reinitialisation de mot de passe (Self Service Reset Password) permet aux utilisateurs de régénérer ce mot de passe de manière sécurisée en autonomie sans avoir à recourir au helpdesk
 
 
 ## **Question X** : Et au final, si l'entreprise bascule sur l'Azure AD, est ce que je peux garantir la sécurité de mon SI ?
 
-> L'évolution des menaces Zero Trust EDR ..
-> Le Byod
-> Entitlment Management
+Outre la gestion des identités et authentifications proposées par l'Azure AD, l'annuaire s'inscrit dans une démarche de Zero Trust permettant de garantir un haut niveau de sécurité de manière nominale sans avoir à recourir à des solutions complémentaires comme sur l'Active Directory. L'Azure AD Conditional Access permet d'ajuster les règles selon des conditions qui ne cessent d'augmenter. Neanmoins l'appropriation de l'Azure AD Conditional Access requiert une remise en cause des dogmes de sécurité (le bien nommé **Chateau Fort**). En effet, il ne faut plus définir des politiques d'accès sur une approche blocage, mais plutôt sur une approche de situation : quelles situation je veux / doit traiter.
+
 
 # Conclusion
 
-Par conséquent, Son abandon par les entreprises ne peut être réalisable sans la définition d'un plan stratégique et l'ajustement de la gouvernance du système d'informations et la revue 
-La traitement de toutes les questions précédentes permet d'envisager le passage vers Azure AD et de s'affranchir de l'AD. Neanmoins le non traitement d'une des questions impliquent la conservation de l'AD
-Les moyens techniques sont disponibles et permettent d'atteindre cet objectif.
-Neanmoins selon les transformations à apporter les durées nécessaires peuvent être plus ou moins longues
-La fin de l'Active Directory n'est pas pour tout de suite néanmoins il est nécessaire de définir une sortie sur plusieurs années
-Souveraineté / indépendance -> difficulté de se passer des Services Microsoft sans recréer en cloud une nouvelle complexité
+Par conséquent, Son abandon par les entreprises ne peut être réalisable sans la définition d'un plan stratégique global, l'ajustement de la gouvernance du système d'informations et la revue du modèle opérationnel. La traitement de toutes les questions précédentes permet d'envisager le passage vers Azure AD et de s'affranchir de l'AD. Neanmoins le non traitement d'une des questions impliquent la conservation de l'AD
+
+Bien que les moyens techniques sont disponibles et permettent d'atteindre cet objectif, les transformations à apporter ainsi que les durées nécessaires peuvent être plus ou moins longues. Il s'agit de fait d'un plan sur plusieurs années (en particulier pour le traitement des applications).
