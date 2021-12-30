@@ -66,36 +66,36 @@ La cellule **Design Authority** quand à elle sera garante que les choix d'archi
 
 ## **Question 2** : Quel circuit de provisioning des objets ?
 
-Dans un environnement de plus en complexe du fait de l'aggrégation de nombreux services avec l'identité comme pierre angulaire, l'automatisation du (de)provisionning doit être la norme afin de réduire les délais et les coûts de support. Il est donc nécessaire de définir les cycles de vie suivant pour ensuite pouvoir automatiser la gestion des objets concernés :
+Dans un environnement de plus en complexe du fait de l'agrégation de nombreux services avec l'identité comme pierre angulaire, l'automatisation du (de)provisioning doit être la norme afin de réduire les délais et les coûts de support. Il est donc nécessaire de définir les cycles de vie suivant pour ensuite pouvoir automatiser la gestion des objets concernés :
 * Quel est le cycle de vie des **utilisateurs internes** de l'entreprise ?
 * Quel est le cycle de vie de **utilisateurs sous contrats** (les prestataires, les freelances, ...) ?
 * Quel est le cycle de vie des **utilisateurs *Guests*** sur le tenant Office 365 ?
-* Quel est le cycle de vie des objets **non utilisateurs** hébergés sur Active Directory (Pur Active Directory, Synchronisés sur Azure AD) et/ou sur Azure AD (Objets uniquement cloud) ? 
+* Quel est le cycle de vie des objets **non-utilisateurs** hébergés sur Active Directory (Pur Active Directory, Synchronisés sur Azure AD) et/ou sur Azure AD (Objets uniquement cloud) ? 
 * Quel est le cycle de vie des **administrateurs** ?
 
-De manière usuelle, chacune des populations d'utilisateurs disposent de son propre cycle de vie, induisant une complexité au niveau des outils (1 outil par population) voire même une gestion manuelle. Le cas le plus représentatif étant la gestion des utilisateurs *Guests* sur le tenant Office 365.
+De manière usuelle, chacune des populations d'utilisateurs disposent de son propre cycle de vie, induisant une complexité au niveau des outils (1 outil par population) voire une gestion manuelle. Le cas le plus représentatif étant la gestion des utilisateurs *Guests* sur le tenant Office 365.
 
 ![Q2a](/assets/images/AD_Q1a.png)
 
-Les objets non utilisateurs (tel que les groupes de sécurité, les listes de distribution ...) sont quand à eux historiquement provisionnés dans l'Active Directory puis synchronisés dans l'Azure AD. L'arrivé d'Office 365 soulève plusieurs problématiques structurantes pour apporter une gestion efficace de ces objets. En effet :
-* Certains objets comme les **comptes de ressources** ou les **boites aux lettres partagées** peuvent nécessiter une adaptation post-provisionning depuis l'Active Directory
+Les objets non-utilisateurs (tel que les groupes de sécurité, les listes de distribution ...) sont quant à eux historiquement provisionnés dans l'Active Directory puis synchronisés dans l'Azure AD. L'arrivé d'Office 365 soulève plusieurs problématiques structurantes pour apporter une gestion efficace de ces objets. En effet :
+* Certains objets comme les **comptes de ressources** ou les **boites aux lettres partagées** peuvent nécessiter une adaptation post-provisioning depuis l'Active Directory
 * Certains objets comme les **listes de distributions**, **les boites aux lettres partagées**, les **comptes de ressources** ne devraient pas être provisionnés depuis l'Active Directory afin de proposer des capacités de gestion aux titulaires de ces objets (eg. en tant que propriétaires d'une liste de distribution, je veux pouvoir modifier les membres depuis mon client Outlook)
-* Certains objets comme les comptes ***Guests*** ou les ***Groups O365*** n'ont pas d'existances sur Active Directory
+* Certains objets comme les comptes ***Guests*** ou les ***Groups O365*** n'ont pas d'existences sur Active Directory
 
-Outre l'aspect annuaires Active Directory & Azure AD, le traitement de cette question implique de concevoir le cycle de vie de bout en bout en prennant en compte les outils amonts aux annuaires d'identité (eg. référentiel RH), les outils de gestion des demandes et d'automatisation des modifications (ITSM), la structure de gouvernance de l'entreprise qui conditionne le modèle de déléguation (eg. combien d'équipes doivent manager les objets, combien de périmètres de responsabilité ...). Dans le cas d'une transition complète vers Azure AD, la transformation de cet écosystème est à prendre en compte.
+Outre l'aspect annuaires Active Directory & Azure AD, le traitement de cette question implique de concevoir le cycle de vie de bout en bout en prenant en compte les outils amonts aux annuaires d'identité (eg. Référentiel RH), les outils de gestion des demandes et d'automatisation des modifications (ITSM), la structure de gouvernance de l'entreprise qui conditionne le modèle de délégation (eg. Combien d'équipes doivent manager les objets, combien de périmètres de responsabilité ...). Dans le cas d'une transition complète vers Azure AD, la transformation de cet écosystème est à prendre en compte.
 
 ### Plusieurs scénarios permettent toutefois de traiter cette question
 
 #### **Usage d'un outil inhouse dédié**
 
-Cette solution permet de proposer via un **moteur de traitement** dédié, mis à disposition par les équipes en charge de la gestion des identités, de connecteurs Powershell et/ou Graph vers Active Directory et l'Azure AD afin de soumettre des traitement via des fichiers standardisés. Bien que cet outil puisse être percu comme un nouvel outil dans l'entreprise (et de faits des côuts complémentaires de dévellopement, évolution, maintien en condition opérationnelle) il apporte les bénéfices suivants :
+Cette solution permet de proposer via un **moteur de traitement** dédié, mis à disposition par les équipes en charge de la gestion des identités, de connecteurs Powershell et/ou Graph vers Active Directory et l'Azure AD afin de soumettre des traitements via des fichiers standardisés. Bien que cet outil puisse être perçu comme un nouvel outil dans l'entreprise (et de faits des coûts complémentaires de développement, évolution, maintien en condition opérationnelle) il apporte les bénéfices suivants :
 * facilité d'évolution pour la prise en charge de nouvelles fonctionnalités du fait de la maitrise de l'ensemble des briques par les équipes identités
-* possibilité de disposer d'un modèle de déléguation granulaire adapté au modèle de gouvernance des entreprises via la déclinaison du modèle de déléguation au niveau de l'outil
+* possibilité de disposer d'un modèle de délégation granulaire adapté au modèle de gouvernance des entreprises via la déclinaison du modèle de délégation au niveau de l'outil
 * réduit les besoins d'accès aux consoles de management Azure AD / Office 365
 * gestion exhaustive de tous types de d'objets
 * permet de provisionner les objets au sein de l'annuaire le plus pertinent
 * possibilité de traitement en masse
-* possibilité d'interfacage via fichier à plat avec un ITSM
+* possibilité d'interfaçage via fichier à plat avec un ITSM
 
 ![Q2c](/assets/images/AD_Q1c.png)
 
@@ -105,13 +105,13 @@ Cette solution permet de proposer via un **moteur de traitement** dédié, mis �
 
 #### **Usage d'un référentiel technique (type IAM)**
 
-Dans le cas où l'entreprise dispose d'une outil de gestion des identités et d'habilitations, l'intéret de le faire évoluer afin d'atteindre les objectifs en terme de gestion exhaustive des objets permet de s'affranchir de la mise en place d'un outil dédié. Neanmoins l'effort d'évolutions n'est généralement pas neutre, du fait qu'il faut mettre en place un connecteur PowerShell / GraphAPI enntre cet outil et l'Azure AD, ce type de connecteur reposant sur des protocoles de communications différents de ceux utilisés avec Active Directory.
+Dans le cas où l'entreprise dispose d'un outil de gestion des identités et d'habilitations, l'intérêt de le faire évoluer afin d'atteindre les objectifs en terme de gestion exhaustive des objets permet de s'affranchir de la mise en place d'un outil dédié. Néanmoins l'effort d'évolutions n'est généralement pas neutre, du fait qu'il faut mettre en place un connecteur PowerShell / GraphAPI entre cet outil et l'Azure AD, ce type de connecteur reposant sur des protocoles de communications différents de ceux utilisés avec Active Directory.
 
 En termes de bénéfices, la plupart de ceux apportés par la mise en place d'un outil dédié sont repris et des nouveaux peuvent aussi être apportés comme :
 * la capacité de mise en place de workflows
 * la mise à disposition d'interfaces accessibles et compréhensibles pour toute la population (IT et non IT)
 
-Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entreprise, la prise en compte de nouveaux besoins est moins évidente du fait des instances de validation généralement plus lourde que pour un outil autonome.
+Néanmoins, du fait de la position transverse d'un tel outil au sein de l'entreprise, la prise en compte de nouveaux besoins est moins évidente du fait des instances de validation généralement plus lourde que pour un outil autonome.
 
 ![Q2d](/assets/images/AD_Q1d.png)
 
@@ -121,21 +121,21 @@ Neanmoins, du fait de la position transverse d'un tel outil au sein de l'entrepr
 
 #### **Fusion du référentiel RH et du référentiel technique**
 
-Ce scénario repose sur la fusion de l'outil en charge de la gestion du référentiel RH et du référentiel technique. Bien qu'il permette la rationalisation des outils, il requiert une maturité forte sur la gestion du cycle de vie des employées et des objets ainqi que le décloisonement des équipes en charge des outils. Les coûts engendrés ainsi que les impacts organisationels étant non négligeables ce scénario est rarement rencontré.
+Ce scénario repose sur la fusion de l'outil en charge de la gestion du référentiel RH et du référentiel technique. Bien qu'il permette la rationalisation des outils, il requiert une maturité forte sur la gestion du cycle de vie des employées et des objets ainsi que le décloisonnement des équipes en charge des outils. Les coûts engendrés ainsi que les impacts organisationnels étant non négligeables ce scénario est rarement rencontré.
 
 ![Q2e](/assets/images/AD_Q1e.png)
 
-### Et les admins quel doit être leur cycle de provisioning / déprovisioning ?
+### Et les admins quel doit être leur cycle de provisioning / dé-provisioning ?
 
 #### Les clés du royaume
 
-La pierre angulaire de la sécurité du système d'information (et des données hébergées) reposent sur les comptes administrateurs. Bien que ce risque puisse être assimilé à une banalité, il mérite toutefois une attention particulière du fait que la volonté des cyber-attaquants est d'obtenir les permissions fournies à ces comptes par propagation latérale.
+La pierre angulaire de la sécurité du système d'information (et des données hébergées) reposent sur les comptes administrateurs. Bien que ce risque puisse être assimilé à une banalité, il mérite toutefois une attention particulière du fait que la volonté des cyberattaquants est d'obtenir les permissions fournies à ces comptes par propagation latérale.
 
 Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles suivantes :
 * **Dissociation du circuit de création d'un compte administrateur de la fourniture des habilitations**. Le bénéfice est qu'en cas de compromission de l'outil d'alimentation des annuaires, le modèle d'habilitations ne sera pas corrompu. 
-* **Découpage des comptes administrateurs par périmètre**. Ainsi en cas de compromission des comptes administrateurs sur un périmètre (eg. un administrateur identité possède un compte sur Active Directory et 1 compte sur l'Azure AD), la propagation latérale sur un autre périmètre ne pourra s'effectuer. Pour le cas spécifique de l'Azure AD, il n'y a pas de contre-indications à provisionner le compte depuis l'Active Directory à partir du moment où l'ensemble des regles sont respectées.
-* **Mise en place d'alertes spécifiques pour la réinitialisation des mots de passe**. Ce type d'alerte permet de détecter les tentatives d'usurpation d'identité. Les outils de création de comptes ayant des capacités de réinitialisation de passe pour couvrir les cas de pertes / oublis de mot de passe, cette fonctionnalité peut être détournée par des personnes malveillantes pour prendre la possession de comptes administrateurs et de-facto des permissions attribuées. La mise en place d'une alerte automatique de reinitialisation de mot de passe (le changement de mot de passe initié par le titulaire du compte administrateur ne doit toutefois pas faire l'objet d'une alerte) est alors nécessaire. A noter que des détections supplémentaires de comportements suspicieux peuvent être faites au travers d'un SIEM.
-* **Analyse des habilitations fournies au préalabale de la suppression des comptes**. L'objectif de cette analyse est de mitiger le risque de pertes de privilèges (les privilèges dont dispose le compte à supprimer doivent être fournis, à minima, à un autre administrateur) au niveau global en particulier pour les entreprises ayant un fort *turn-over* sur les équipes admins.
+* **Découpage des comptes administrateurs par périmètre**. Ainsi en cas de compromission des comptes administrateurs sur un périmètre (eg. un administrateur identité possède un compte sur Active Directory et 1 compte sur l'Azure AD), la propagation latérale sur un autre périmètre ne pourra s'effectuer. Pour le cas spécifique de l'Azure AD, il n'y a pas de contre-indications à provisionner le compte depuis l'Active Directory à partir du moment où l'ensemble des règles sont respectées.
+* **Mise en place d'alertes spécifiques pour la réinitialisation des mots de passe**. Ce type d'alerte permet de détecter les tentatives d'usurpation d'identité. Les outils de création de comptes ayant des capacités de réinitialisation de passe pour couvrir les cas de pertes / oublis de mot de passe, cette fonctionnalité peut être détournée par des personnes malveillantes pour prendre la possession de comptes administrateurs et de-facto des permissions attribuées. La mise en place d'une alerte automatique de réinitialisation de mot de passe (le changement de mot de passe initié par le titulaire du compte administrateur ne doit toutefois pas faire l'objet d'une alerte) est alors nécessaire. A noter que des détections supplémentaires de comportements suspicieux peuvent être faites au travers d'un SIEM.
+* **Analyse des habilitations fournies au préalable de la suppression des comptes**. L'objectif de cette analyse est de mitiger le risque de pertes de privilèges (les privilèges dont dispose le compte à supprimer doivent être fournis, à minima, à un autre administrateur) au niveau global en particulier pour les entreprises ayant un fort *turn-over* sur les équipes admins.
 
 #### Concrètement deux cas sont possibles selon le niveau d'avancement du plan de transformation vers le cloud de l'entreprise :
 
@@ -143,13 +143,13 @@ Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles
 * Les comptes administrateurs sur le périmètre Active Directory sont provisionnés dans cet annuaire par l'outil de gestion des comptes utilisateurs standards
 * Les comptes administrateurs sur le périmètre Azure AD sont provisionnés depuis Active Directory vers Azure AD au travers de Azure AD Connect de manière similaire aux comptes utilisateurs standards
 * Habilitations fournies aux comptes au travers d'un mécanisme adhoc
-* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (*Azure Function* sur la périmètre Azure AD) qui détecte des evenements spécifiques sur Active Directory et l'Azure AD
+* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (*Azure Function* sur le périmètre Azure AD) qui détecte des évènements spécifiques sur Active Directory et l'Azure AD
 * Mise en place d'un processus d'audit standardisé permettant l'extraction de l'ensemble des permissions fournies à un administrateur que cela soit sur l'Active Directory et l'Azure AD
 
 ##### 2) Identités hébergées sur Azure AD uniquement :
 * Les comptes administrateurs sur le périmètre Azure AD sont provisionnés sur Azure AD de manière similaire aux comptes utilisateurs standards
 * Habilitations fournies aux comptes au travers d'un mécanisme adhoc et à la demande (*Azure Privileged Identity Management*)
-* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (*Azure Function*) qui détecte des evenements spécifiques sur l'Azure AD
+* Mise en place d'un processus de détection de réinitialisation de mots de passe via une tâche planifiée (*Azure Function*) qui détecte des évènements spécifiques sur l'Azure AD
 * Mise en place d'un processus d'audit standardisé permettant l'extraction de l'ensemble des permissions fournies à un administrateur sur l'Azure AD
 
 **Indicateur d'effort de transformation**
@@ -162,7 +162,7 @@ Ma conviction est qu'il est nécessaire de s'astreindre à respecter les règles
 ## **Question 3** : Comment gérer les habilitations des utilisateurs ?
 
 La gestion uniformisée et automatisée des habilitations est un corollaire à la question précédente.
-Bien que les mécanimes de fourniture de permissions sur l'Active Directory & l'Azure AD soit similaires - ajout d'un utilisateur dans un groupe - le passage à l'Azure AD est l'occasion de réaliser une mise à niveau des processus d'habilitations afin d'être aligné avec les standards - comme le respect des différentes reglèmentations requierant de la tracabilité.
+Bien que les mécanismes de fourniture de permissions sur l'Active Directory & l'Azure AD soit similaires - ajout d'un utilisateur dans un groupe - le passage à l'Azure AD est l'occasion de réaliser une mise à niveau des processus d'habilitations afin d'être aligné avec les standards - comme le respect des différentes règlementations requérant de la traçabilité.
 
 ### Quels sont les enjeux à traiter ?
 
@@ -176,51 +176,51 @@ La maitrise des habilitations et de l'accès aux données sous-jacentes requiert
 Le point de départ est de profiler les différents utilisateurs selon des critères objectifs. Ce profil permettra ensuite de déclencher les automatismes de fourniture des habilitations selon les profils:
 * Identification des différents profils métiers (IT, RH, Finance, Magasins ...) et sous profils métiers (IT Workplace, IT Networks, Magasins Vendeurs, Magasins Directeurs ...)
 * Référencement dans l'outil RH de ces différents profils sous la forme de valeurs standardisées avec une table de correspondance. Par exemple 01-001 pour IT (01) Workplace (001)
-* Provisionning de ces valeurs dans les attributs *custom* dans lesquels les valeurs sont à la discrétion de l'entreprise (par exemple extensionAttribute01 ou via des attributs customs spécifiquements créés)
+* Provisioning de ces valeurs dans les attributs *custom* dans lesquels les valeurs sont à la discrétion de l'entreprise (par exemple extensionAttribute01 ou via des attributs customs spécifiquement créés)
 * Identification des ressources éligible à chaque profil et sous profil métiers (applications, liste de distribution, ....)
 * Création d'un groupe dynamique avec une règle de remplissage automatique basée sur les profils pour l'habilitation aux ressources concernées
-* Déploiement des habilitations au travers groupes dynamiques sur les applications concernées. Ces dernières peuvent être de tout types (services O365, applications intégrées à Azure AD, fourniture des licenses ...)
+* Déploiement des habilitations au travers groupes dynamiques sur les applications concernées. Ces dernières peuvent être de tout types (services O365, applications intégrées à Azure AD, fourniture des licences ...)
 
 La mise en place de ces groupes dynamiques est à revoir lorsque des évolutions de profils métiers sont constatés.
 Les bénéfices de cette approche sont:
 * que lorsqu'une personne quitte l'entreprise ou lorsqu'une personne fait une mobilité interne les habilitations liées aux profils sont automatiquement rectifiées
 * que les fonctions natives d'Azure AD sont utilisés
-Neanmoins les permissions spécifiques doivent quand à elle être traitées via le cycle des différents objets (et par conséquent au travers de la solution définie) afin de minimiser les actions directement sur les objets via IHM / PowersShell et par conséquent la réduction de la charge des équipes support ainsi que les erreurs humaines.
+Néanmoins les permissions spécifiques doivent quand à elle être traitées via le cycle des différents objets (et par conséquent au travers de la solution définie) afin de minimiser les actions directement sur les objets via IHM / PowerShell et par conséquent la réduction de la charge des équipes support ainsi que les erreurs humaines.
 
-Outre les fonctions natives présentées préalablement, d'autres mécanismes natifs à Azure AD, en particulier pour les comptes *Guests* qui reposent sur un circuit de gestion spécifique, permettent d'automatiser le déprovisionning automatique des habilitations :
-* durée de vie des comptes *Guests* au bout duquel le compte (et les habilitations associées) est automatiquement supprimée
+Outre les fonctions natives présentées préalablement, d'autres mécanismes natifs à Azure AD, en particulier pour les comptes *Guests* qui reposent sur un circuit de gestion spécifique, permettent d'automatiser le déprovisioning automatique des habilitations :
+* durée de vie des comptes *Guests* au bout duquel le compte (et les habilitations associées) est automatiquement supprimé
 * *Access Package* pour limiter dans le temps l'accès aux ressources lorsque les habilitations sont fournies au travers de groupes de sécurité
 
 Le dernier enjeu est de garantir la cohérence entre les habilitations fournies et leur validité. En particulier lors des mobilités internes ou de départ de l'entreprise.
-* Azure AD propose la fonctionnalité d'*Access Review* qui permet de simplifier (sans passer par l'analyse fastidieuse des logs) la revue des utilisateurs ayant accédés à des données. Bien qu'actuellement limitée à des Teams, des groups, ou des applications intégrées à Azure AD (Azure AD se positionnant comme le référentiel d'authentification), cette fonctionnalitée permet de limiter la durée nécessaire des phases d'audits.   
+* Azure AD propose la fonctionnalité d'*Access Review* qui permet de simplifier (sans passer par l'analyse fastidieuse des logs) la revue des utilisateurs ayant accédés à des données. Bien qu'actuellement limitée à des Teams, des groups, ou des applications intégrées à Azure AD (Azure AD se positionnant comme le référentiel d'authentification), cette fonctionnalité permet de limiter la durée nécessaire des phases d'audits.   
 * En complément de cette précédente fonction, l'usage d'un script pour auditer les services non couverts (tel que les habilitations sur les boites aux lettres partagées) permet d'obtenir une vue 360 degrée. Dans une optique d'automatisation, ce script peut être intégré sous la forme d'une *Azure Function*.
 
-### Et les habililitations des admins dans tout ca ?
+### Et les habilitations des admins dans tout ca ?
 
-La gestion des habilitations (à fournir et/ou obtenues) est souvent un sujet épineux qui nécessite de correctement apréhender les enjeux en particulier pour les entreprises ayant un fort *turnover* sur les populations et/ou faisant appel à un volume important de prestataires. Pour rappel il y a plusieurs familles de comptes administrateurs :
+La gestion des habilitations (à fournir et/ou obtenues) est souvent un sujet épineux qui nécessite de correctement appréhender les enjeux en particulier pour les entreprises ayant un fort *turnover* sur les populations et/ou faisant appel à un volume important de prestataires. Pour rappel il y a plusieurs familles de comptes administrateurs :
 
 * **Les comptes en lecture seule** qui permettent d'avoir une vue sur une ou l'ensemble des services. Bien qu'ils ne permettent pas 
 * **Les comptes disposant de privilèges sur un périmètre restreint** (d'attributs, d'objets, de services ...)
 * **Les comptes à privilèges globaux** (tel que *Global Adminstrators*)
 
-Tout d'abord la déléguation de privilèges doit faire l'objet de la définition d'une matrice RACI afin de definir de manière objective la relation entre l'équipe qui disposent de privilèges, les privilèges fournis et les périmtères à déléguer au sein de l'annuaire permettant ainsi de s'inscrire dans un modèle de Tiering. Le traitement du sujet nécessite par conséquent de faire convgerger le modèle opérationnel de l'entreprise avec les exigences sécurité. Sur cette base, il est ensuite possible de mettre en place le modèle RBAC (déclinaison technique de la matrice RACI sur l'annuaire).
+Tout d'abord la délégation de privilèges doit faire l'objet de la définition d'une matrice RACI afin de définir de manière objective la relation entre l'équipe qui disposent de privilèges, les privilèges fournis et les périmètres à déléguer au sein de l'annuaire permettant ainsi de s'inscrire dans un modèle de Tiering. Le traitement du sujet nécessite par conséquent de faire converger le modèle opérationnel de l'entreprise avec les exigences sécurité. Sur cette base, il est ensuite possible de mettre en place le modèle RBAC (déclinaison technique de la matrice RACI sur l'annuaire).
 
-Bien que le sujet soit complexe, au travers de mon expérience, j'ai pu identifier quelques accélarateurs à cette réflexion :
-* Une bonne connaissance des roles et responsabilités des equipes **ET** des inforgérants est nécessaire
-* Automatiser autant que possible les workflows d'habilitations pour les besoins de tracabilité et de circuits d'approbation stricts
-* L'équipe Tiers 0 doit être globale et être assujettie à une chaine de commandement unique. Néanmoins elle peut être consitutée sous la forme de virtual team
+Bien que le sujet soit complexe, au travers de mon expérience, j'ai pu identifier quelques accélérateurs à cette réflexion :
+* Une bonne connaissance des rôles et responsabilités des équipes **ET** des infogérants est nécessaire
+* Automatiser autant que possible les workflows d'habilitations pour les besoins de traçabilité et de circuits d'approbation stricts
+* L'équipe Tiers 0 doit être globale et être assujettie à une chaine de commandement unique. Néanmoins elle peut être constituée sous la forme de virtual team
 * Les ressources Tiers 0 ne doivent pas se limiter aux annuaires d'identité (tel que Active Directory et l'Azure AD) mais à l'ensemble des ressources interagissant avec eux (eg: les fermes de virtualisation, les solutions de patches management ...)
-* Respecter les politiques de moindre privilèges
+* Respecter les politiques de moindres privilèges
 
 ![Q3a](/assets/images/AD_Q3a.png)
 
-A noter qu'un des problèmes couramment rencontrés est la transformation de la matrice RACI définie pour l'Active Directory sur l'Azure AD (cf. l'exemple de matrice RACI au dessus). En effet sur l'Active Directory une extrème granularité est possible permettant typiquement d'autonomiser des filialles. L'Azure AD est quand à lui *by design* concu pour une administration centralisé, et par conséquent peut induire des limites assez structurantes vis à vis du modèle organisationel des entreprises.  Des évolutions vont toutefois dans le sens de la granularisation des privilèges (eg: les *Administrative Units*) mais un écart persiste. Dans ces travaux de transposition, il est donc nécessaire de tenir compte des possibilités concrètes de déléguation proposées par l'Azure AD, une reflexion purement théorique basée sur l'organisation actuelle de l'entreprise (surtout si les responsabilités sont fortement diluées) va au mieux créer des frustrations au sein des équipes opérationnelles ou au pire dégrader fortement le niveau de protection de l'Azure AD.
+A noter qu'un des problèmes couramment rencontrés est la transformation de la matrice RACI définie pour l'Active Directory sur l'Azure AD (cf. l'exemple de matrice RACI au-dessus). En effet sur l'Active Directory une extrême granularité est possible permettant typiquement d'autonomiser des filiales. L'Azure AD est quant à lui *by design* conçu pour une administration centralisé, et par conséquent peut induire des limites assez structurantes vis à vis du modèle organisationnel des entreprises.  Des évolutions vont toutefois dans le sens de la granularisation des privilèges (eg: les *Administrative Units*) mais un écart persiste. Dans ces travaux de transposition, il est donc nécessaire de tenir compte des possibilités concrètes de délégation proposées par l'Azure AD, une réflexion purement théorique basée sur l'organisation actuelle de l'entreprise (surtout si les responsabilités sont fortement diluées) va au mieux créer des frustrations au sein des équipes opérationnelles ou au pire dégrader fortement le niveau de protection de l'Azure AD.
 
-Un dernier enjeu est de garantir la pérénité du modèle dans la durée. Les principales pistes de reflexion sont :
-* Effectuer de manière régulière une revue des permissions accordées au travers d'un processus de recertification pour répondre à la question : Est ce que telle ou telle administrateurs doit toujours disposer de privilèges sur ce périmètre ?
-* Effectuer de manière régulière une revue de la matrice RACI afin de s'assurer de son alignement avec le modèle organisation de l'entreprise et de la non porosité entre les périmètres gérés
-* Tracer l'ensemble des activités effectuées pour détecter les non conformités
-* User & abuser de *Azure Privileges Identity Management* pour les administrateurs ayant des privilèges sur Azure AD et les ressources associées.
+Un dernier enjeu est de garantir la pérennité du modèle dans la durée. Les principales pistes de réflexion sont :
+* Effectuer de manière régulière une revue des permissions accordées au travers d'un processus de re-certification pour répondre à la question : Est-ce que telle ou telle administrateurs doit toujours disposer de privilèges sur ce périmètre ?
+* Effectuer de manière régulière une revue de la matrice RACI afin de s'assurer de son alignement avec le modèle organisation de l'entreprise et de la non-porosité entre les périmètres gérés
+* Tracer l'ensemble des activités effectuées pour détecter les non-conformités
+* User & abuser de *Azure Privileged Identity Management* pour les administrateurs ayant des privilèges sur Azure AD et les ressources associées.
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** moyenne
@@ -233,16 +233,16 @@ La transition vers l'Azure AD pose un challenge important pour la gestion des te
 
 ### Chantiers à adresser au niveau de l'organisation :
 
-La transition de le gestion des terminaux vers une solution Cloud, présente des challenges techniques mais aussi organisationel. La partie la plus visible de cette transformation est qu'il est nécessaire de décloisonner les équipes et d'horizontaliser l'organisation. Les deux exemples les plus concrets que j'ai pu recontrer en terme d'organisation inadaptée sont :
-* La séparation de la fillière postes de travail avec la filière terminaux mobiles
+La transition de la gestion des terminaux vers une solution Cloud, présente des challenges techniques mais aussi organisationnel. La partie la plus visible de cette transformation est qu'il est nécessaire de décloisonner les équipes et d'horizontaliser l'organisation. Les deux exemples les plus concrets que j'ai pu rencontrer en terme d'organisation inadaptée sont :
+* La séparation de la filière postes de travail avec la filière terminaux mobiles
 * La séparation de la gestion des annuaires d'identité entre les équipes *OnPremise* (Scope Active Directory) et *Cloud* (Scope Active Directory)
 
 Au fil de mes missions, je suis arrivé à la conclusion qu'une organisation type pourrait être :
 * **Equipe Identité & sécurité de l'identité** : En charge de la gestion de l'Active Directory, de l'Azure Active Directory, des services intermédiaires (tels que Azure AD Connect, solutions d'Identity Providers, GraphAPI).
 * **Equipe Digital Workplace** : En charge de l'ensemble des services collaboratifs et de gestion des terminaux (Cycle de vie, configurations, préparation ...) vie l'UEM (tel que Microsoft Endpoint Management ou tout autre UEM).
-* **Equipe Applicative** : En charge du portfolio applicatif de l'entreprise (tout type de terminaux) et de sa pérénité dans le temps. Ce dernier point est particulièrement important du fait que les cycles de mises à jour entre les terminaux mobiles et les PCs se sont rapprochés.
+* **Equipe Applicative** : En charge du portfolio applicatif de l'entreprise (tout type de terminaux) et de sa pérennité dans le temps. Ce dernier point est particulièrement important du fait que les cycles de mises à jour entre les terminaux mobiles et les PCs se sont rapprochés.
 
-Ensuite lors de l'abandon ultérieur de l'Active Directory, le modèle organisationel décrit préalabalement mis en place durant la phase de transition restera pérenne.
+Ensuite lors de l'abandon ultérieur de l'Active Directory, le modèle organisationnel décrit préalablement mis en place durant la phase de transition restera pérenne.
 
 ### Chantiers à adresser pour l'ensemble des terminaux :
 
@@ -269,9 +269,9 @@ La bascule vers l'Azure AD implique de définir des stratégies de transformatio
 
 ### Le DNS : Service de résolution des noms
 
-Dans le SI d'une entreprise, le DNS a deux principales vocations : localiser les ressources internes à l'entreprise et permettre de router les requêtes DNS pour la localisation de ressources sur Internet. L'active Directory reposant sur le service DNS pour localiser dynamiquement ses propres ressources (*Design for failure*), la topologie DNS repose de manière plus au moins profonde sur le service DNS hébergés par l'Active Directory. Il est donc nécessaire de définir une stratégie pour répondre aux deux besoins précédements listés.
+Dans le SI d'une entreprise, le DNS a deux principales vocations : localiser les ressources internes à l'entreprise et permettre de router les requêtes DNS pour la localisation de ressources sur Internet. L'active Directory reposant sur le service DNS pour localiser dynamiquement ses propres ressources (*Design for failure*), la topologie DNS repose de manière plus au moins profonde sur le service DNS hébergés par l'Active Directory. Il est donc nécessaire de définir une stratégie pour répondre aux deux besoins précédemment listés.
 
-L'approche la plus réaliste que je recommande couramment est de mettre en place (ou de capitaliser) sur une infrastructure autonome DDI (DNS DHCP IPAM) permettant de réaliser une transition douce. Lorsque l'entreprise ne dispose plus de ressources localisables via des zones DNS privées (eg. les ressources sont alors accédées uniquement via des zones DNS publiques) il est alors possible de décomissioner cette infrastructure. L'usage d'une machine Windows autonome pour rendre le service DNS peut être envisagée, toutefois elle doit être envisagée en tant que solution alternative, le DDI (type Infoblox ou Efficient IP) restant préférable.
+L'approche la plus réaliste que je recommande couramment est de mettre en place (ou de capitaliser) sur une infrastructure autonome DDI (DNS DHCP IPAM) permettant de réaliser une transition douce. Lorsque l'entreprise ne dispose plus de ressources localisables via des zones DNS privées (eg. les ressources sont alors accédées uniquement via des zones DNS publiques) il est alors possible de décommissionner cette infrastructure. L'usage d'une machine Windows autonome pour rendre le service DNS peut être envisagée, toutefois elle doit être envisagée en tant que solution alternative, le DDI (type Infoblox ou Efficient IP) restant préférable.
 
 ### Le DHCP : Service d'allocation dynamique des adresses IPs
 
@@ -281,20 +281,20 @@ Toutefois, lorsque le cas existe, la stratégie que je recommande est de bascule
 
 ### Le VPN : Accès sécurisé au SI
 
-Le mode de fonctionnement du VPN historiquement mis en place fonctionne dans un contexte utilisateur (c'est à dire qu'il est démarré à posteriori de l'authentification de l'utilisateur sur le poste de travail) et en *forced tunneling* (c'est à dire qu'au préalable du démarrage du VPN, tous les flux sont bloqués) doit être ajusté afin d'être en confirmatité avec les paradigmes du **Modern Management**. En effet l'accès à Internet pour accéder aux ressources cloud (en particulier de gestion des postes de travail) devient le vecteur de communication principal à contrario du réseau d'entreprise qui devient nécessaire uniquement pour accéder aux ressources et applications conservées en Interne.
+Le mode de fonctionnement du VPN historiquement mis en place fonctionne dans un contexte utilisateur (c'est à dire qu'il est démarré à posteriori de l'authentification de l'utilisateur sur le poste de travail) et en *forced tunneling* (c'est à dire qu'au préalable du démarrage du VPN, tous les flux sont bloqués) doit être ajusté afin d'être en conformité avec les paradigmes du **Modern Management**. En effet l'accès à Internet pour accéder aux ressources cloud (en particulier de gestion des postes de travail) devient le vecteur de communication principal à contrario du réseau d'entreprise qui devient nécessaire uniquement pour accéder aux ressources et applications conservées en Interne.
 
 A noter que la crise du COVID19 avec la généralisation du télétravail a démontré les limites de l'approche traditionnelle du VPN.
 
-Bien que ce sujet soit assez éloigné de l'Active Directory, les transformations structurantes induites par le passage vers l'Azure AD et les services cloud (tel que la gestion MDM des postes de travail) implique de revoir la stratégie d'usage du VPN pour le limiter au strict nécessaire. En effet, au travers de solutions de gestion cloud (MDM) et de protections cloud (EDR) des postes, l'accès au réseau d'entrerise n'est plus nécessaire pour garantir sa sécurité.
+Bien que ce sujet soit assez éloigné de l'Active Directory, les transformations structurantes induites par le passage vers l'Azure AD et les services cloud (tel que la gestion MDM des postes de travail) implique de revoir la stratégie d'usage du VPN pour le limiter au strict nécessaire. En effet, au travers de solutions de gestion cloud (MDM) et de protections cloud (EDR) des postes, l'accès au réseau d'entreprise n'est plus nécessaire pour garantir sa sécurité.
 
 ### Les GPOs : Normalisation des configurations
 
 Je constate couramment que le poids des GPOs peut constituer un énorme frein vis à vis de la transition vers l'Azure AD. En effet, il n'y a pas d'équivalent direct sur l'Azure AD. Il est nécessaire de reposer sur des politiques de configurations déployées par la solution MDM, de manière similaire à ce qui peut être réalisé sur des smartphones.
 Dans la stratégie de traitement des GPOs, deux périmètres sont à évaluer :
 
-* **Les postes de travail** : bien souvent un volume conséquent de GPOs existent sur ce périmètre. L'approche analytique est généralement préférée car considéré comme étant sure. La complexité de l'historique fait qu'une refonte de zéro est plus efficace (et permet d'éliminer des configurations obsolètes). De même que la standardisation et l'allègement des configurations devennant la norme (au grand dam de certaines équipes qui souhaitent pousser le cursus du configuration à son paroxysme), cette approche analytique deviendrait trop couteuse en charges de travail. Je recommande généralement une approche itérative lissée dans le temps pour transformer ces besoins de configurations vers les politiques MDM.
+* **Les postes de travail** : bien souvent un volume conséquent de GPOs existe sur ce périmètre. L'approche analytique est généralement préférée car considéré comme étant sure. La complexité de l'historique fait qu'une refonte de zéro est plus efficace (et permet d'éliminer des configurations obsolètes). De même que la standardisation et l'allègement des configurations devenant la norme (au grand dam de certaines équipes qui souhaitent pousser le cursus du configuration à son paroxysme), cette approche analytique deviendrait trop couteuse en charges de travail. Je recommande généralement une approche itérative lissée dans le temps pour transformer ces besoins de configurations vers les politiques MDM.
 
-* **Les serveurs** : l'usage des GPOs sur ce périmètre (en particulier pour la standardisation des politiques de sécurité) est intimement lié à la transformation des services et applications d'enterprise vers des services Cloud (PaaS / SaaS). Elles ne pourront être décommissionnées qu'à posteriori de l'arrêt des serveurs.
+* **Les serveurs** : l'usage des GPOs sur ce périmètre (en particulier pour la standardisation des politiques de sécurité) est intimement lié à la transformation des services et applications d'entreprise vers des services Cloud (PaaS / SaaS). Elles ne pourront être décommissionnées qu'à posteriori de l'arrêt des serveurs.
 
 **Indicateur d'effort de transformation**
 * **Difficulté  :** faible (sauf si l'approche analytique pour les GPOs est retenue)
@@ -303,16 +303,16 @@ Dans la stratégie de traitement des GPOs, deux périmètres sont à évaluer :
 
 ## **Question 6** : Quel impact sur les applicatifs  ?
 
-Il s'agit du sujet le plus structurant - et souvent minimisé - pour le désengeagement de l'Active Directory. La règle que j'explique généralement est que **tant qu'une application reste intégrée à l'Active Directory ou hébergée sur une machine membre du domaine, l'Active Directory doit perdurer**. Bien que cette règle puisse créer une certaine appréhension, des scénarios plus ou moins complexes sont envisgeables selon les méthodes d'authentification :
+Il s'agit du sujet le plus structurant - et souvent minimisé - pour le désengagement de l'Active Directory. La règle que j'explique généralement est que **tant qu'une application reste intégrée à l'Active Directory ou hébergée sur une machine membre du domaine, l'Active Directory doit perdurer**. Bien que cette règle puisse créer une certaine appréhension, des scénarios plus ou moins complexes sont envisgeables selon les méthodes d'authentification :
 
 ### Pour les applications utilisant le protocole Kerberos, NTLM, LDAP(s)
 
-Ce type de protocole n'étant pas supporté nativement par Azure AD, une transformation des applications est nécessaire. Plusieurs chemins sont enviseagbles :
+Ce type de protocole n'étant pas supporté nativement par Azure AD, une transformation des applications est nécessaire. Plusieurs chemins sont possibles :
 * Soit via un lift & shift de l'application vers du IaaS Azure et une intégration sur Azure Active Directory Domain services
-* Soit via une transformation de la méthode d'authentication vers des protocoles supportés nativement sur l'Azure AD
+* Soit via une transformation de la méthode d'authentification vers des protocoles supportés nativement sur l'Azure AD
 * Soit via une migration de l'applicatif vers une solution SaaS utilisant un protocole supporté nativement sur l'Azure AD
 * Soit via une migration de l'applicatif vers un nouvel applicatif utilisant un protocole supporté nativement sur l'Azure AD
-* Soit via un redevellopement de l'applicatif répondant aux standards actuels et en privilégiant les services PaaS
+* Soit via un redéveloppement de l'applicatif répondant aux standards actuels et en privilégiant les services PaaS
 * Soit via une déconnexion de la source d'authentification (l'Active Directory) au profil d'une authentification locale
 
 Je recommande d'envisager la conservation de l'Active Directory pour couvrir les authentifications applicatives qu'en ultime recours.
@@ -320,33 +320,33 @@ Je recommande d'envisager la conservation de l'Active Directory pour couvrir les
 ### Pour les applications utilisant les protocoles SAML, OAuth ...
 
 Il s'agit du périmètre le plus *simple* a traiter du fait que ces protocoles sont supportées nativement sur l'Azure AD. De ce fait le chemin de transformation peut être relativement court. 
-A noter qu'une identification de la supportatibilité de ces protocoles pour l'ensemble du portofolio applicatif peut être un accélarateur. Il est alors enviseagble de basculer une application reposant sur du LDAP(s), Kerberos ... sur une méthode d'authentification supportée par Azure AD.
+A noter qu'une identification de la supportatibilité de ces protocoles pour l'ensemble du portfolio applicatif peut être un accélérateur. Il est alors possible de basculer une application reposant sur du LDAP(s), Kerberos ... sur une méthode d'authentification supportée par Azure AD.
 
-Une question que me pose souvent mes clients est l'intéret de la solution **Azure AD application Proxy**. Souvent une incompréhension existe vis à vis de cette solution. Cette solution permet de faciliter le SSO depuis un poste pure cloud (ie. Azure AD Join Only), mais ne permet pas pour une application supportée par Azure AD Application Proxy de s'affranchir de l'Active Directory.
+Une question que me pose souvent mes clients est l'intérêt de la solution **Azure AD application Proxy**. Souvent une incompréhension existe vis à vis de cette solution. Cette solution permet de faciliter le SSO depuis un poste pure cloud (ie. Azure AD Join Only), mais ne permet pas pour une application supportée par Azure AD Application Proxy de s'affranchir de l'Active Directory.
 Pour plus de détail : [Référence Azure AD Application Proxy](https://docs.microsoft.com/en-us/azure/active-directory/app-proxy/application-proxy)
 
 **Indicateur d'effort de transformation**
-* **Difficulté  :** moyenne à forte selon le portfoilio applicatif
-* **Charges     :** moyenne à forte selon le portfoilio applicatif
+* **Difficulté  :** moyenne à forte selon le portfolio applicatif
+* **Charges     :** moyenne à forte selon le portfolio applicatif
 
 
-## **Question 7** : Est ce une opportunité pour simplifier la vie des utilisateurs ?
+## **Question 7** : Est-ce une opportunité pour simplifier la vie des utilisateurs ?
 
 Du point de vue des utilisateurs, les gains peuvent être de plusieurs niveaux :
 
 * **Authentification** : L'Azure AD devenant la source d'authentification globale, l'unicité du Royaume SSO peut être atteinte, l'authentification entre les applications et services est alors réellement transparente.
-* **Accès aux services et applications** : L'Azure AD étant un fort drivers pour massifier l'usage des services Cloud, la sanctuarisation du **réseau d'entreprise** se réduit très fortment (et de fait l'usage du VPN). Les utilisateurs peuvent ainsi, où qu'ils soient, simplement accéder aux services et applications.
-* **Autonomie** : Le couplage des fonctionnalités d'enrollement automatique des postes de travail (autopilot) avec la solution de MDM, permet aux utilisateurs de (re)préparer leur postes de travail où qu'ils se trouvent sans nécessiter le passage dans les locaux de l'entreprise
-* **Autonomie** : Les fonctions nativement de reinitialisation de mot de passe (Self Service Reset Password) permet aux utilisateurs de régénérer ce mot de passe de manière sécurisée en autonomie sans avoir à recourir au helpdesk
+* **Accès aux services et applications** : L'Azure AD étant un fort driver pour massifier l'usage des services Cloud, la sanctuarisation du **réseau d'entreprise** se réduit très fortement (et de fait l'usage du VPN). Les utilisateurs peuvent ainsi, où qu'ils soient, simplement accéder aux services et applications.
+* **Autonomie** : Le couplage des fonctionnalités d'enrollement automatique des postes de travail (autopilot) avec la solution de MDM, permet aux utilisateurs de (re)préparer leurs postes de travail où qu'ils se trouvent sans nécessiter le passage dans les locaux de l'entreprise
+* **Autonomie** : Les fonctions nativement de réinitialisation de mot de passe (Self Service Reset Password) permet aux utilisateurs de régénérer ce mot de passe de manière sécurisée en autonomie sans avoir à recourir au helpdesk
 
 
-## **Question X** : Et au final, si l'entreprise bascule sur l'Azure AD, est ce que je peux garantir la sécurité de mon SI ?
+## **Question 8** : Et au final, si l'entreprise bascule sur l'Azure AD, est ce que je peux garantir la sécurité de mon SI ?
 
-Outre la gestion des identités et authentifications proposées par l'Azure AD, l'annuaire s'inscrit dans une démarche de Zero Trust permettant de garantir un haut niveau de sécurité de manière nominale sans avoir à recourir à des solutions complémentaires comme sur l'Active Directory. L'Azure AD Conditional Access permet d'ajuster les règles selon des conditions qui ne cessent d'augmenter. Neanmoins l'appropriation de l'Azure AD Conditional Access requiert une remise en cause des dogmes de sécurité (le bien nommé **Chateau Fort**). En effet, il ne faut plus définir des politiques d'accès sur une approche blocage, mais plutôt sur une approche de situation : quelles situation je veux / doit traiter.
+Outre la gestion des identités et authentifications proposées par l'Azure AD, l'annuaire s'inscrit dans une démarche de Zero Trust permettant de garantir un haut niveau de sécurité de manière nominale sans avoir à recourir à des solutions complémentaires comme sur l'Active Directory. L'Azure AD Conditional Access permet d'ajuster les règles selon des conditions qui ne cessent d'augmenter. Néanmoins l'appropriation de l'Azure AD Conditional Access requiert une remise en cause des dogmes de sécurité (le bien nommé **Chateau Fort**). En effet, il ne faut plus définir des politiques d'accès sur une approche blocage, mais plutôt sur une approche de situations : **quelles situations** je veux / doit traiter.
 
 
 # Conclusion
 
-Par conséquent, Son abandon par les entreprises ne peut être réalisable sans la définition d'un plan stratégique global, l'ajustement de la gouvernance du système d'informations et la revue du modèle opérationnel. La traitement de toutes les questions précédentes permet d'envisager le passage vers Azure AD et de s'affranchir de l'AD. Neanmoins le non traitement d'une des questions impliquent la conservation de l'AD
+Par conséquent, Son abandon par les entreprises ne peut être réalisable sans la définition d'un plan stratégique global, l'ajustement de la gouvernance du système d'informations et la revue du modèle opérationnel. Le traitement de toutes les questions précédentes permet d'envisager le passage vers Azure AD et de s'affranchir de l'AD. Néanmoins le non traitement d'une des questions impliquent la conservation de l'AD.
 
 Bien que les moyens techniques sont disponibles et permettent d'atteindre cet objectif, les transformations à apporter ainsi que les durées nécessaires peuvent être plus ou moins longues. Il s'agit de fait d'un plan sur plusieurs années (en particulier pour le traitement des applications).
