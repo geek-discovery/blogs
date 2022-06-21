@@ -69,7 +69,6 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
         ![Azure AD Conditional Access Cas1](/assets/images/AADCA_CAS1.png)
 
-
 - **Cas 2 : Je souhaite que les utilisateurs de l’entreprise puissent accéder aux services O365 avec une authentification forte et des clients légers si je ne maitrise pas la sécurité des terminaux Windows.**
 
     - Explications
@@ -80,7 +79,6 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
     - Matrice
 
         ![Azure AD Conditional Access Cas2](/assets/images/AADCA_CAS2.png)
-
 
 - **Cas 3 : Je souhaite que sur des postes de travail pour lesquels les critères de conformité sont validés, mes utilisateurs puissent utiliser les clients lourds et web sans authentification multifacteur, dans le cas contraire uniquement les client web seront autorisés avec une authentification multifacteur.**
 
@@ -94,7 +92,6 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
         ![Azure AD Conditional Access Cas3](/assets/images/AADCA_CAS3.png)
 
-
 - **Cas 4 : Je souhaite que les accès à cette application requièrent une authentification forte quotidienne car il s’agit d’une application sensible.**
 
     - Explications
@@ -106,13 +103,12 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
         ![Azure AD Conditional Access Cas4](/assets/images/AADCA_CAS4.png)
 
-
 - **Cas 5 : Je veux autoriser uniquement les machines *Hybrid Azure AD Join* à se connecter aux services O365.**
 
     - Ce cas là n’est pas conforme aux concepts du *Zero Trust*. En effet
-        - Cela ne couvre pas le cas des machines en *Azure AD Join* et *AD Join*. Et par conséquent génère des effets de bords pour les accès depuis les serveurs (eg. les fermes RDS)
-        - Cela ne permet pas de garantir un niveau de sécurité. En effet un poste *Hybrid Azure AD Join* non conforme (eg. non patché depuis 6 mois) peut présenter un exposition sécurité supérieure à un poste non connu de l’entreprise mais conforme en terme de sécurité (eg. il dispose de la totalité des patches)
-        - Cela permet de s’assurer partiellement qu’uniquement les machines fournis par l’entreprise sont enrôlés et laisse de côté une partie du périmètre
+    	- Cela ne couvre pas le cas des machines en *Azure AD Join* et *AD Join*. Et par conséquent génère des effets de bords pour les accès depuis les serveurs (eg. les fermes RDS)
+    	- Cela ne permet pas de garantir un niveau de sécurité. En effet un poste *Hybrid Azure AD Join* non conforme (eg. non patché depuis 6 mois) peut présenter un exposition sécurité supérieure à un poste non connu de l’entreprise mais conforme en terme de sécurité (eg. il dispose de la totalité des patches)
+    	- Cela permet de s’assurer partiellement qu’uniquement les machines fournis par l’entreprise sont enrôlés et laisse de côté une partie du périmètre
 
     - La recommandation est de contraindre l’enrôlement des terminaux Windows principalement afin de définir une politique perenne (comme les futurs postes de travail enrôlés en Azure *AD Join* – autopilot)
     - Pour interdire l’enrôlement des postes de travail Windows personnel, deux méthodes complémentaires sont possibles
