@@ -45,6 +45,7 @@ Lors d’échanges sur le sujet de la protection des accès à Azure AD et Offic
 - Définissez le niveau de sécurité minimal qui doit être appliqué dans telle ou telle conditions
 - Contrôler afin de détecter des nouveaux usages et statuer sur la légitimité / non-légitimité
 - Effectuer un suivi mensuel de l'évolution des conditions et des critères possibles sur l'*Azure AD Conditional Access*
+- Le sujet va delà d'Office 365 et requiert une vision transverse
 - La constitution d’un écosystème intégré de sécurité et de gestion des identités et terminaux est un accélérateur
 
 ## La philosophie c’est bien, mais de manière pragmatique comment je m’y prends ?
