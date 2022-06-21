@@ -17,6 +17,7 @@ Tout d’abord sur la base de mes retours d’expériences, l’approche progres
 Ensuite, il est important de construire des règles qui s’inscrivent dans la philosophie du Zero Trust (cf.la règle 1) qui porte le principe de la confiance explicite synthétisée par les règles suivantes (contextualisées au Conditional Access) :
 * L’ensemble des éléments de la chaine de traitement participent à la sécurisation des accès
 * Adaptabilité des décisions selon les conditions requises
+
 Et pour finir réfléchir sur une matrice permettant d’assembler l’ensemble des conditions attendues pour autoriser les accès ou les bloquer (ci-dessous une exemple)
 
 
