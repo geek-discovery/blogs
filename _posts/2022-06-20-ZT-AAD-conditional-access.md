@@ -109,7 +109,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
     - <div style="text-align: left">Pour interdire l’enrôlement des postes de travail Windows personnel, deux méthodes complémentaires sont possibles</div>
         - *AD Join* via la gestion des privilèges sur l'*AD*
         - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*  
-
+<br/>
 - **Cas 6 : Je veux bloquer l’accès aux terminaux BYOD car je ne maitrise pas leur sécurité.**
 
     - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
@@ -118,7 +118,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         - Terminal BYOD managé
         - Terminal BYOD non managé
         - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité
-
+<br/>
 - **Cas 7 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
 
     - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
