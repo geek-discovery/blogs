@@ -13,7 +13,7 @@ tags:
 ---
 
 Dans les programmes de bascule des entreprises vers les services Cloud Collaboratifs de Microsoft (le bien nommé Office 365) la question de la sécurisation des accès aux services est bien souvent non adressée au bon niveau. En effet, la question de quelles politiques d’accès doivent être mises en place doit se poser en amont. Bien souvent la réponse est de vouloir bloquer les accès selon les cas d’usages hérités des politiques de sécurité appliquées sur les environnements *OnPremise*. Toutefois est-ce la bonne approche ?
-L’objectif de cet article est de donner les clés pour comprendre les enjeux autour de la politique d’accès aux services Office 365 et d’expliciter certaines bonnes pratiques.
+L’objectif de cet article est de donner les clés (sans pour autant entrer dans l'ensemble des subtilités) pour comprendre les enjeux autour de la politique d’accès aux services Office 365 et d’expliciter certaines bonnes pratiques.
 
 # Préambule
 
@@ -68,6 +68,11 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
     - Matrice :
 
         ![Azure AD Conditional Access Cas1](/assets/images/AADCA_CAS1.png)
+
+
+
+
+
 
 # TEST
 
