@@ -63,7 +63,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
     - Explications :
         - Les terminaux étant maitrisés (eg. politiques de configuration et protection déployées via Intune ou via GPO), les accès aux données reposant sur une authentification multificateur alors les données peuvent être librement consommées depuis les terminaux
-        - La notion de maitrise repose sur le type de jointure effectuée (Azure AD Join et/ou Hybrid Azure AD Join)
+        - La notion de maitrise repose sur le type de jointure effectuée (Azure AD Join et/ou Hybrid Azure AD Join) via la condition *Filter for Devices > TrustType*
 
     - Matrice :
 
@@ -74,10 +74,26 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
     - Explications :
         - Cela permet de couvrir certains cas de compromissions comme un malware sur le poste qui via Outlook (client lourd) exfiltre l’annuaire d’entreprise ou effectue du phishing en mon nom
         - Cela permet de couvrir certains cas d’exfiltration de données via la récupération du cache Outlook
+        - La notion de maitrise repose sur le type de jointure effectuée (Différent de Azure AD Join et Hybrid Azure AD Join) via la condition *Filter for Devices > TrustType*
 
     - Matrice :
 
-        ![Azure AD Conditional Access Cas2](/assets/images/AADCA_CAS1.png)
+        ![Azure AD Conditional Access Cas2](/assets/images/AADCA_CAS2.png)
+
+- **Cas 3 : Je souhaite que sur des postes de travail pour lesquels les critères de conformité sont validés, mes utilisateurs puissent utiliser les clients lourds et web sans authentification multifacteur, dans le cas contraire uniquement les client web seront autorisés avec une authentification multifacteur.**
+
+    - Explications :
+        - Cela permet de garantir que les données sont consommés depuis un terminal présentant une exposition sécurité minime
+        - Outre les politiques de conformité standards de Intune, il est possible d'ajouter des critères custom (eg. présence du client SASE, présence d'un certificat émis par l'autorité de certification de l'entreprise ...)
+        - Cela permet de couvrir certains cas d’exfiltration de données via l'utilisation de failles de sécurité connues non corrigées
+        - La notion de conformité repose sur la condition *Filter for Devices > IsCompliant*
+        
+    - Matrice :
+
+        ![Azure AD Conditional Access Cas3](/assets/images/AADCA_CAS3.png)
+
+
+
 
 
 # TEST
