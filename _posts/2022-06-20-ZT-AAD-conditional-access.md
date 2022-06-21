@@ -69,6 +69,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
         ![Azure AD Conditional Access Cas1](/assets/images/AADCA_CAS1.png)
 
+
 - **Cas 2 : Je souhaite que les utilisateurs de l’entreprise puissent accéder aux services O365 avec une authentification forte et des clients légers si je ne maitrise pas la sécurité des terminaux Windows.**
 
     - Explications :
@@ -79,6 +80,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
     - Matrice :
 
         ![Azure AD Conditional Access Cas2](/assets/images/AADCA_CAS2.png)
+
 
 - **Cas 3 : Je souhaite que sur des postes de travail pour lesquels les critères de conformité sont validés, mes utilisateurs puissent utiliser les clients lourds et web sans authentification multifacteur, dans le cas contraire uniquement les client web seront autorisés avec une authentification multifacteur.**
 
@@ -92,6 +94,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
         ![Azure AD Conditional Access Cas3](/assets/images/AADCA_CAS3.png)
 
+
 - **Cas 4 : Je souhaite que les accès à cette application requièrent une authentification forte quotidienne car il s’agit d’une application sensible.**
 
     - Explications :
@@ -102,6 +105,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
     - Matrice :
 
         ![Azure AD Conditional Access Cas4](/assets/images/AADCA_CAS4.png)
+
 
 - **Cas 5 : Je veux autoriser uniquement les machines *Hybrid Azure AD Join* à se connecter aux services O365.**
 
@@ -115,6 +119,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         - *AD Join* via la gestion des privilèges sur l'*AD*
         - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*
 
+
 - **Cas 6 : Je veux bloquer l’accès aux terminaux BYOD car je ne maitrise pas leur sécurité.**
 	
     - Ce cas là n’est pas conforme aux concepts du *Zero Trust*. En effet :
@@ -125,7 +130,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         - Terminal BYOD non managé
         - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité
 
-- **Cas 7 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.*
+- **Cas 7 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
 
     - Ce cas là n’est pas conforme aux concepts du *Zero Trust*. En effet :
         - Dans le cadre de l'usage d'une solution SASE (*Proxy Cloud*), le réseau de l'entreprise est masqué par la solution SASE
