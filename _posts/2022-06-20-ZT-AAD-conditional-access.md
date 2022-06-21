@@ -136,13 +136,11 @@ Les cas types (non exhaustif) ci-dessous sont à titre descriptif. Dans la réal
     - <div style="text-align: left">La recommandation est de revenir sur des conditions standards pour définir l'activation ou non d'une authentification multifacteur</div>
 
 ## Quelques cas avancés
-Certaines fonctionnalités peu utilisées de l’Azure AD Conditional Access peuvent toutefois apportées des bénéfices supplémentaires. Toutefois, leur usage requiert un bon niveau de maitrise :
-
-* Les contextes d'authentification : ils permettent d'instancier des critères d'accès spécifiques selon l'étiquette de sensibilité d'un *Group O365* ou d'un site *SharePoint*. Par exemple lors de l'accès à un site *SharePoint* classifié restreint, une authentification forte toutes les 8 heures pourra être requise, tandis qu'une authentification simple toutes les 36 heures pourra être requise pour les autres sites *SharePoint*
-
-* Demande automatisé de changement de mot de passe : 
-
-* Usage de Microsoft Defender for Cloud Apps :
+Certaines fonctionnalités peu utilisées de l’Azure AD Conditional Access peuvent toutefois apportées des bénéfices supplémentaires. Toutefois, leur usage requiert un bon niveau de maitrise (et potentiellement des licenses avancées) :
+* Les **contextes d'authentification** : ils permettent d'instancier des critères d'accès spécifiques selon l'étiquette de sensibilité d'un *Group O365* ou d'un site *SharePoint*. Par exemple lors de l'accès à un site *SharePoint* classifié restreint, une authentification forte toutes les 8 heures pourra être requise, tandis qu'une authentification simple toutes les 36 heures pourra être requise pour les autres sites *SharePoint*
+* Demande automatisé de **changement de mot de passe** : afin de réagir automatiquement en cas de suspicion de compromission de comptes utilisateurs ou d’activités suspectes, il est possible de forcer la demande de modification du mot de passe du compte de l’utilisateur. Ce fonctionnement repose sur l’usage des conditions *Sign-In risk level* et *User risk level*. Ces deux signaux sont classifiés de manière automatique par le moteur de sécurité de l’*Azure AD*. De ce fait en utilisant des niveaux élevés de risques dans les conditions, il est possible de demander automatiquement le changement de mot de passe. Les niveaux de risques seront alors ensuite diminués.
+* Usage de **Microsoft Defender for Cloud Apps** : ce service permet d’appliquer des contrôles plus poussés comme les actions effectuées sur les données, la vérification de la présence d’un certificat émis par l’entreprise, etc … toutefois le niveau de possibilité permis implique une maitrise de la solution.
+* Validation de la **Charte Utilisateur** : afin de s’assurer que les utilisateurs aient pris connaissance de la Charte d’accès aux systèmes d’informations de l’entreprise il est possible de mettre en place une règle sur l’*Azure AD Conditional Access* obligeant l’utilisateur à la valider. Tant que cette validation n’est pas réalisée, les accès seront bloqués (en particulier pour les populations prestataires, ce cas d’usage prend tout son sens). A noter que la validité de l’approbation de la Charte peut être conditionnée à une durée.
 
 # Bénéfices et limites du Conditional Access
 Bien qu’un effort intellectuel soit nécessaire pour conceptualiser l’ensemble des règles à mettre en place, l’intérêt majeur réside dans la consolidation en un endroit unique des politiques d’accès. Cela permet en autres de s’affranchir mesures de protection périmtétriques (comme des règles de filtrage sur les *firewalls* et autres *VPN*) et de proposer aux utilisateurs quasi systématiquement un environnement similaire en situation de travail à distance et au sein du réseau d’entreprise ainsi que d’adapter les règles d’accès selon le niveau d’atteinte des conditions (au lieu du blocage systématique)
@@ -150,25 +148,3 @@ Bien qu’un effort intellectuel soit nécessaire pour conceptualiser l’ensemb
 Néanmoins certaines limites existent
 * Afin de s’affranchir de la protection traditionnelle du réseau de transport (via *VPN* principalement ou mécanismes propres au flux applicatif) et se concentrer uniquement sur les conditions d’accès, il est nécessaire que ces flux réposent sur le protocole standard (*http*), avec une sécurisation basée sur les standards actuels (*TLS1.2+*) et des algorithmes de chiffrement réputés fiable (tel que *AES*) et déprécier les algorithmes de chiffrement réputés peu fiables (tel que *3DES*) 
 * L’usage de l’*Azure AD Conditional Access* requiert L’intégration des apps dans le *SSO Azure AD* ou éligibles avec *Azure AD Proxy*. Pour ce dernier les critères de compatibilité sont décrit dans cet article [Remote access to on-premises apps - Azure AD Application Proxy](https://docs.microsoft.com/en-us/azure/active-directory/app-proxy/application-proxy#what-is-application-proxy)
-
-
-# TEST
-
-Quelques idées de critères ultra avancés
-- Inscriptions Zscaler
-- Vérification de la conformité en intégrant le fait que Zscaler soit up -> Attention la conformité n'est pas live
-
-Authentication context
-
- eeee
-    - ffff
-
-# 1
-* toto 1
-* toto 2
-    * toto 2.1
-    * toto 2.2
-## 2
-### 3
-#### 4
-##### 5 
