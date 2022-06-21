@@ -60,8 +60,14 @@ Ensuite, il est important de construire des règles qui s’inscrivent dans la p
 Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’agira de cumuler l’ensemble de ces cas d’usage pour définir la politique d’accès conditionnelle globale.
 
 - **Cas 1 : Je souhaite que les utilisateurs de l’entreprise puissent accéder aux services O365 avec une authentification forte et des clients lourds et web uniquement si je maitrise les terminaux.**
-    - Explications
-        - Ter
+
+    - Explications :
+        - Les terminaux étant maitrisés (eg. politiques de configuration et protection déployées via Intune ou via GPO), les accès aux données reposant sur une authentification multificateur alors les données peuvent être librement consommées depuis les terminaux
+        - La notion de maitrise repose sur le type de jointure effectuée (Azure AD Join et/ou Hybrid Azure AD Join)
+
+    - Matrice :
+
+
 
 # TEST
 
