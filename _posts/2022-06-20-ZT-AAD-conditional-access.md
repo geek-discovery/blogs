@@ -102,13 +102,10 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 - **Cas 5 : Je veux autoriser uniquement les machines *Hybrid Azure AD Join* à se connecter aux services O365.**
 
     - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
-
         - Cela ne couvre pas le cas des machines en *Azure AD Join* et *AD Join*. Et par conséquent génère des effets de bords pour les accès depuis les serveurs (eg. les fermes RDS)
         - Cela ne permet pas de garantir un niveau de sécurité. En effet un poste *Hybrid Azure AD Join* non conforme (eg. non patché depuis 6 mois) peut présenter un exposition sécurité supérieure à un poste non connu de l’entreprise mais conforme en terme de sécurité (eg. il dispose de la totalité des patches)
         - Cela permet de s’assurer partiellement qu’uniquement les machines fournis par l’entreprise sont enrôlés et laisse de côté une partie du périmètre
-
     - La recommandation est de contraindre l’enrôlement des terminaux Windows principalement afin de définir une politique perenne (comme les futurs postes de travail enrôlés en Azure *AD Join* et/ou via autopilot)
-
     - Pour interdire l’enrôlement des postes de travail Windows personnel, deux méthodes complémentaires sont possibles
         - *AD Join* via la gestion des privilèges sur l'*AD*
         - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*
@@ -123,6 +120,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité
 
 - **Cas 7 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
+
     - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
         - Dans le cadre de l'usage d'une solution SASE (*Proxy Cloud*), le réseau de l'entreprise est masqué par la solution SASE
         - Le Offloading de certains trafic (comme les flux audio/video temps réel de Teams) ne sera pas vu comme arrivant depuis le *Proxy* d'entreprise
