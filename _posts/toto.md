@@ -17,21 +17,19 @@ L’objectif de cet article est de donner les clés pour comprendre les enjeux a
 
 # Préambule
 
-Au-delà des concepts généraux du modèle Zero Trust, Microsoft décline au travers de l’Azure AD Conditional Access, ce concept pour les accès aux services reposent sur l’Azure AD comme fournisseur d’identité (Identity Provider - IDP).
-Bien que relativement simple à son lancement (peu de critères), au fil du temps le Conditional Access a fortement évolué pour traiter un nombre important de cas d’usages. L’image ci-dessous est la situation à février 2022.
+Au-delà des concepts généraux du modèle Zero Trust, Microsoft décline au travers de l’Azure AD Conditional Access, ce concept pour les accès aux services reposent sur l’Azure AD comme fournisseur d’identité (Identity Provider - IDP). Bien que relativement simple à son lancement (peu de critères), au fil du temps le Conditional Access a fortement évolué pour traiter un nombre important de cas d’usages. L’image ci-dessous est la situation à février 2022.
+
 Outre son fonctionnement et ses bénéfices dont je parle ultérieurement, le mode de fonctionnement du Conditional Access lève des questions chez quasiment tous mes clients qui restent sur une approche défensive, c’est-à-dire sur le modèle historique du château fort.
-L’objectif de cert article est d’apporter des explications sur le fonctionnement du Conditional Acces (qui devient incontournable dans tous programmes de Modern Management basés sur Intune, tous programmes de bascule vers Office 365 ou sur tous programmes de massification SSO Azure AD), les impacts sur le modèle de sécurité et de gouvernance de l’entreprise, et les bonnes pratiques pour en tirer le plus de bénéfices.
+
+L’objectif de cet article est d’apporter des explications sur le fonctionnement du Conditional Acces (qui devient incontournable dans tous programmes de Modern Management basés sur Intune, tous programmes de bascule vers Office 365 ou sur tous programmes de massification SSO Azure AD), les impacts sur le modèle de sécurité et de gouvernance de l’entreprise, et les bonnes pratiques pour en tirer le plus de bénéfices.
 
 
+![Zero Trust Access by Microsoft Azure AD Conditional Access](/assets/images/MicrosoftZeroTrustAccess.png)
+
+Source Microsoft : [Conditional Access design principles and dependencies - Azure Architecture Center](https://docs.microsoft.com/en-us/azure/architecture/guide/security/conditional-access-design)
 
 
-
-
-
-
-
-
-
+# TEST
 
 
 ## La philosophie c’est bien, mais de manière pragmatique comment je m’y prends ?
