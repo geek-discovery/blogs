@@ -2,14 +2,36 @@
 title: CA ?
 layout: post
 post-image: /assets/images/ActiveDirectory.jpg
-description: Mes convictions sur les pistes de transformation pour s'affranchir de l'Active Directory.
+description: Comment s'y prendre avec Azure AD Conditional Access.
 tags:
-- Active Directory
 - Azure Active Directory
-- AD
+- Conditional Access
 - AAD
+- Zero Trust
+- Zero-Trust
 - Microsoft
 ---
+
+Dans les programmes de bascule des entreprises vers les services Cloud Collaboratifs de Microsoft (le bien nommé Office 365) la question de la sécurisation des accès aux services est bien souvent non adressée au bon niveau. En effet, la question de quelles politiques d’accès doivent être mises en place doit se poser en amont. Bien souvent la réponse est de vouloir bloquer les accès selon les cas d’usages hérités des politiques de sécurité appliquées sur les environnements OnPremise. Toutefois est-ce la bonne approche ?
+L’objectif de cet article est de donner les clés pour comprendre les enjeux autour de la politique d’accès aux services Office 365 et d’expliciter certaines bonnes pratiques.
+
+# Préambule
+
+Au-delà des concepts généraux du modèle Zero Trust, Microsoft décline au travers de l’Azure AD Conditional Access, ce concept pour les accès aux services reposent sur l’Azure AD comme fournisseur d’identité (Identity Provider - IDP).
+Bien que relativement simple à son lancement (peu de critères), au fil du temps le Conditional Access a fortement évolué pour traiter un nombre important de cas d’usages. L’image ci-dessous est la situation à février 2022.
+Outre son fonctionnement et ses bénéfices dont je parle ultérieurement, le mode de fonctionnement du Conditional Access lève des questions chez quasiment tous mes clients qui restent sur une approche défensive, c’est-à-dire sur le modèle historique du château fort.
+L’objectif de cert article est d’apporter des explications sur le fonctionnement du Conditional Acces (qui devient incontournable dans tous programmes de Modern Management basés sur Intune, tous programmes de bascule vers Office 365 ou sur tous programmes de massification SSO Azure AD), les impacts sur le modèle de sécurité et de gouvernance de l’entreprise, et les bonnes pratiques pour en tirer le plus de bénéfices.
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## La philosophie c’est bien, mais de manière pragmatique comment je m’y prends ?
