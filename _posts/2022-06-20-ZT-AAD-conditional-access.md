@@ -108,23 +108,23 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
     - <div style="text-align: left">La recommandation est de contraindre l’enrôlement des terminaux Windows principalement afin de définir une politique perenne (comme les futurs postes de travail enrôlés en Azure *AD Join* et/ou via autopilot)</div>
     - <div style="text-align: left">Pour interdire l’enrôlement des postes de travail Windows personnel, deux méthodes complémentaires sont possibles</div>
         - *AD Join* via la gestion des privilèges sur l'*AD*
-        - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*
+        - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*  
 
 - **Cas 6 : Je veux bloquer l’accès aux terminaux BYOD car je ne maitrise pas leur sécurité.**
 
-    - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
+    - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
         - Il n’y a pas de lien direct entre terminal BYOD et le niveau de management et conformité
-    - La recommandation est de définir les critères pour les deux cas suivants
+    - <div style="text-align: left">La recommandation est de définir les critères pour les deux cas suivants</div>
         - Terminal BYOD managé
         - Terminal BYOD non managé
         - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité
 
 - **Cas 7 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
 
-    - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
+    - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
         - Dans le cadre de l'usage d'une solution SASE (*Proxy Cloud*), le réseau de l'entreprise est masqué par la solution SASE
         - Le Offloading de certains trafic (comme les flux audio/video temps réel de Teams) ne sera pas vu comme arrivant depuis le *Proxy* d'entreprise
-    - La recommandation est de revenir sur des conditions standards pour définir l'activation ou non d'une authentification multifacteur
+    - <div style="text-align: left">La recommandation est de revenir sur des conditions standards pour définir l'activation ou non d'une authentification multifacteur</div>
 
 
 # TEST
