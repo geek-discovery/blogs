@@ -116,10 +116,9 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*
 
 - **Cas 6 : Je veux bloquer l’accès aux terminaux BYOD car je ne maitrise pas leur sécurité.**
-	
-    - Ce cas là n’est pas conforme aux concepts du *Zero Trust*. En effet
+
+    - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
         - Il n’y a pas de lien direct entre terminal BYOD et le niveau de management et conformité
-		
     - La recommandation est de définir les critères pour les deux cas suivants
         - Terminal BYOD managé
         - Terminal BYOD non managé
@@ -127,10 +126,9 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
 - **Cas 7 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
 
-    - Ce cas là n’est pas conforme aux concepts du *Zero Trust*. En effet
+    - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
         - Dans le cadre de l'usage d'une solution SASE (*Proxy Cloud*), le réseau de l'entreprise est masqué par la solution SASE
         - Le Offloading de certains trafic (comme les flux audio/video temps réel de Teams) ne sera pas vu comme arrivant depuis le *Proxy* d'entreprise
-
     - La recommandation est de revenir sur des conditions standards pour définir l'activation ou non d'une authentification multifacteur
 
 
