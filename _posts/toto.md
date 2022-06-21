@@ -92,8 +92,16 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
         ![Azure AD Conditional Access Cas3](/assets/images/AADCA_CAS3.png)
 
+- **Cas 4 : Je souhaite que les accès à cette application requièrent une authentification forte quotidienne car il s’agit d’une application sensible.**
 
+    - Explications :
+        - il s'agit d'un des mécanismes pour palier le vol de crédential en invalidant le jeton au bout de 12h et en reforcant l'authentification des utilisateurs
+        - La notion de du durée de validité repose sur le contrôle *Session > Sign-in frequency*
+        - La notion de ciblage de l'application est possible suite à l'enregistrement de l'application concernée dans le *SSO Azure AD*. Elle devra être sélectionnée dans *Cloud apps or actions*
+        
+    - Matrice :
 
+        ![Azure AD Conditional Access Cas4](/assets/images/AADCA_CAS4.png)
 
 
 # TEST
