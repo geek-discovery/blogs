@@ -23,6 +23,7 @@ Outre son fonctionnement et ses bénéfices dont je parle ultérieurement, le mo
 
 L’objectif de cet article est d’apporter des explications sur le fonctionnement du Conditional Acces (qui devient incontournable dans tous programmes de Modern Management basés sur Intune, tous programmes de bascule vers Office 365 ou sur tous programmes de massification SSO Azure AD), les impacts sur le modèle de sécurité et de gouvernance de l’entreprise, et les bonnes pratiques pour en tirer le plus de bénéfices.
 
+De manière globale, l’Azure AD Conditional Access se base sur le triptyque Signal, Décision et Contrôle représenté dans la cartographie suivante :
 
 ![Zero Trust Access by Microsoft Azure AD Conditional Access](/assets/images/MicrosoftZeroTrustAccess.png)
 
