@@ -57,7 +57,7 @@ Ensuite, il est important de construire des règles qui s’inscrivent dans la p
 ![Azure AD Conditional Access Template](/assets/images/AADCA_Template.png)
 
 ## La démonstration par l’exemple
-Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’agira de cumuler l’ensemble de ces cas d’usage pour définir la politique d’accès conditionnelle globale.
+Les cas types (non exhaustif) ci-dessous sont à titre descriptif. Dans la réalité il s’agira de cumuler l’ensemble de ces cas d’usage pour définir la politique d’accès conditionnelle globale.
 
 - **Cas 1 : Je souhaite que les utilisateurs de l’entreprise puissent accéder aux services O365 avec une authentification forte et des clients lourds et web uniquement si je maitrise les terminaux.**
 
@@ -110,11 +110,11 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
 - **Cas 6 : Je veux autoriser uniquement les machines *Hybrid Azure AD Join* à se connecter aux services O365.**
 
-    - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
+    - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du <em>Zero Trust</em>, en effet</div>
         - Cela ne couvre pas le cas des machines en *Azure AD Join* et *AD Join*. Et par conséquent génère des effets de bords pour les accès depuis les serveurs (eg. les fermes RDS)
         - Cela ne permet pas de garantir un niveau de sécurité. En effet un poste *Hybrid Azure AD Join* non conforme (eg. non patché depuis 6 mois) peut présenter un exposition sécurité supérieure à un poste non connu de l’entreprise mais conforme en terme de sécurité (eg. il dispose de la totalité des patches)
         - Cela permet de s’assurer partiellement qu’uniquement les machines fournis par l’entreprise sont enrôlés et laisse de côté une partie du périmètre
-    - <div style="text-align: left">La recommandation est de contraindre l’enrôlement des terminaux Windows principalement afin de définir une politique perenne (comme les futurs postes de travail enrôlés en Azure *AD Join* et/ou via autopilot)</div>
+    - <div style="text-align: left">La recommandation est de contraindre l’enrôlement des terminaux Windows principalement afin de définir une politique perenne (comme les futurs postes de travail enrôlés en Azure <em>AD Join</em> et/ou via autopilot)</div>
     - <div style="text-align: left">Pour interdire l’enrôlement des postes de travail Windows personnel, deux méthodes complémentaires sont possibles</div>
         - *AD Join* via la gestion des privilèges sur l'*AD*
         - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*  
@@ -130,10 +130,26 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 <br/>
 - **Cas 8 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
 
-    - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
+    - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du <em>Zero Trust</em>, en effet</div>
         - Dans le cadre de l'usage d'une solution SASE (*Proxy Cloud*), le réseau de l'entreprise est masqué par la solution SASE
         - Le Offloading de certains trafic (comme les flux audio/video temps réel de Teams) ne sera pas vu comme arrivant depuis le *Proxy* d'entreprise
     - <div style="text-align: left">La recommandation est de revenir sur des conditions standards pour définir l'activation ou non d'une authentification multifacteur</div>
+
+## Quelques cas avancés
+Certaines fonctionnalités peu utilisées de l’Azure AD Conditional Access peuvent toutefois apportées des bénéfices supplémentaires. Toutefois, leur usage requiert un bon niveau de maitrise :
+
+* Les contextes d'authentification : ils permettent d'instancier des critères d'accès spécifiques selon l'étiquette de sensibilité d'un *Group O365* ou d'un site *SharePoint*. Par exemple lors de l'accès à un site *SharePoint* classifié restreint, une authentification forte toutes les 8 heures pourra être requise, tandis qu'une authentification simple toutes les 36 heures pourra être requise pour les autres sites *SharePoint*
+
+* Demande automatisé de changement de mot de passe : 
+
+* Usage de Microsoft Defender for Cloud Apps :
+
+# Bénéfices et limites du Conditional Access
+Bien qu’un effort intellectuel soit nécessaire pour conceptualiser l’ensemble des règles à mettre en place, l’intérêt majeur réside dans la consolidation en un endroit unique des politiques d’accès. Cela permet en autres de s’affranchir mesures de protection périmtétriques (comme des règles de filtrage sur les *firewalls* et autres *VPN*) et de proposer aux utilisateurs quasi systématiquement un environnement similaire en situation de travail à distance et au sein du réseau d’entreprise ainsi que d’adapter les règles d’accès selon le niveau d’atteinte des conditions (au lieu du blocage systématique)
+
+Néanmoins certaines limites existent
+* Afin de s’affranchir de la protection traditionnelle du réseau de transport (via *VPN* principalement ou mécanismes propres au flux applicatif) et se concentrer uniquement sur les conditions d’accès, il est nécessaire que ces flux réposent sur le protocole standard (*http*), avec une sécurisation basée sur les standards actuels (*TLS1.2+*) et des algorithmes de chiffrement réputés fiable (tel que *AES*) et déprécier les algorithmes de chiffrement réputés peu fiables (tel que *3DES*) 
+* L’usage de l’*Azure AD Conditional Access* requiert L’intégration des apps dans le *SSO Azure AD* ou éligibles avec *Azure AD Proxy*. Pour ce dernier les critères de compatibilité sont décrit dans cet article [Remote access to on-premises apps - Azure AD Application Proxy](https://docs.microsoft.com/en-us/azure/active-directory/app-proxy/application-proxy#what-is-application-proxy)
 
 
 # TEST
