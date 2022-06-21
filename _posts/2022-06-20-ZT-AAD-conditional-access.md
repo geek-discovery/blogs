@@ -101,7 +101,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
 - **Cas 5 : Je veux autoriser uniquement les machines *Hybrid Azure AD Join* à se connecter aux services O365.**
 
-    - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
+    - <div style="text-align: right">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
         - Cela ne couvre pas le cas des machines en *Azure AD Join* et *AD Join*. Et par conséquent génère des effets de bords pour les accès depuis les serveurs (eg. les fermes RDS)
         - Cela ne permet pas de garantir un niveau de sécurité. En effet un poste *Hybrid Azure AD Join* non conforme (eg. non patché depuis 6 mois) peut présenter un exposition sécurité supérieure à un poste non connu de l’entreprise mais conforme en terme de sécurité (eg. il dispose de la totalité des patches)
         - Cela permet de s’assurer partiellement qu’uniquement les machines fournis par l’entreprise sont enrôlés et laisse de côté une partie du périmètre
