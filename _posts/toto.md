@@ -66,8 +66,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         - La notion de maitrise repose sur le type de jointure effectuée (Azure AD Join et/ou Hybrid Azure AD Join)
 
     - Matrice :
-
-
+        ![Azure AD Conditional Access Cas1](/assets/images/AADCA_CAS1.png)
 
 # TEST
 
