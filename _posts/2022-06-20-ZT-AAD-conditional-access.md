@@ -93,13 +93,22 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
     - Explications
         - il s'agit d'un des mécanismes pour palier le vol de crédential en invalidant le jeton au bout de 12h et en reforcant l'authentification des utilisateurs
-        - La notion de du durée de validité repose sur le contrôle *Session > Sign-in frequency*
+        - La notion de durée de validité repose sur le contrôle *Session > Sign-in frequency*
         - La notion de ciblage de l'application est possible suite à l'enregistrement de l'application concernée dans le *SSO Azure AD*. Elle devra être sélectionnée dans *Cloud apps or actions*
     - Matrice
         
         ![Azure AD Conditional Access Cas4](/assets/images/AADCA_CAS4.png)
 
-- **Cas 5 : Je veux autoriser uniquement les machines *Hybrid Azure AD Join* à se connecter aux services O365.**
+- **Cas 5 : Je souhaite que les utilisateurs s’authentifient de manière forte et quotidiennement lorsque l’utilisateur accède aux applications et services depuis l’étranger car je n’accorde pas confiance aux opérateurs étrangers.**
+
+    - Explications
+        - il s'agit d'un des mécanismes pour palier la faiblesse de la protection du transport via opérateurs mobiles ou internet dans les pays étrangers
+        - La notion de localisation repose sur la condition *Locations > Selected locations*
+    - Matrice
+        
+        ![Azure AD Conditional Access Cas5](/assets/images/AADCA_CAS5.png)
+
+- **Cas 6 : Je veux autoriser uniquement les machines *Hybrid Azure AD Join* à se connecter aux services O365.**
 
     - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
         - Cela ne couvre pas le cas des machines en *Azure AD Join* et *AD Join*. Et par conséquent génère des effets de bords pour les accès depuis les serveurs (eg. les fermes RDS)
@@ -110,16 +119,16 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         - *AD Join* via la gestion des privilèges sur l'*AD*
         - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*  
 <br/>
-- **Cas 6 : Je veux bloquer l’accès aux terminaux BYOD car je ne maitrise pas leur sécurité.**
+- **Cas 7 : Je veux bloquer l’accès aux terminaux BYOD car je ne maitrise pas leur sécurité.**
 
     - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
         - Il n’y a pas de lien direct entre terminal BYOD et le niveau de management et conformité
     - <div style="text-align: left">La recommandation est de définir les critères pour les deux cas suivants</div>
         - Terminal BYOD managé
         - Terminal BYOD non managé
-        - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité
+        - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité  
 <br/>
-- **Cas 7 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
+- **Cas 8 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
 
     - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
         - Dans le cadre de l'usage d'une solution SASE (*Proxy Cloud*), le réseau de l'entreprise est masqué par la solution SASE
