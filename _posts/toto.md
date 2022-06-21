@@ -69,9 +69,15 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
 
         ![Azure AD Conditional Access Cas1](/assets/images/AADCA_CAS1.png)
 
+- **Cas 2 : Je souhaite que les utilisateurs de l’entreprise puissent accéder aux services O365 avec une authentification forte et des clients légers si je ne maitrise pas la sécurité des terminaux Windows.**
 
+    - Explications :
+        - Cela permet de couvrir certains cas de compromissions comme un malware sur le poste qui via Outlook (client lourd) exfiltre l’annuaire d’entreprise ou effectue du phishing en mon nom
+        - Cela permet de couvrir certains cas d’exfiltration de données via la récupération du cache Outlook
 
+    - Matrice :
 
+        ![Azure AD Conditional Access Cas2](/assets/images/AADCA_CAS1.png)
 
 
 # TEST
