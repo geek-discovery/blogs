@@ -68,6 +68,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         
         ![Azure AD Conditional Access Cas1](/assets/images/AADCA_CAS1.png)
 - **Cas 2 : Je souhaite que les utilisateurs de l’entreprise puissent accéder aux services O365 avec une authentification forte et des clients légers si je ne maitrise pas la sécurité des terminaux Windows.**
+
     - Explications
         - Cela permet de couvrir certains cas de compromissions comme un malware sur le poste qui via Outlook (client lourd) exfiltre l’annuaire d’entreprise ou effectue du phishing en mon nom
         - Cela permet de couvrir certains cas d’exfiltration de données via la récupération du cache Outlook
@@ -76,6 +77,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         
         ![Azure AD Conditional Access Cas2](/assets/images/AADCA_CAS2.png)
 - **Cas 3 : Je souhaite que sur des postes de travail pour lesquels les critères de conformité sont validés, mes utilisateurs puissent utiliser les clients lourds et web sans authentification multifacteur, dans le cas contraire uniquement les client web seront autorisés avec une authentification multifacteur.**
+
     - Explications
         - Cela permet de garantir que les données sont consommés depuis un terminal présentant une exposition sécurité minime
         - Outre les politiques de conformité standards de Intune, il est possible d'ajouter des critères custom (eg. présence du client SASE, présence d'un certificat émis par l'autorité de certification de l'entreprise ...)
@@ -85,6 +87,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         
         ![Azure AD Conditional Access Cas3](/assets/images/AADCA_CAS3.png)
 - **Cas 4 : Je souhaite que les accès à cette application requièrent une authentification forte quotidienne car il s’agit d’une application sensible.**
+
     - Explications
         - il s'agit d'un des mécanismes pour palier le vol de crédential en invalidant le jeton au bout de 12h et en reforcant l'authentification des utilisateurs
         - La notion de du durée de validité repose sur le contrôle *Session > Sign-in frequency*
@@ -93,6 +96,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         
         ![Azure AD Conditional Access Cas4](/assets/images/AADCA_CAS4.png)
 - **Cas 5 : Je veux autoriser uniquement les machines *Hybrid Azure AD Join* à se connecter aux services O365.**
+
     - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
         - Cela ne couvre pas le cas des machines en *Azure AD Join* et *AD Join*. Et par conséquent génère des effets de bords pour les accès depuis les serveurs (eg. les fermes RDS)
         - Cela ne permet pas de garantir un niveau de sécurité. En effet un poste *Hybrid Azure AD Join* non conforme (eg. non patché depuis 6 mois) peut présenter un exposition sécurité supérieure à un poste non connu de l’entreprise mais conforme en terme de sécurité (eg. il dispose de la totalité des patches)
@@ -102,6 +106,7 @@ Les cas décrit ci-dessous sont à titre descriptif. Dans la réalité il s’ag
         - *AD Join* via la gestion des privilèges sur l'*AD*
         - *Azure AD Join* via une politique d’*Enrollement device platform restrictions*
 - **Cas 6 : Je veux bloquer l’accès aux terminaux BYOD car je ne maitrise pas leur sécurité.**
+
     - Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet
         - Il n’y a pas de lien direct entre terminal BYOD et le niveau de management et conformité
     - La recommandation est de définir les critères pour les deux cas suivants
