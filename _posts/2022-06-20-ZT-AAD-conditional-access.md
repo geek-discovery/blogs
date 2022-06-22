@@ -102,10 +102,10 @@ Les cas types (non exhaustif) ci-dessous sont à titre descriptif. Dans la réal
 
 - **Cas 5 : Je souhaite que les utilisateurs s’authentifient de manière forte et quotidiennement lorsque l’utilisateur accède aux applications et services depuis l’étranger car je n’accorde pas confiance aux opérateurs étrangers.**
 
-    - Explications
+    - <div style="text-align: left">Explications</div>
         - il s'agit d'un des mécanismes pour palier la faiblesse de la protection du transport via opérateurs mobiles ou internet dans les pays étrangers
         - La notion de localisation repose sur la condition *Locations > Selected locations*
-    - Matrice
+    - <div style="text-align: left">Matrice</div>
         
         ![Azure AD Conditional Access Cas5](/assets/images/AADCA_CAS5.png)
 
@@ -152,8 +152,9 @@ Néanmoins certaines limites existent
 
 # Quelques *tips* pour concevoir les règles de l’*Azure AD Conditional Access*
 * Les **règles** sont **cumulatives** : de ce fait, il est possible de concevoir les règles selon deux grands principes
-- L’inclusivité par recouvrement des règles. Dans cette approche, unitairement chaque règle est simple (par exemple une règle pour définir la durée de vie de jeton, une règle pour définir le comportement pour chaque système d’exploitation, une règle pour définir le comportement selon le niveau de conformité …), et le comportement final sera obtenu par le cumul des règles. Le bénéfice de cette approche est qu’il est plus aisé de traiter les angles morts mais les recouvrements peuvent générer des effets de bords inattendus.
-- L’exclusivité des règles. Dans cette approche, unitairement chaque règle est complexe et des exclusions sont appliquées afin de ne pas obtenir de recouvrement vis-à-vis des autres règles. Chaque accès sera autorisé par une seule règle. Le bénéfice de cette approche est qu’elle génère une facilité dans le diagnostic d’erreurs, toutefois leurs conceptions peut être couteuse.
+- L’**inclusivité** par recouvrement des règles. Dans cette approche, unitairement chaque règle est simple (par exemple une règle pour définir la durée de vie de jeton, une règle pour définir le comportement pour chaque système d’exploitation, une règle pour définir le comportement selon le niveau de conformité …), et le comportement final sera obtenu par le cumul des règles. Le bénéfice de cette approche est qu’il est plus aisé de traiter les angles morts mais les recouvrements peuvent générer des effets de bords inattendus.
+- L’**exclusivité des règles**. Dans cette approche, unitairement chaque règle est complexe et des exclusions sont appliquées afin de ne pas obtenir de recouvrement vis-à-vis des autres règles. Chaque accès sera autorisé par une seule règle. Le bénéfice de cette approche est qu’elle génère une facilité dans le diagnostic d’erreurs, toutefois leurs conceptions peut être couteuse.
+
 * Effectuer des tests comportementaux à l’aide de la fonction *What If*. Elle permet d’identifier les règles de l’*Azure AD Conditional Access* qui s’activeront lors de différentes conditions. Je recommande d’abuser de cette fonction afin de s’assurer que le comportement obtenu est aligné avec le comportement souhaité. Elle apportera toute sa valeur en particulier dans l’approche de conception inclusive.
 * La mise en place de l’authentification forte (*MFA*) peut nécessiter des campagnes d’enregistrement en masse du second facteur (Microsoft Authenticator). Selon la durée de vie des jetons, il peut être difficile de gérer la temporalité de cette action utilisateur (et d’aligner les ressources nécessaires au sein du Support Utilisateur) lorsqu’elle est uniquement conditionnée par une règle de l’*Azure AD Conditional Access*. L’usage de la fonctionnalité *Registration Campaign* permet de mieux gérer la temporalité des enrôlements en masse.
 * Adhérences entre l’*Azure AD MFA* et *Office 365 MFA* : bien qu’en termes d’expérience utilisateur les deux solutions sont similaires, dans les faits le comportement lors de l’authentification des utilisateurs est différent. En effet, uniquement l’*Azure AD MFA* est instancié par une règle de l’*Azure AD Conditional Acces* lorsque l’authentification multi-facteur est requise. Par conséquent, je recommande, pour éviter tout effet de bords, de laisser à la configuration d’origine l’*Office 365 MFA* lorsque des règles de l’*Azure AD Conditional Access* requièrent l’authentification multi-facteur.
