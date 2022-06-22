@@ -134,7 +134,8 @@ Les cas types (non exhaustif) ci-dessous sont à titre descriptif. Dans la réal
 
     - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du <em>Zero Trust</em>, en effet</div>
         - Dans le cadre de l'usage d'une solution SASE (*Proxy Cloud*), le réseau de l'entreprise est masqué par la solution SASE
-        - Le Offloading de certains trafic (comme les flux audio/video temps réel de Teams) ne sera pas vu comme arrivant depuis le *Proxy* d'entreprise
+        - Lors de la bascule des politiques de sécurité selon les concepts du *Zero Trust* (à contrario du modèle de forteresse), la notion de réseau d'entreprise et réseau public n'a plus lieu d'être
+        - Le *Offloading* de certains trafic (comme les flux audio/video temps réel de Teams) ne sera pas vu comme arrivant depuis le *Proxy* d'entreprise
     - <div style="text-align: left">La recommandation est de revenir sur des conditions standards pour définir l'activation ou non d'une authentification multifacteur</div>
 
 ## Quelques cas avancés
@@ -166,6 +167,15 @@ Néanmoins certaines limites existent
     - via l’usage des **coordonnées GPS** : le gain principal est la précision de la localisation de l’utilisateur obtenu par des données objectives. Néanmoins l’usage est uniquement possible si le terminal dispose d’une capacité de localisation via GPS (principalement les *Smartphones* et rarement les postes de travail).
     - via l’usage de **segments réseaux IP de types Pays** : le gain principal est qu’il reste facile de choisir les pays. Toutefois il s’agit de données disposant d’une fiabilité relativement moyenne car elles soumises à la qualité des données déclarées par les opérateurs.
     - via la définition de **segments IP Publics spécifiques** : le gain principal est qu’une entreprise dispose de la possibilité de construire une table en liaison avec l’adressage IP (NAT) de leurs accès Internet.  Néanmoins la limite principale de ce type est complètement conditionnée par l’architecture des accès Internet (*Offloading du traffic* en local sur les sites, solutions *SASE* qui ne dédient pas des adresses IP Publiques à leur clients …)
+
+- Pour des cas spécifiques nécessitant une **gestion fine** (en particulier pour cibler des applications natives Microsoft bien spécifiques) des règles de l’*Azure AD Conditional Access*, il est possible de les configurer au travers de Graph API – [ConditionalAccessPolicy resource type - Microsoft Graph v1.0](https://docs.microsoft.com/en-us/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
+
+- Pour des **besoins spécifiques** (en particulier certains comptes de services), il peut être nécessaire de les **exclure des règles** de l’*Azure AD Conditional Access*. Je recommande d’ajouter l’ensemble de ces comptes dans un groupe d’exclusion, d’appliquer l’exclusion sur la base de ce groupe et de manière régulière d’effectuer une revue de ce groupe
+
+- Selon les conditions requises par les règles de l’*Azure AD Conditional Access* des limites existent qu’il faut prendre en compte pour les accès depuis les navigateurs :
+    - L’usage du mode *InPrivate* ou *Incoginito* ne permet pas de remonter toutes les informations pour évaluer les conditions
+    - Pour qu’*Edge Chromium* remonte l’exhaustivité des informations pour évaluer les conditions, il est nécessaire que le profil au niveau du navigateur de l’utilisateur soit authentifié
+    - Pour que *Google Chrome* remonte l’exhaustivité des informations pour évaluer les conditions, il est nécessaire que le module *Windows Account* fournis par Microsoft soit installé
 
 # Conclusion
 * Embrasser l’*Azure AD Conditional Access* requiert un certain effort. J’ai pu constater au travers de mes précédentes missions clients, que la maitrise de cette solution est relativement **faible**, trop souvent réduite à l’activation de l’*Azure AD MFA* pour l’accès à *Office 365* et bien loin des concepts du *Zéro Trust*.
