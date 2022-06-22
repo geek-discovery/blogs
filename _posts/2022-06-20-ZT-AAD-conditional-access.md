@@ -122,7 +122,7 @@ Les cas types (non exhaustif) ci-dessous sont à titre descriptif. Dans la réal
 <br/>
 - **Cas 7 : Je veux bloquer l’accès aux terminaux BYOD car je ne maitrise pas leur sécurité.**
 
-    - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du *Zero Trust*, en effet</div>
+    - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du <em>Zero Trust</em>, en effet</div>
         - Il n’y a pas de lien direct entre terminal BYOD et le niveau de management et conformité
     - <div style="text-align: left">La recommandation est de définir les critères pour les deux cas suivants</div>
         - Terminal BYOD managé
