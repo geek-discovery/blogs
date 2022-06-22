@@ -1,8 +1,8 @@
 ---
-title: Comment s'y prendre avec Azure AD Conditional Access.
+title: Comment s'y prendre avec Azure AD Conditional Access ?
 layout: post
 post-image: /assets/images/CloudSecurity.jpg
-description: Comment s'y prendre avec Azure AD Conditional Access.
+description: Comment s'y prendre avec Azure AD Conditional Access ?
 tags:
 - Azure Active Directory
 - Conditional Access
