@@ -172,7 +172,7 @@ Néanmoins certaines limites existent
 
 - Pour des **besoins spécifiques** (en particulier certains comptes de services), il peut être nécessaire de les **exclure des règles** de l’*Azure AD Conditional Access*. Je recommande d’ajouter l’ensemble de ces comptes dans un groupe d’exclusion, d’appliquer l’exclusion sur la base de ce groupe et de manière régulière d’effectuer une revue de ce groupe
 
-- <div style="text-align: left">Selon les conditions requises par les règles de l’<em>Azure AD Conditional Access</em> des limites existent qu’il faut prendre en compte pour les accès depuis les navigateurs</div>
+- <div style="text-align: left">Selon les conditions requises par les règles de l’<em>Azure AD Conditional Access</em> des <strong>limites</strong> existent qu’il faut prendre en compte pour les accès depuis les <strong>navigateurs</strong></div>
     - L’usage du mode *InPrivate* ou *Incoginito* ne permet pas de remonter toutes les informations pour évaluer les conditions
     - Pour qu’*Edge Chromium* remonte l’exhaustivité des informations pour évaluer les conditions, il est nécessaire que le profil au niveau du navigateur de l’utilisateur soit authentifié
     - Pour que *Google Chrome* remonte l’exhaustivité des informations pour évaluer les conditions, il est nécessaire que le module *Windows Account* fournis par Microsoft soit installé
