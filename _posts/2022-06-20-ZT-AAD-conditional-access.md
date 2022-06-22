@@ -127,7 +127,8 @@ Les cas types (non exhaustif) ci-dessous sont à titre descriptif. Dans la réal
     - <div style="text-align: left">La recommandation est de définir les critères pour les deux cas suivants</div>
         - Terminal BYOD managé
         - Terminal BYOD non managé
-        - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité. L'usage de politique MAM peut aussi être une solution  
+        - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité.
+        - L'usage de politiques MAM appliquées (de manière forcée ou non) sur des applications compatibles peut aussi être une solution possible avec l'*Azure AD Conditional Access*  
 <br/>
 - **Cas 8 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
 
