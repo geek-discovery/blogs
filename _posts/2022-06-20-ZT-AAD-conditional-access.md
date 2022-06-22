@@ -130,7 +130,7 @@ Les cas types (non exhaustif) ci-dessous sont à titre descriptif. Dans la réal
         - La notion de management pouvant reposer soit sur son enrôlement dans Intune, soit sur sa conformité.
         - L'usage de politiques MAM appliquées (de manière forcée ou non) sur des applications compatibles peut aussi être une solution possible avec l'*Azure AD Conditional Access*  
 <br/>
-- **Cas 8 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur uniquement en defors de mon réseau d'entreprise.**
+- **Cas 8 : Je ne veux pas que mes utilisateurs aient une authentification multifacteur lorsqu'ils sont sur le réseau d'entreprise.**
 
     - <div style="text-align: left">Ce cas là n'est pas conforme aux concepts du <em>Zero Trust</em>, en effet</div>
         - Dans le cadre de l'usage d'une solution SASE (*Proxy Cloud*), le réseau de l'entreprise est masqué par la solution SASE
