@@ -169,5 +169,6 @@ Néanmoins certaines limites existent
 # Conclusion
 Embrasser l’*Azure AD Conditional Access* requiert un certain effort. J’ai pu constater au travers de mes précédentes missions clients, que la maitrise de cette solution est relative **faible**, trop souvent réduite à l’activation de l’*Azure AD MFA* pour l’accès à *Office 365* et bien loin des concepts du *Zéro Trust*.
 <br/>
+<br/>
 Toutefois une réelle appropriation des concepts permet de définir une réelle trajectoire de simplification et d’amélioration de l’expérience utilisateur tout en gagnant en maîtrise et en réduction de la surface d’exposition. L’*Azure AD Conditionnal Access* permet d’aller au-delà du contrôle subjectif (les règles de filtrage de partout) .
 
