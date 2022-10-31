@@ -25,6 +25,9 @@ A cette occasion, nous avons fait un point sur :
 * Quelles cibles & conseils
 * Les retours d'expériences
 
+Dans ce post, vous trouverez les slides présentés. Les informations sont à la date du 27 octobre 2022.
+Si vous souhaitez échanger sur le sujet, n'hésitez pas à me contacter via [Linkedin](https://www.linkedin.com/in/julien-rousson-996a8b/)
+
 Lien vers le PDF : [Où en est on de la modernisation de l'authentification ?](/assets/images/IDDays2022_Modernisation_authentification.pdf)
 
 ![Azure AD Conditional Access Cas1](/assets/images/IDDAYS202201.png)
