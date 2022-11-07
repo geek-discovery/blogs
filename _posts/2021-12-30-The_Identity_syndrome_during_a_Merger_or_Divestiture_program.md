@@ -18,11 +18,9 @@ tags:
 - SSO
 - Single Sign On
 ---
-Anytime I've performed a M&A or Divestiture program the 
+Anytime I’ve performed a M&A or Divestiture program, I faced issues with the Identity that I can sum up by “I don’t how it works but my users need to authenticate”. Even if this is a regular pain point as soon as a new application or service need to authenticate users, the M&A or Divestiture programs raise a harsh constraint: all the transformations activities are performed simultaneously. Thus it add stress to delivery teams to be aligned with the planning.
 
-
-
-La part prépondérante de l'Active Directory, l'arrivée d'Office 365, l'avènement des services Cloud, ouvre la voie de la transformation du service d'annuaire de Microsoft. J'ai souvent eu la question suivante "Est ce que je peux migrer mon Active Directory sur Azure Active Directory ?". La réponse n'est pas triviale du fait de la multiplicité des fonctions portées par l'Active Directory, de la philosophie d'Azure Active Directory qui ne reprend pas l'ensemble des fonctionalités de Active Directory tout en proposant des nouvelles et de la gouvernance de l'entreprise.
+The objective of this post is to explain how to properly deal with identity topic during the M&A or divestiture program
 
 # Préambule
 
