@@ -18,9 +18,9 @@ tags:
 - SSO
 - Single Sign On
 ---
-Anytime I’ve performed a M&A or Divestiture program, I faced issues with the Identity that I can sum up by “I don’t how it works but my users need to authenticate”. Even if this is a regular pain point as soon as a new application or service need to authenticate users, the M&A or Divestiture programs raise a harsh constraint: all the transformations activities are performed simultaneously. Thus it add stress to delivery teams to be aligned with the planning.
+Anytime I’ve performed a M&A or Divestiture program, I faced issues with the Identity that I can sum up by **“I don’t how it works but my users need to authenticate”**. Even if this is a regular pain point as soon as a new application or service need to authenticate users, the M&A or Divestiture programs raise a harsh constraint: all the transformations activities are performed simultaneously. Thus it add stress to delivery teams to be aligned with the planning.
 
-The objective of this post is to explain how to properly deal with identity topic during the M&A or divestiture program
+The objective of this post is to explain how to properly deal with identity topic during a M&A or Divestiture program
 
 # Préambule
 
