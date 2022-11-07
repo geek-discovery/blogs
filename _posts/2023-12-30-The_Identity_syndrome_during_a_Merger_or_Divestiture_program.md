@@ -15,6 +15,8 @@ tags:
 - Azure Active Directory
 - IAM
 - Identity and Access Management
+- SSO
+- Single Sign On
 ---
 Anytime I've performed a M&A or Divestiture program the 
 
